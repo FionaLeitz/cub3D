@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/06 10:02:14 by fleitz            #+#    #+#             */
-/*   Updated: 2021/12/14 09:43:59 by fleitz           ###   ########.fr       */
+/*   Created: 2022/01/21 14:55:52 by mcouppe           #+#    #+#             */
+/*   Updated: 2022/01/21 14:57:08 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
-# include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
-# define BUFFER_SIZE 1
+# include <stdlib.h>
+# include <stddef.h>
+# include <fcntl.h>
+# define BUFFER_SIZE 100
 
 char	*get_next_line(int fd);
-char	*ft_buffcpy(char *buff, char *str);
-char	*ft_n_buffcpy(char *buff, char *str);
-char	*ft_else(char *buff, char *str, size_t end);
-//char	*ft_strndup(const char *s1, size_t n);
-//char	*ft_strjoin(char const *s1, char const *s2);
-//void	*ft_memcpy(void *dst, const void *src, size_t n);
-//char	*ft_strchr(const char *s, int c);
-int		ft_stop(char *buff, ssize_t rd);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+
+int		ft_strchr_gnl(char *s, int c);
+int		ft_strlen_gnl(char *s);
 
 #endif

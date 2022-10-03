@@ -18,6 +18,7 @@ _ORANGE=$'\033[38;2;255;165;0m
 NAME		= libft.a
 
 SRCS_GNL		= srcs_gnl/get_next_line.c		\
+				srcs_gnl/get_next_line_utils.c	\
 
 SRCS_PRINTF		= srcs_printf/ft_printf.c		\
 			  srcs_printf/ft_putchar.c			\
