@@ -1,6 +1,6 @@
 #include "cub3d.h"
-
-int	get_map2(int fd, t_file *file)
+/*
+int	get_map(int fd, t_file *file)
 {
 	char	*str;
 	int		count;
@@ -24,14 +24,31 @@ int	get_map2(int fd, t_file *file)
 		file->map[++count] = str;
 	}
 	return (1);
+}*/
+
+t_map_lst	*new_line(char *line, int y)
+{
+	t_map_lst	*new;
+
+	new = malloc(sizeof(t_map_lst));
+	if (new == NULL)
+	{
+		ft_printf("Error malloc\n");
+		return (NULL);
+	}
+	new->map_line = line;
+	new->y = y;
+	new->next = NULL;
+	new->prev = NULL;
+	return (new);
 }
 
-int	get_map(int fd, t_file *file)
+int	count_map(int fd, t_file *file)
 {
-	int		count;
-	char	*str;
+	int			count;
+	char		*str;
+	t_map_lst	*tmp;
 
-	count = 0;
 	while (1)
 	{
 		str = get_next_line(fd);
@@ -41,15 +58,19 @@ int	get_map(int fd, t_file *file)
 			break ;
 		free(str);
 	}
+	file->first = new_line(str, 0);
+	tmp = file->first;
+	str = get_next_line(fd);
+	count = 0;
 	while (str != NULL)
 	{
-		count++;
-		free(str);
+		tmp->next = new_line(str, ++count);
+		tmp->next->prev = tmp;
 		str = get_next_line(fd);
 	}
-	file->map = malloc(sizeof(char *) * 15);
-	if (file->map == NULL)
-		return (0);
+	// file->map = malloc(sizeof(char *) * 15);
+	// if (file->map == NULL)
+	// 	return (0);
 	close(fd);
 	return (1);
 }
@@ -57,6 +78,7 @@ int	get_map(int fd, t_file *file)
 int	get_file_infos(char *filename, int fd, t_file *file)
 {
 	int		count;
+	(void)filename;
 
 	count = 0;
 	while (count < 6)
@@ -75,11 +97,11 @@ int	get_file_infos(char *filename, int fd, t_file *file)
 			count++;
 	}
 	file->params[count] = NULL;
+	if (count_map(fd, file) == 0)
+		return (0);
+/*	fd = open(filename, O_RDONLY);
 	if (get_map(fd, file) == 0)
-		return (0);
-	fd = open(filename, O_RDONLY);
-	if (get_map2(fd, file) == 0)
-		return (0);
+		return (0);*/
 	return (1);
 }
 

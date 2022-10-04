@@ -19,11 +19,20 @@
 
 # include <fcntl.h>
 
-typedef struct s_file
+typedef struct	s_map_lst
 {
-	char	*params[7];
-	char	**map;
-}					t_file;
+	char				*map_line;
+	int					y;
+	struct s_map_lst	*next;
+	struct s_map_lst	*prev;
+}				t_map_lst;
+
+typedef struct	s_file
+{
+	char		*params[7];
+	char		**map;
+	t_map_lst	*first;
+}				t_file;
 
 // parce.c
 int	check_file(char *file, t_file *file_infos);
