@@ -26,7 +26,7 @@ HEADERS	= cub3d.h
 
 CC	= clang
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3
 
 LIBFT	= -L libft -lft
 

@@ -27,11 +27,24 @@ typedef struct	s_map_lst
 	struct s_map_lst	*prev;
 }				t_map_lst;
 
+typedef struct	s_texture
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+	char	*f;
+	int		color_f;
+	char	*c;
+	int		color_c;
+}			t_texture;
+
 typedef struct	s_file
 {
 	char		*params[7];
 	char		**map;
 	t_map_lst	*first;
+	t_texture	texture;
 }				t_file;
 
 // parce.c
