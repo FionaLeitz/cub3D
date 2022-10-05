@@ -21,6 +21,7 @@ SRCS =	main.c						\
 		file.c						\
 		utils.c						\
 		texture_colors.c			\
+		parse_map.c					\
 
 OBJS	= ${SRCS:.c=.o}
 

@@ -43,6 +43,12 @@ typedef struct s_file
 {
 	char		*params[7];
 	char		**map;
+	int			start_x;
+	int			start_y;
+	int			N;
+	int			S;
+	int			E;
+	int			W;
 	t_map_lst	*first;
 	t_texture	texture;
 }				t_file;
@@ -54,5 +60,7 @@ t_map_lst	*new_line(char *line, int y);
 int			ft_space(char c);
 // texture_colors.c
 int			check_params(char **params, t_texture *texture);
+// parse_map.c
+int			map_characters(t_file *file);
 
 #endif

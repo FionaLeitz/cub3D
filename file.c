@@ -123,5 +123,7 @@ int	check_file(char *filename, t_file *file)
 	}
 	if (get_file_infos(fd, file) == 0)
 		return (0);
+	if (map_characters(file) == 0)
+		return (0);
 	return (1);
 }

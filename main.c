@@ -48,6 +48,12 @@ void	init(t_file *file)
 	file->texture.west = NULL;
 	file->texture.f = NULL;
 	file->texture.c = NULL;
+	file->start_x = -1;
+	file->start_y = -1;
+	file->N = 0;
+	file->S = 0;
+	file->E = 0;
+	file->W = 0;
 }
 
 int	main(int argc, char **argv)
@@ -70,7 +76,7 @@ int	main(int argc, char **argv)
 		free(file.map);
 		return (0);
 	}
-	ft_printf("%s\n%s\n%s\n%s\n%s\n%d\n%s\n%d\n", file.texture.north, file.texture.south, file.texture.east, file.texture.west, file.texture.f, file.texture.color_f, file.texture.c,  file.texture.color_c);
+//	ft_printf("%s\n%s\n%s\n%s\n%s\n%d\n%s\n%d\n", file.texture.north, file.texture.south, file.texture.east, file.texture.west, file.texture.f, file.texture.color_f, file.texture.c,  file.texture.color_c);
 	
 	// count = -1;
 	// while (file.map[++count])
