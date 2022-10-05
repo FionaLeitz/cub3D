@@ -17,8 +17,10 @@ _ORANGE=$'\033[38;2;255;165;0m
 
 NAME  = cub3d
 
-SRCS =	main.c		\
-		parse.c		\
+SRCS =	main.c						\
+		file.c						\
+		utils.c						\
+		texture_colors.c			\
 
 OBJS	= ${SRCS:.c=.o}
 

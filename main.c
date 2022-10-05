@@ -42,7 +42,6 @@ int	main(int argc, char **argv)
 {
 	t_file		file;
 	int			count;
-//	t_map_lst	*tmp;
 
 	if (argc != 2)
 	{
@@ -59,17 +58,7 @@ int	main(int argc, char **argv)
 		free(file.map);
 		return (0);
 	}
-	ft_printf("%s\n%s\n%s\n%s\n%s\n%s\n", file.texture.north, file.texture.south, file.texture.east, file.texture.west, file.texture.f, file.texture.c);
-	// tmp = file.first;
-	// while (tmp)
-	// {
-	// 	ft_printf("line %d =	%s", tmp->y, tmp->map_line);
-	// 	tmp = tmp->next;
-	// }
-	// ft_printf("\n\n");
-	// count = -1;
-	// while (file.map[++count] != NULL)
-	// 	ft_printf("line %d = 	%s", count, file.map[count]);
+	ft_printf("%s\n%s\n%s\n%s\n%s\n%d\n%s\n%d\n", file.texture.north, file.texture.south, file.texture.east, file.texture.west, file.texture.f, file.texture.color_f, file.texture.c,  file.texture.color_c);
 	free_struct(file.first);
 	count = -1;
 	while (file.params[++count])

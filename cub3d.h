@@ -47,7 +47,12 @@ typedef struct	s_file
 	t_texture	texture;
 }				t_file;
 
-// parce.c
-int	check_file(char *file, t_file *file_infos);
+// file.c
+int			check_file(char *file, t_file *file_infos);
+// utils.c
+t_map_lst	*new_line(char *line, int y);
+int			ft_space(char c);
+// texture_colors.c
+int			check_params(char **params, t_texture *texture);
 
 #endif
