@@ -15,11 +15,13 @@
 
 static int	recursive(char **map, char c, int x, int y)
 {
+	if (map[x + 1] == NULL || x == 0)
+		return (-1);
 	if (map[x][y] == ' ' || map[x][y] == '\0')
 		return (-1);
 	if (map[x][y] == '0' || map[x][y] == c)
 		map[x][y] = '2';
-	if (map[x + 1] != NULL && map[x + 1][y] != '1' && map[x + 1][y] != '2')
+	if (map[x + 1][y] != '1' && map[x + 1][y] != '2')
 		if (recursive(map, c, x + 1, y) == -1)
 			return (-1);
 	if (map[x][y + 1] != '1' && map[x][y + 1] != '2')
@@ -31,6 +33,18 @@ static int	recursive(char **map, char c, int x, int y)
 	if (map[x][y - 1] != '1' && map[x][y - 1] != '2')
 		if (recursive(map, c, x, y - 1) == -1)
 			return (-1);
+	if (map[x + 1][y + 1] != '1' && map[x + 1][y + 1] != '2')
+		if (recursive(map, c, x + 1, y + 1) == -1)
+			return (-1);
+	if (map[x + 1][y - 1] != '1' && map[x + 1][y - 1] != '2')
+		if (recursive(map, c, x + 1, y - 1) == -1)
+			return (-1);
+	if (map[x - 1][y - 1] != '1' && map[x - 1][y - 1] != '2')
+		if (recursive(map, c, x - 1, y - 1) == -1)
+			return (-1);
+	if (map[x - 1][y + 1] != '1' && map[x - 1][y + 1] != '2')
+		if (recursive(map, c, x - 1, y + 1) == -1)
+			return (-1);
 	return (0);
 }
 
@@ -39,15 +53,22 @@ static int	check_walls(char **map, t_file *file)
 	char	c;
 	int		x;
 	int		y;
-
-	x = file->start_x;
-	y = file->start_y;
-	c = map[x][y];
-	if (recursive(map, c, x, y) == -1)
+	
+	x = -1;
+	c = map[file->start_x][file->start_y];
+	while (map[++x])
 	{
-		ft_printf("Error walls\n");
-		return (0);
+		y = -1;
+		while (map[x][++y])
+		{
+			if ((map[x][y] == '0' || map[x][y] == c) && recursive(map, c, x, y) == -1)
+			{
+				ft_printf("Error walls\n");
+				return (0);
+			}
+		}
 	}
+	map[file->start_x][file->start_y] = c;
 	int	count = -1;
 	while (map[++count])
 		ft_printf("%s\n", map[count]);
