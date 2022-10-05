@@ -1,4 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   texture_colors.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/05 10:38:42 by fleitz            #+#    #+#             */
+/*   Updated: 2022/10/05 10:38:45 by fleitz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
+
+static int	get_color(char *color, int *nbr)
+{
+	int	count;
+
+	count = 0;
+	while (color[count] != '\0' && color[count] != ',')
+		count++;
+	color[count] = '\0';
+	if (count > 3)
+	{
+		nbr[0] = -1;
+		return (count);
+	}
+	nbr[0] = ft_atoi(color);
+	color[count] = ',';
+	return (count);
+}
+
+static int	color_format(char *color)
+{
+	int	count;
+
+	count = 0;
+	while (color[count] != '\0' && ft_isdigit(color[count]) == 1)
+		count++;
+	if (color[count] != ',' && color[count] != '.')
+		return (-1);
+	return (count);
+}
 
 static char	*get_params(char *params)
 {
@@ -19,44 +61,20 @@ static char	*get_params(char *params)
 	return (&params[save]);
 }
 
-static int	get_color(char *color, int *nbr)
-{
-	int	count;
-
-	count = 0;
-	while (color[count] != '\0' && color[count] != ',')
-		count++;
-	color[count] = '\0';
-	if (count > 3)
-	{
-		nbr[0] = -1;
-		return (count);
-	}
-	nbr[0] = ft_atoi(color);
-	color[count] = ',';
-	return (count);
-}
-
-static char	*check_color(char *color, int *color_nbr)
+static char	*check_color(char *params, char *color, int *color_nbr)
 {
 	int	count;
 	int	r;
 	int	g;
 	int	b;
 
+	color = get_params(&params[1]);
 	if (color == NULL)
 		return (NULL);
-	count = 0;
-	while (color[count] != '\0' && ft_isdigit(color[count]) == 1)
-		count++;
-	if (color[count] != ',' && color[count] != '.')
+	count = color_format(color);
+	count += color_format(&color[count + 1]) + 1;
+	if (count++ == -1)
 		return (NULL);
-	count++;
-	while (color[count] != '\0' && ft_isdigit(color[count]) == 1)
-		count++;
-	if (color[count] != ',' && color[count] != '.')
-		return (NULL);
-	count++;
 	while (color[count] != '\0' && ft_isdigit(color[count]) == 1)
 		count++;
 	while (color[count] != '\0' && ft_space(color[count]) == 0)
@@ -88,17 +106,12 @@ int	check_params(char **params, t_texture *texture)
 		else if (ft_strncmp(params[i], "EA", 2) == 0)
 			texture->east = get_params(&params[i][2]);
 		else if (ft_strncmp(params[i], "F", 1) == 0)
-		{
-			texture->f = get_params(&params[i][1]);
-			texture->f = check_color(texture->f, &texture->color_f);
-		}
+			texture->f = check_color(params[i], texture->f, &texture->color_f);
 		else if (ft_strncmp(params[i], "C", 1) == 0)
-		{
-			texture->c = get_params(&params[i][1]);
-			texture->c = check_color(texture->c, &texture->color_c);
-		}
+			texture->c = check_color(params[i], texture->c, &texture->color_c);
 	}
-	if (!(texture->north && texture->south && texture->west && texture->east && texture->f && texture->c))
+	if (!(texture->north && texture->south && texture->west
+			&& texture->east && texture->f && texture->c))
 	{
 		ft_printf("Error params\n");
 		return (0);

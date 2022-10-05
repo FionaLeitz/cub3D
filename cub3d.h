@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 13:19:19 by fleitz            #+#    #+#             */
-/*   Updated: 2022/09/29 13:19:24 by fleitz           ###   ########.fr       */
+/*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
+/*   Updated: 2022/10/05 10:38:01 by fleitz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # include <fcntl.h>
 
-typedef struct	s_map_lst
+typedef struct s_map_lst
 {
 	char				*map_line;
 	int					y;
@@ -27,7 +27,7 @@ typedef struct	s_map_lst
 	struct s_map_lst	*prev;
 }				t_map_lst;
 
-typedef struct	s_texture
+typedef struct s_texture
 {
 	char	*north;
 	char	*south;
@@ -39,7 +39,7 @@ typedef struct	s_texture
 	int		color_c;
 }			t_texture;
 
-typedef struct	s_file
+typedef struct s_file
 {
 	char		*params[7];
 	char		**map;

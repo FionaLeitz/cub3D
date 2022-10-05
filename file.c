@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/05 10:36:33 by fleitz            #+#    #+#             */
+/*   Updated: 2022/10/05 10:36:37 by fleitz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 static int	get_map_tab(t_file *file, int count)
@@ -18,11 +30,9 @@ static int	get_map_tab(t_file *file, int count)
 	return (1);
 }
 
-static int	get_map_lst(int fd, t_file *file)
+static int	pass_useless(int fd, t_file *file)
 {
-	int			count;
-	char		*str;
-	t_map_lst	*tmp;
+	char	*str;
 
 	while (1)
 	{
@@ -38,6 +48,17 @@ static int	get_map_lst(int fd, t_file *file)
 	}
 	file->first = new_line(str, 0);
 	if (file->first == NULL)
+		return (0);
+	return (1);
+}
+
+static int	get_map_lst(int fd, t_file *file)
+{
+	int			count;
+	char		*str;
+	t_map_lst	*tmp;
+
+	if (pass_useless(fd, file) == 0)
 		return (0);
 	tmp = file->first;
 	str = get_next_line(fd);

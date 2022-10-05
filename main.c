@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/05 10:36:43 by fleitz            #+#    #+#             */
+/*   Updated: 2022/10/05 10:36:52 by fleitz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 void	free_table(char **tab)
@@ -59,6 +71,11 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	ft_printf("%s\n%s\n%s\n%s\n%s\n%d\n%s\n%d\n", file.texture.north, file.texture.south, file.texture.east, file.texture.west, file.texture.f, file.texture.color_f, file.texture.c,  file.texture.color_c);
+	
+	// count = -1;
+	// while (file.map[++count])
+	// 	ft_printf("%d : 	%s", count + 1, file.map[count]);
+
 	free_struct(file.first);
 	count = -1;
 	while (file.params[++count])
