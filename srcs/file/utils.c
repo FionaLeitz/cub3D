@@ -12,6 +12,7 @@
 
 #include "../../cub3d.h"
 
+// create new element for list struct t_lst_map
 t_map_lst	*new_line(char *line, int y)
 {
 	t_map_lst	*new;
@@ -29,6 +30,7 @@ t_map_lst	*new_line(char *line, int y)
 	return (new);
 }
 
+// check if c is whitespace
 int	ft_space(char c)
 {
 	if (c == '\f' || c == '\n' || c == '\r' || c == '\t'

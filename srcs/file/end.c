@@ -24,6 +24,8 @@ static void	free_table(char **tab)
 	free(tab);
 }
 */
+
+// free list structure t_map_lst
 void	free_struct(t_map_lst *first)
 {
 	t_map_lst	*tmp;
@@ -37,6 +39,7 @@ void	free_struct(t_map_lst *first)
 	}
 }
 
+// free all parse
 int	end_parse(t_file *file, int ret)
 {
 	int	count;

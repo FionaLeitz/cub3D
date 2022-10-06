@@ -12,6 +12,7 @@
 
 #include "../../cub3d.h"
 
+// get colors in integers for red, green and blue
 static int	get_color(char *color, int *nbr)
 {
 	int	count;
@@ -30,6 +31,7 @@ static int	get_color(char *color, int *nbr)
 	return (count);
 }
 
+// verfy color format
 static int	color_format(char *color)
 {
 	int	count;
@@ -42,6 +44,7 @@ static int	color_format(char *color)
 	return (count);
 }
 
+// get exact line without identifier
 static char	*get_params(char *params)
 {
 	int		count;
@@ -61,6 +64,7 @@ static char	*get_params(char *params)
 	return (&params[save]);
 }
 
+// check if colors are in good format
 static char	*check_color(char *params, char *color, int *color_nbr)
 {
 	int	count;
@@ -90,6 +94,7 @@ static char	*check_color(char *params, char *color, int *color_nbr)
 	return (color);
 }
 
+// stock arguments (texture's lines and color's lines)
 int	check_params(char **params, t_texture *texture)
 {
 	int	i;

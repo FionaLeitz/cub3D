@@ -12,6 +12,7 @@
 
 #include "../../cub3d.h"
 
+// if empty lines at the end of the map, delete
 void	empty_line(int empty, t_map_lst *first)
 {
 	t_map_lst	*tmp;
@@ -27,6 +28,7 @@ void	empty_line(int empty, t_map_lst *first)
 	free_struct(tmp);
 }
 
+// get map in char **
 static int	get_map_tab(t_file *file, int count)
 {
 	t_map_lst	*tmp;
@@ -55,6 +57,7 @@ static int	get_map_tab(t_file *file, int count)
 	return (1);
 }
 
+// pass empty lines
 static int	pass_useless(int fd, t_file *file)
 {
 	char	*str;
@@ -77,6 +80,7 @@ static int	pass_useless(int fd, t_file *file)
 	return (1);
 }
 
+// get map in list struct t_map_lst
 static int	get_map_lst(int fd, t_file *file)
 {
 	int			count;
@@ -103,6 +107,7 @@ static int	get_map_lst(int fd, t_file *file)
 	return (1);
 }
 
+// get the textures informations
 static int	get_file_infos(int fd, t_file *file)
 {
 	int		count;
@@ -129,6 +134,7 @@ static int	get_file_infos(int fd, t_file *file)
 	return (1);
 }
 
+// verify file's viability
 int	check_file(char *filename, t_file *file)
 {
 	int	size;

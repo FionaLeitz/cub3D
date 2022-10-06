@@ -12,6 +12,7 @@
 
 #include "../../cub3d.h"
 
+// recursive to check walls
 static int	rec(char **map, int x, int y)
 {
 	if (map[x][y] == '1' || map[x][y] == '2')
@@ -29,6 +30,8 @@ static int	rec(char **map, int x, int y)
 	return (0);
 }
 
+
+// check if map is closed with walls
 static int	check_walls(char **map, t_file *file)
 {
 	char	c;
@@ -57,6 +60,7 @@ static int	check_walls(char **map, t_file *file)
 	return (1);
 }
 
+// get start position and check if only one
 static int	start_position(char c, int line, int col, t_file *file)
 {
 	if (c == 'N')
@@ -72,6 +76,7 @@ static int	start_position(char c, int line, int col, t_file *file)
 	return (file->N + file->S + file->E + file->W);
 }
 
+// check if characters are valids in map
 int	map_characters(t_file *file)
 {
 	int	line;
