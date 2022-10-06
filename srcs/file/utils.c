@@ -13,7 +13,7 @@
 #include "../../cub3d.h"
 
 // create new element for list struct t_lst_map
-t_map_lst	*new_line(char *line, int y)
+t_map_lst	*new_line(char *line, int x)
 {
 	t_map_lst	*new;
 
@@ -24,7 +24,7 @@ t_map_lst	*new_line(char *line, int y)
 		return (NULL);
 	}
 	new->map_line = line;
-	new->y = y;
+	new->x = x;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

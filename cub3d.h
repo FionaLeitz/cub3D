@@ -22,7 +22,7 @@
 typedef struct s_map_lst
 {
 	char				*map_line;
-	int					y;
+	int					x;
 	struct s_map_lst	*next;
 	struct s_map_lst	*prev;
 }				t_map_lst;
@@ -43,8 +43,8 @@ typedef struct s_file
 {
 	char		*params[7];
 	char		**map;
-	int			start_x;
 	int			start_y;
+	int			start_x;
 	int			N;
 	int			S;
 	int			E;

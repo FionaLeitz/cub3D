@@ -13,19 +13,19 @@
 #include "../../cub3d.h"
 
 // recursive to check walls
-static int	rec(char **map, int x, int y)
+static int	rec(char **map, int y, int x)
 {
-	if (map[x][y] == '1' || map[x][y] == '2')
+	if (map[y][x] == '1' || map[y][x] == '2')
 		return (0);
-	if (map[x][y] == '0')
-		map[x][y] = '2';
-	if (map[x + 1] == NULL || x == 0 || y == 0 || map[x][y + 1] == '\0'
-		|| map[x][y] == ' ' || (int)ft_strlen(map[x + 1]) < y)
+	if (map[y][x] == '0')
+		map[y][x] = '2';
+	if (map[y + 1] == NULL || y == 0 || x == 0 || map[y][x + 1] == '\0'
+		|| map[y][x] == ' ' || (int)ft_strlen(map[y + 1]) < x)
 		return (-1);
-	if (rec(map, x - 1, y) != 0 || rec(map, x + 1, y) != 0
-		|| rec(map, x, y - 1) != 0 || rec(map, x, y + 1) != 0
-		|| rec(map, x + 1, y + 1) != 0 || rec(map, x - 1, y + 1) != 0
-		|| rec(map, x + 1, y - 1) != 0 || rec(map, x - 1, y - 1) != 0)
+	if (rec(map, y - 1, x) != 0 || rec(map, y + 1, x) != 0
+		|| rec(map, y, x - 1) != 0 || rec(map, y, x + 1) != 0
+		|| rec(map, y + 1, x + 1) != 0 || rec(map, y - 1, x + 1) != 0
+		|| rec(map, y + 1, x - 1) != 0 || rec(map, y - 1, x - 1) != 0)
 		return (-1);
 	return (0);
 }
@@ -35,32 +35,32 @@ static int	rec(char **map, int x, int y)
 static int	check_walls(char **map, t_file *file)
 {
 	char	c;
-	int		x;
 	int		y;
+	int		x;
 
-	x = -1;
-	c = map[file->start_x][file->start_y];
-	map[file->start_x][file->start_y] = '0';
-	while (map[++x])
+	y = -1;
+	c = map[file->start_y][file->start_x];
+	map[file->start_y][file->start_x] = '0';
+	while (map[++y])
 	{
-		y = -1;
-		while (map[x][++y])
+		x = -1;
+		while (map[y][++x])
 		{
-			if ((map[x][y] == '0' || map[x][y] == c) && rec(map, x, y) == -1)
+			if ((map[y][x] == '0' || map[y][x] == c) && rec(map, y, x) == -1)
 			{
 				ft_printf("Error walls\n");
 				return (0);
 			}
 		}
 	}
-	map[file->start_x][file->start_y] = c;
+	map[file->start_y][file->start_x] = c;
 	int	count = -1;
 	while (map[++count])
 		ft_printf("%s\n", map[count]);
 	return (1);
 }
 
-// get start position and check if only one
+// get start position and check if onlx one
 static int	start_position(char c, int line, int col, t_file *file)
 {
 	if (c == 'N')
@@ -71,8 +71,8 @@ static int	start_position(char c, int line, int col, t_file *file)
 		file->E += 1;
 	else if (c == 'W')
 		file->W += 1;
-	file->start_x = line;
-	file->start_y = col;
+	file->start_y = line;
+	file->start_x = col;
 	return (file->N + file->S + file->E + file->W);
 }
 
