@@ -12,21 +12,46 @@
 
 #include "cub3d.h"
 
+void	empty_line(int empty, t_map_lst *first)
+{
+	t_map_lst	*tmp;
+	int			count;
+
+	if (empty == -1)
+		return ;
+	tmp = first;
+	count = -1;
+	while (++count <= empty)
+		tmp = tmp->next;
+	tmp->prev->next = NULL;
+	free_struct(tmp);
+}
+
 static int	get_map_tab(t_file *file, int count)
 {
 	t_map_lst	*tmp;
+	int			empty;
 
 	file->map = malloc(sizeof(char *) * (count + 3));
 	if (file->map == NULL)
 		return (0);
 	tmp = file->first;
 	count = -1;
+	empty = -1;
 	while (tmp)
 	{
+		if (empty != -1 && tmp->map_line[0] != '\n')
+			return (ft_printf("Error empty line\n"));
 		file->map[++count] = tmp->map_line;
+		if (empty == -1 && tmp->map_line[0] == '\n')
+		{
+			file->map[count] = NULL;
+			empty = count;
+		}
 		tmp = tmp->next;
 	}
 	file->map[count + 1] = NULL;
+	empty_line(empty, file->first);
 	return (1);
 }
 

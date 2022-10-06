@@ -62,5 +62,8 @@ int			ft_space(char c);
 int			check_params(char **params, t_texture *texture);
 // parse_map.c
 int			map_characters(t_file *file);
+// end.c
+void		free_struct(t_map_lst *first);
+int			end_parse(t_file *file, int ret);
 
 #endif
