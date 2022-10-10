@@ -28,6 +28,8 @@ static void	init(t_file *file, t_gbl *gbl)
 	init_img(&file->texture.south);
 	init_img(&file->texture.east);
 	init_img(&file->texture.west);
+	init_img(&gbl->new_img);
+//	free(gbl->new_img);
 	file->texture.f = NULL;
 	file->texture.c = NULL;
 	file->start_x = -1;

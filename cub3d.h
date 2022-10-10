@@ -70,6 +70,7 @@ typedef struct s_gbl
 {
 	void	*mlx;
 	void	*window;
+	t_image	new_img;
 }			t_gbl;
 
 // file.c

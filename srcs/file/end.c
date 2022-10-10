@@ -38,6 +38,7 @@ void	end_mlx(t_texture *texture, t_gbl *gbl)
 	end_img(&texture->south, gbl->mlx);
 	end_img(&texture->east, gbl->mlx);
 	end_img(&texture->west, gbl->mlx);
+	end_img(&gbl->new_img, gbl->mlx);
 	if (gbl->window != NULL)
 		mlx_destroy_window(gbl->mlx, gbl->window);
 	if (gbl->mlx != NULL)
