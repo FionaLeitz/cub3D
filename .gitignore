@@ -1,3 +1,6 @@
 cub3d_nuclear_zone/objs/
 cub3d_nuclear_zone/cub3d_disaster
 cub3d_nuclear_zone/libft/*.o
+cub3d_being_a_fun_clown/objs/
+cub3d_being_a_fun_clown/cub3d
+cub3d_being_a_fun_clown/libft/*.o

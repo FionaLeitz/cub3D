@@ -1,0 +1,21 @@
+
+SO ./texture/texture_south
+
+NO ./texture/texture_north
+
+EA ./texture/texture_east
+
+WE ./texture/texture_west
+
+F 220,100,1
+
+
+
+
+C 225,30,0
+
+11111111111111111
+10000000000000001
+10000000000000001
+1000000N000000001
+11111111111111111

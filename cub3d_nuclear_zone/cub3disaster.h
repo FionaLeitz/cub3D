@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 10:34:23 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/05 13:11:18 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/10 13:00:57 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ typedef struct	s_gbl
 	void	*win;
 	int		*p_pos;
 }	t_gbl;
+/*
+typedef struct	s_img
+{
+	void	*img_ptr;
+	char	*addr;
+
+}*/
 
 t_gbl	start(char *path);
 void	make_things_visible(char **map, int *p_pos, t_gbl *gbl);
