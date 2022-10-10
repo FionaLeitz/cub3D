@@ -25,6 +25,26 @@ static void	free_table(char **tab)
 }
 */
 
+void	end_img(t_image *img, void *mlx)
+{
+	free(img->str);
+	if (img->ptr != NULL)
+		mlx_destroy_image(mlx, img->ptr);
+}
+
+void	end_mlx(t_texture *texture, t_gbl *gbl)
+{
+	end_img(&texture->north, gbl->mlx);
+	end_img(&texture->south, gbl->mlx);
+	end_img(&texture->east, gbl->mlx);
+	end_img(&texture->west, gbl->mlx);
+	if (gbl->window != NULL)
+		mlx_destroy_window(gbl->mlx, gbl->window);
+	if (gbl->mlx != NULL)
+		mlx_destroy_display(gbl->mlx);
+	free(gbl->mlx);
+}
+
 // free list structure t_map_lst
 void	free_struct(t_map_lst *first)
 {

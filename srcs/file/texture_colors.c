@@ -103,20 +103,20 @@ int	check_params(char **params, t_texture *texture)
 	while (params[++i])
 	{
 		if (ft_strncmp(params[i], "NO", 2) == 0)
-			texture->north = get_params(&params[i][2]);
+			texture->north.texture = get_params(&params[i][2]);
 		else if (ft_strncmp(params[i], "SO", 2) == 0)
-			texture->south = get_params(&params[i][2]);
+			texture->south.texture = get_params(&params[i][2]);
 		else if (ft_strncmp(params[i], "WE", 2) == 0)
-			texture->west = get_params(&params[i][2]);
+			texture->west.texture = get_params(&params[i][2]);
 		else if (ft_strncmp(params[i], "EA", 2) == 0)
-			texture->east = get_params(&params[i][2]);
+			texture->east.texture = get_params(&params[i][2]);
 		else if (ft_strncmp(params[i], "F", 1) == 0)
 			texture->f = check_color(params[i], texture->f, &texture->color_f);
 		else if (ft_strncmp(params[i], "C", 1) == 0)
 			texture->c = check_color(params[i], texture->c, &texture->color_c);
 	}
-	if (!(texture->north && texture->south && texture->west
-			&& texture->east && texture->f && texture->c))
+	if (!(texture->north.texture && texture->south.texture && texture->west.texture
+			&& texture->east.texture && texture->f && texture->c))
 	{
 		ft_printf("Error params\n");
 		return (0);

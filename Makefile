@@ -23,31 +23,41 @@ SRCS =	main.c									\
 		srcs/file/texture_colors.c				\
 		srcs/file/parse_map.c					\
 		srcs/file/end.c							\
+		srcs/file/protect_texture.c				\
 
 OBJS	= ${SRCS:.c=.o}
 
-HEADERS	= cub3d.h
-
 CC	= clang
 
-CFLAGS	= -Wall -Wextra -Werror -g3
+CFLAGS	= -Wall -Wextra -Werror -g
+
+MLXFLAGS	= -lmlx -lXext -lX11 -Lmlx
+
+MLX		= mlx/libmlx.a mlx/libmlx_Linux.a
 
 LIBFT	= -L libft -lft
 
-all: 		lib ${NAME}
+all: 		lib minilibx ${NAME}
 
 ${NAME}: 	${OBJS}
 			@echo "${_GREEN}----------------\nCUB3D\n----------------${_END}"
 			@echo "${_ORANGE}Objects CUB3D created${_END}"
-			@${CC} ${CFLAGS} ${OBJS} ${LIBFT} -o ${NAME}
+			@${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MLX} ${MLXFLAGS} -o ${NAME}
 			@echo "${_GREEN}CUB3D compiled succesfully !${_END}"
 
 .c.o:		
-			@${CC} ${CFLAGS} -I${HEADERS} -c $< -o $@
+			@${CC} ${CFLAGS} -c $< -o $@
+
+minilibx:
+			@make -C mlx
+			
+lib:		
+			@make -C libft
 
 clean:		
 			@rm -f ${OBJS}
 			@make -C libft clean
+			@make -C mlx clean
 			@echo "${_YELLOW}Objects cub3d cleaned !${_END}"
 
 fclean:		clean
@@ -57,7 +67,5 @@ fclean:		clean
 
 re:			fclean all
 
-lib:		
-			@make -C libft
 			
 .PHONY :	all clean fclean re lib

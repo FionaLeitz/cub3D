@@ -16,8 +16,21 @@
 # include "libft/headers/ft_printf.h"
 # include "libft/headers/get_next_line.h"
 # include "libft/headers/libft.h"
-
+# include "mlx/mlx.h"
+# include "mlx/mlx_int.h"
 # include <fcntl.h>
+
+typedef struct s_image
+{
+	char	*texture;			// path string
+	void	*ptr;				// pointer for mlx
+	int		width;
+	int		height;
+	int		bpp;				// bits per pixel
+	int		size_line;			// number of bytes in one line
+	int		endian;				// ??
+	char	*str;				// result of mlx_get_data_addr
+}			t_image;	
 
 typedef struct s_map_lst
 {
@@ -25,14 +38,14 @@ typedef struct s_map_lst
 	int					x;
 	struct s_map_lst	*next;
 	struct s_map_lst	*prev;
-}				t_map_lst;
+}						t_map_lst;
 
 typedef struct s_texture
 {
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
+	t_image	north;
+	t_image	south;
+	t_image	west;
+	t_image	east;
 	char	*f;
 	int		color_f;
 	char	*c;
@@ -53,6 +66,12 @@ typedef struct s_file
 	t_texture	texture;
 }				t_file;
 
+typedef struct s_gbl
+{
+	void	*mlx;
+	void	*window;
+}			t_gbl;
+
 // file.c
 int			check_file(char *file, t_file *file_infos);
 // utils.c
@@ -63,7 +82,10 @@ int			check_params(char **params, t_texture *texture);
 // parse_map.c
 int			map_characters(t_file *file);
 // end.c
+void		end_mlx(t_texture *texture, t_gbl *gbl);
 void		free_struct(t_map_lst *first);
 int			end_parse(t_file *file, int ret);
+// protect_texture
+int			open_all(t_texture *texture, t_gbl *gbl);
 
 #endif

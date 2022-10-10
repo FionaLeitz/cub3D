@@ -1,11 +1,11 @@
 
-SO ./texture/texture_south
+NO texture/texture_north.xpm
+SO ./texture/texture_south.xpm
 
-NO ./texture/texture_north
 
-EA ./texture/texture_east
+EA ./texture/texture_east.xpm
 
-WE ./texture/texture_west
+WE ./texture/texture_west.xpm
 
 F 220,100,1
 
