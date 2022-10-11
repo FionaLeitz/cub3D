@@ -92,6 +92,7 @@ void		end_parse(t_file *file);
 // protect_texture
 int			open_all(t_texture *texture, t_gbl *gbl, t_file *file);
 // event.c
+int			deal_key(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
 
 #endif

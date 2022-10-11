@@ -32,6 +32,7 @@ int	show(t_gbl *gbl, t_file *file)
 		}
 	}
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
+	mlx_key_hook(gbl->window, deal_key, gbl);
 	mlx_hook(gbl->window, 17, 0, deal_cross, gbl->mlx);
 	mlx_loop(gbl->mlx);
 	return (1);
