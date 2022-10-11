@@ -69,6 +69,14 @@ typedef struct s_file
 	t_texture	texture;
 }				t_file;
 
+typedef struct s_key
+{
+	int	front;
+	int	back;
+	int	right;
+	int	left;
+}		t_key;
+
 typedef struct s_gbl
 {
 	void	*mlx;
@@ -77,6 +85,7 @@ typedef struct s_gbl
 	t_file	file;
 	double	p_pos[2];
 	int		direction;
+	t_key	keys;
 }			t_gbl;
 
 // file.c
@@ -96,9 +105,11 @@ void		end_parse(t_file *file);
 // create_imgs
 int			open_all(t_texture *texture, t_gbl *gbl, t_file *file);
 // event.c
-int			deal_key(int key, t_gbl *gbl);
+int			key_press(int key, t_gbl *gbl);
+int			deal_key(t_gbl *gbl);
+int			key_release(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
 // show.c
-int			show_background(t_gbl *gbl, t_file *file);
+int			show_background(t_gbl *gbl);
 
 #endif

@@ -14,12 +14,13 @@
 
 // fill new image with background
 // mlx loop
-int	show_background(t_gbl *gbl, t_file *file)
+int	show_background(t_gbl *gbl)
 {
 	int		x;
 	int		y;
 	char	*pixel;
 
+	deal_key(gbl);
 	y = -1;
 	while (++y < HEIGHT_MAX)
 	{
@@ -29,11 +30,12 @@ int	show_background(t_gbl *gbl, t_file *file)
 			pixel = gbl->new_img.str + (y * gbl->new_img.size_line + x
 					* (gbl->new_img.bpp / 8));
 			if (y >= HEIGHT_MAX / 2)
-				*(int *)pixel = file->texture.color_f;
+				*(int *)pixel = gbl->file.texture.color_f;
 			else
-				*(int *)pixel = file->texture.color_c;
+				*(int *)pixel = gbl->file.texture.color_c;
 		}
 	}
+	// affichage
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
 	return (1);
 }

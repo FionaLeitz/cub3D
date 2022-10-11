@@ -37,9 +37,12 @@ static void	init(t_file *file, t_gbl *gbl)
 	file->S = 0;
 	file->E = 0;
 	file->W = 0;
-
 	gbl->mlx = NULL;
 	gbl->window = NULL;
+	gbl->keys.front = 0;
+	gbl->keys.back = 0;
+	gbl->keys.right = 0;
+	gbl->keys.left = 0;
 }
 
 int	main(int argc, char **argv)

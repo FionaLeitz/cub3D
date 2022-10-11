@@ -14,7 +14,9 @@
 
 void	window(t_gbl *gbl)
 {
-	mlx_key_hook(gbl->window, deal_key, gbl);
+	mlx_hook(gbl->window, KeyPress, KeyPressMask, key_press, gbl);
+//	mlx_loop_hook(gbl->window, show_background, gbl);
+	mlx_hook(gbl->window, KeyRelease, KeyReleaseMask, key_release, gbl);
 	mlx_hook(gbl->window, 17, 0, deal_cross, gbl->mlx);
 	mlx_loop(gbl->mlx);
 }
@@ -46,7 +48,6 @@ void	set_up_start(t_gbl *gbl, t_file *file)
 {
 	gbl->p_pos[0] = file->start_x;
 	gbl->p_pos[1] = file->start_y;
-//	printf("x = %f	y = %f\n", gbl->p_pos[0], gbl->p_pos[1]);
 	if (file->N == 1)
 		gbl->direction = 0;
 	else if (file->E == 1)
@@ -79,7 +80,7 @@ int	open_all(t_texture *texture, t_gbl *gbl, t_file *file)
 	gbl->window = mlx_new_window(gbl->mlx, WIDTH_MAX, HEIGHT_MAX, "Cub3d'isaster");
 	if (gbl->window == NULL)
 		return (error_return("Error opening window\n", 0));
-	if (show_background(gbl, file) == 0)
+	if (show_background(gbl) == 0)
 		return (0);
 	window(gbl);
 	return (1);
