@@ -19,6 +19,8 @@
 # include "mlx/mlx.h"
 # include "mlx/mlx_int.h"
 # include <fcntl.h>
+# define HEIGHT_MAX 800
+# define WIDTH_MAX 1600
 
 typedef struct s_image
 {

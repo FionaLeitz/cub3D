@@ -18,7 +18,7 @@ static int	get_color(char *color, int *nbr)
 	int	count;
 
 	count = 0;
-	while (color[count] != '\0' && color[count] != ',')
+	while (color[count] != '\0' && color[count] != ',' && color[count] != '.')
 		count++;
 	color[count] = '\0';
 	if (count > 3)

@@ -19,13 +19,13 @@ int	show(t_gbl *gbl, t_file *file)
 	char	*pixel;
 
 	y = -1;
-	while (++y < 800)												// 800 ??
+	while (++y < HEIGHT_MAX)
 	{
 		x = -1;
-		while (++x < 1600)											// 160 ??
+		while (++x < WIDTH_MAX)
 		{
 			pixel = gbl->new_img.str + (y * gbl->new_img.size_line + x * (gbl->new_img.bpp / 8));
-			if (y >= 400)
+			if (y >= HEIGHT_MAX / 2)
 				*(int *)pixel = file->texture.color_f;
 			else
 				*(int *)pixel = file->texture.color_c;
@@ -65,10 +65,10 @@ int	open_all(t_texture *texture, t_gbl *gbl, t_file *file)
 		|| open_texture(&texture->east, gbl->mlx) == 0
 		|| open_texture(&texture->west, gbl->mlx) == 0)
 		return (error_return("Error opening textures\n", 0));
-	gbl->new_img.ptr = mlx_new_image(gbl->mlx, 1600, 800);						// idem
+	gbl->new_img.ptr = mlx_new_image(gbl->mlx, WIDTH_MAX, HEIGHT_MAX);
 	if (gbl->new_img.ptr == NULL || create_string(&gbl->new_img) == 0)
 		return (error_return("Error creating image\n", 0));
-	gbl->window = mlx_new_window(gbl->mlx, 1600, 800, "Cub3d 'isaster");		// 1600 et 800 ? A caser dans le .h ?
+	gbl->window = mlx_new_window(gbl->mlx, WIDTH_MAX, HEIGHT_MAX, "Cub3d 'isaster");
 	if (gbl->window == NULL)
 		return (error_return("Error opening window\n", 0));
 	if (show(gbl, file) == 0)
