@@ -12,6 +12,7 @@
 
 #include "../../cub3d.h"
 
+// norme ! Print error message and 
 int	error_return(char *str, int i)
 {
 	ft_printf("%s", str);

@@ -29,7 +29,6 @@ static void	init(t_file *file, t_gbl *gbl)
 	init_img(&file->texture.east);
 	init_img(&file->texture.west);
 	init_img(&gbl->new_img);
-//	free(gbl->new_img);
 	file->texture.f = NULL;
 	file->texture.c = NULL;
 	file->start_x = -1;
@@ -45,24 +44,23 @@ static void	init(t_file *file, t_gbl *gbl)
 
 int	main(int argc, char **argv)
 {
-	t_file	file;
 	t_gbl	gbl;
 
 	if (argc != 2)
 		return (error_return("Error number of arguments\n", 0));
-	init(&file, &gbl);
+	init(&gbl.file, &gbl);
 	// parsing
-	if (check_file(argv[1], &file) == 0)
+	if (check_file(argv[1], &gbl.file) == 0)
 	{
-		end_parse(&file);
+		end_parse(&gbl.file);
 		return (0);
 	}
 	// affichage
-	if (open_all(&file.texture, &gbl, &file) == 0)
+	if (open_all(&gbl.file.texture, &gbl, &gbl.file) == 0)
 	{
-		end_mlx(&file.texture, &gbl, &file);
+		end_mlx(&gbl.file.texture, &gbl, &gbl.file);
 		return (0);
 	}
-	end_mlx(&file.texture, &gbl, &file);
+	end_mlx(&gbl.file.texture, &gbl, &gbl.file);
 	return (1);
 }

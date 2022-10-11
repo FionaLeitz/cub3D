@@ -1,6 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   show.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/11 13:46:11 by fleitz            #+#    #+#             */
+/*   Updated: 2022/10/11 13:46:14 by fleitz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../cub3d.h"
 
-int	show(t_gbl *gbl, t_file *file)
+// fill new image with background
+// mlx loop
+int	show_background(t_gbl *gbl, t_file *file)
 {
 	int		x;
 	int		y;
@@ -12,7 +26,8 @@ int	show(t_gbl *gbl, t_file *file)
 		x = -1;
 		while (++x < WIDTH_MAX)
 		{
-			pixel = gbl->new_img.str + (y * gbl->new_img.size_line + x * (gbl->new_img.bpp / 8));
+			pixel = gbl->new_img.str + (y * gbl->new_img.size_line + x
+					* (gbl->new_img.bpp / 8));
 			if (y >= HEIGHT_MAX / 2)
 				*(int *)pixel = file->texture.color_f;
 			else
@@ -20,8 +35,5 @@ int	show(t_gbl *gbl, t_file *file)
 		}
 	}
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
-	mlx_key_hook(gbl->window, deal_key, gbl);
-	mlx_hook(gbl->window, 17, 0, deal_cross, gbl->mlx);
-	mlx_loop(gbl->mlx);
 	return (1);
 }

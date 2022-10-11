@@ -19,6 +19,7 @@
 # include "mlx/mlx.h"
 # include "mlx/mlx_int.h"
 # include <fcntl.h>
+# include <math.h>
 # define HEIGHT_MAX 800
 # define WIDTH_MAX 1600
 
@@ -73,6 +74,9 @@ typedef struct s_gbl
 	void	*mlx;
 	void	*window;
 	t_image	new_img;
+	t_file	file;
+	double	p_pos[2];
+	int		direction;
 }			t_gbl;
 
 // file.c
@@ -95,6 +99,6 @@ int			open_all(t_texture *texture, t_gbl *gbl, t_file *file);
 int			deal_key(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
 // show.c
-int			show(t_gbl *gbl, t_file *file);
+int			show_background(t_gbl *gbl, t_file *file);
 
 #endif

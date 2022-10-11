@@ -30,7 +30,6 @@ static int	rec(char **map, int y, int x)
 	return (0);
 }
 
-
 // check if map is closed with walls
 static int	check_walls(char **map, t_file *file)
 {

@@ -117,8 +117,9 @@ int	check_params(char **params, t_texture *texture)
 		else if (ft_strncmp(params[i], "C", 1) == 0)
 			texture->c = check_color(params[i], texture->c, &texture->color_c);
 	}
-	if (!(texture->north.texture && texture->south.texture && texture->west.texture
-			&& texture->east.texture && texture->f && texture->c))
+	if (!(texture->north.texture && texture->south.texture
+			&& texture->west.texture && texture->east.texture
+			&& texture->f && texture->c))
 		return (error_return("Error params\n", 0));
 	return (1);
 }

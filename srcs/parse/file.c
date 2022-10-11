@@ -13,7 +13,7 @@
 #include "../../cub3d.h"
 
 // if empty lines at the end of the map, delete
-void	empty_line(int empty, t_map_lst *first)
+static void	empty_line(int empty, t_map_lst *first)
 {
 	t_map_lst	*tmp;
 	int			count;

@@ -44,7 +44,7 @@ all: 		lib minilibx ${NAME}
 ${NAME}: 	${OBJS}
 			@echo "${_GREEN}----------------\nCUB3D\n----------------${_END}"
 			@echo "${_ORANGE}Objects CUB3D created${_END}"
-			@${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MLX} ${MLXFLAGS} -o ${NAME}
+			@${CC} ${CFLAGS} ${OBJS} ${LIBFT} ${MLX} ${MLXFLAGS} -lm -o ${NAME}
 			@echo "${_GREEN}CUB3D compiled succesfully !${_END}"
 
 .c.o:		
