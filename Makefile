@@ -17,14 +17,15 @@ _ORANGE=$'\033[38;2;255;165;0m
 
 NAME  = cub3d
 
-SRCS =	main.c									\
-		srcs/file/file.c						\
-		srcs/file/utils.c						\
-		srcs/file/texture_colors.c				\
-		srcs/file/parse_map.c					\
-		srcs/file/end.c							\
-		srcs/file/protect_texture.c				\
-		srcs/file/event.c						\
+SRCS =	main.c										\
+		srcs/parse/file.c							\
+		srcs/parse/texture_colors.c					\
+		srcs/parse/parse_map.c						\
+		srcs/parse/end.c							\
+		srcs/parse/utils.c							\
+		srcs/execution/create_imgs.c				\
+		srcs/execution/event.c						\
+		srcs/execution/show.c						\
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -51,6 +52,7 @@ ${NAME}: 	${OBJS}
 
 minilibx:
 			@make -C mlx
+			@echo "${_GREEN}MLX compiled succesfully !${_END}"
 			
 lib:		
 			@make -C libft

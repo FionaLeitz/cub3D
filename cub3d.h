@@ -89,10 +89,12 @@ int			map_characters(t_file *file);
 void		end_mlx(t_texture *texture, t_gbl *gbl, t_file *file);
 void		free_struct(t_map_lst *first);
 void		end_parse(t_file *file);
-// protect_texture
+// create_imgs
 int			open_all(t_texture *texture, t_gbl *gbl, t_file *file);
 // event.c
 int			deal_key(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
+// show.c
+int			show(t_gbl *gbl, t_file *file);
 
 #endif
