@@ -94,10 +94,7 @@ int	map_characters(t_file *file)
 				&& file->map[line][col] != '0')
 			{
 				if (start_position(file->map[line][col], line, col, file) != 1)
-				{
-					ft_printf("Error in map\n");
-					return (0);
-				}
+					return (error_return("Error in map\n", 0));
 			}
 		}
 	}

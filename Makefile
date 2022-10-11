@@ -24,6 +24,7 @@ SRCS =	main.c									\
 		srcs/file/parse_map.c					\
 		srcs/file/end.c							\
 		srcs/file/protect_texture.c				\
+		srcs/file/event.c						\
 
 OBJS	= ${SRCS:.c=.o}
 

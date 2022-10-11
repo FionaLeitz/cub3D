@@ -76,6 +76,7 @@ typedef struct s_gbl
 // file.c
 int			check_file(char *file, t_file *file_infos);
 // utils.c
+int			error_return(char *str, int i);
 t_map_lst	*new_line(char *line, int y);
 int			ft_space(char c);
 // texture_colors.c
@@ -83,10 +84,12 @@ int			check_params(char **params, t_texture *texture);
 // parse_map.c
 int			map_characters(t_file *file);
 // end.c
-void		end_mlx(t_texture *texture, t_gbl *gbl);
+void		end_mlx(t_texture *texture, t_gbl *gbl, t_file *file);
 void		free_struct(t_map_lst *first);
-int			end_parse(t_file *file, int ret);
+void		end_parse(t_file *file);
 // protect_texture
-int			open_all(t_texture *texture, t_gbl *gbl);
+int			open_all(t_texture *texture, t_gbl *gbl, t_file *file);
+// event.c
+int			deal_cross(void *mlx);
 
 #endif

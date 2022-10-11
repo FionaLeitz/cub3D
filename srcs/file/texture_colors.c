@@ -54,6 +54,8 @@ static char	*get_params(char *params)
 	count = 0;
 	while (params[count] != '\0' && ft_space(params[count]) == 0)
 		count++;
+	if (params[count] == '\0')
+		return (NULL);
 	save = count;
 	while (params[count] != '\0' && ft_space(params[count]) != 0)
 		count++;
@@ -117,9 +119,6 @@ int	check_params(char **params, t_texture *texture)
 	}
 	if (!(texture->north.texture && texture->south.texture && texture->west.texture
 			&& texture->east.texture && texture->f && texture->c))
-	{
-		ft_printf("Error params\n");
-		return (0);
-	}
+		return (error_return("Error params\n", 0));
 	return (1);
 }

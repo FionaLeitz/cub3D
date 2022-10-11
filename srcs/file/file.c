@@ -43,7 +43,7 @@ static int	get_map_tab(t_file *file, int count)
 	while (tmp)
 	{
 		if (empty != -1 && tmp->map_line[0] != '\n')
-			return (ft_printf("Error empty line\n"));
+			return (error_return("Error empty line\n", 0));
 		file->map[++count] = tmp->map_line;
 		if (empty == -1 && tmp->map_line[0] == '\n')
 		{
@@ -66,10 +66,7 @@ static int	pass_useless(int fd, t_file *file)
 	{
 		str = get_next_line(fd);
 		if (str == NULL)
-		{
-			ft_printf("Error no map\n");
-			return (0);
-		}
+			return (error_return("Error no map\n", 0));
 		if (str[0] != '\n')
 			break ;
 		free(str);
@@ -117,10 +114,7 @@ static int	get_file_infos(int fd, t_file *file)
 	{
 		file->params[count] = get_next_line(fd);
 		if (file->params[count] == NULL)
-		{
-			ft_printf("Error malloc or not enough lines\n");
-			return (0);
-		}
+			return (error_return("Error not enough lines\n", 0));
 		if (file->params[count][0] == '\n')
 			free(file->params[count]);
 		else
@@ -142,16 +136,10 @@ int	check_file(char *filename, t_file *file)
 
 	size = ft_strlen(filename);
 	if (ft_strcmp(&filename[size - 4], ".cub") != 0)
-	{
-		ft_printf("Error file name\n");
-		return (0);
-	}
+		return (error_return("Error file name\n", 0));
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("Error opening file\n");
-		return (0);
-	}
+		return (error_return("Error opening file\n", 0));
 	if (get_file_infos(fd, file) == 0)
 		return (0);
 	if (map_characters(file) == 0)

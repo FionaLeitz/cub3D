@@ -12,6 +12,12 @@
 
 #include "../../cub3d.h"
 
+int	error_return(char *str, int i)
+{
+	ft_printf("%s", str);
+	return (i);
+}
+
 // create new element for list struct t_lst_map
 t_map_lst	*new_line(char *line, int x)
 {

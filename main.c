@@ -49,19 +49,20 @@ int	main(int argc, char **argv)
 	t_gbl	gbl;
 
 	if (argc != 2)
+		return (error_return("Error number of arguments\n", 0));
+	init(&file, &gbl);
+	// parsing
+	if (check_file(argv[1], &file) == 0)
 	{
-		ft_printf("Error number of arguments\n");
+		end_parse(&file);
 		return (0);
 	}
-	init(&file, &gbl);
-	if (check_file(argv[1], &file) == 0)
-		return (end_parse(&file, 0));
-	if (open_all(&file.texture, &gbl) == 0)
+	// affichage
+	if (open_all(&file.texture, &gbl, &file) == 0)
 	{
-		ft_printf("Error open\n");
-		end_mlx(&file.texture, &gbl);
-		return (end_parse(&file, 0));
+		end_mlx(&file.texture, &gbl, &file);
+		return (0);
 	}
-	end_mlx(&file.texture, &gbl);
-	return (end_parse(&file, 1));
+	end_mlx(&file.texture, &gbl, &file);
+	return (1);
 }
