@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 17:03:40 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/10 17:25:01 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:30:45 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	display_left_wall(t_mlx *mlx, int height, int x, int y)
 	but will be implemented directly within the struct (for exemple the width of pannel, the
 	height) because they are subject to evolution with the distance between player and wall...
 */
-void	display_front_wall(t_mlx *mlx, int *pos, int w_x, int ratio_w)
+void	display_front_wall(t_mlx *mlx, int *pos, int w_x, int dist)
 {
 	int	height;
 	int	width;
@@ -65,17 +65,17 @@ void	display_front_wall(t_mlx *mlx, int *pos, int w_x, int ratio_w)
 	int	y;
 	int	j;
 
-	(void)pos;
 /*
 	quand on approche du mur le 550 de height augmente
 */
-	x = 200 + (w_x * ratio_w);
-	y = 250 - (ratio_w + 100);
-	height = y + 600;
-	width = x + ratio_w;
+	x = 200 + (w_x * dist);
+	y = (dist * pos[1]);
+	height = ((WIN_HEIGHT / pos[1]) + (WIN_HEIGHT / pos[1]) + (dist * pos[1]));
+	width = x + dist;
+	printf("x = %d y = %d, ratio_w = %d, w_x = %d\n", x, y, dist, w_x);
 	i = x;
 	j = y;
-	//printf("i = %d, j = %d, height = %d\n", i, j, height);
+	printf("i = %d, j = %d, height = %d\n", i, j, height);
 	while (j < height)
 	{
 		i = x;

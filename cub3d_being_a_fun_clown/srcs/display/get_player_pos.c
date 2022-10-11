@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:28:44 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/10 17:18:00 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/11 11:05:04 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	*get_player_pos(t_map_lst *map)
 				i++;
 				tab[0] = j;
 				tab[1] = i;
+				printf("pos = %d\n",i);
 				return (tab);
 			}
 		}
