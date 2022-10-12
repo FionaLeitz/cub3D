@@ -6,7 +6,7 @@
 /*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/05 10:38:01 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/10/12 14:04:42 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include <math.h>
 # define HEIGHT_MAX 800
 # define WIDTH_MAX 1600
+# define RAD_FOV 1.0472
+# define RAD_PERP 1.5708
+# define DECR_RAD 0.174533
+# define HALF_FULL_RAD 3.14159
 
 typedef struct s_image
 {
@@ -84,6 +88,7 @@ typedef struct s_gbl
 	t_image	new_img;
 	t_file	file;
 	double	p_pos[2];
+	double	vector;
 	int		direction;
 	t_key	keys;
 }			t_gbl;
@@ -111,5 +116,12 @@ int			key_release(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
 // show.c
 int			show_background(t_gbl *gbl);
-
+// display_wall.c
+void		display_wall(t_gbl *gbl);
+// get_dist.c
+double		get_vector(char **map, double *pos);
+double		get_left_dist(double AB, double *pos, char **map, double rad, double incr);
+int			check_coord(int x, int y, double DE, char **map);
+// get_player_pos.c
+void		get_player_pos(t_map_lst *map, t_gbl *gbl);
 #endif

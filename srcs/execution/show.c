@@ -6,7 +6,7 @@
 /*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:11 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/11 13:46:14 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/10/12 14:06:51 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	show_background(t_gbl *gbl)
 		}
 	}
 	// affichage
+	display_wall(gbl);
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
 	return (1);
 }

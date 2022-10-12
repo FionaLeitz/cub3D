@@ -6,7 +6,7 @@
 #    By: fleitz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 13:19:30 by fleitz            #+#    #+#              #
-#    Updated: 2022/09/29 13:19:34 by fleitz           ###   ########.fr        #
+#    Updated: 2022/10/12 14:08:06 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,9 @@ SRCS =	main.c										\
 		srcs/execution/create_imgs.c				\
 		srcs/execution/event.c						\
 		srcs/execution/show.c						\
+		srcs/execution/display_wall.c				\
+		srcs/execution/get_dist.c					\
+		srcs/execution/get_player_pos.c				\
 
 OBJS	= ${SRCS:.c=.o}
 

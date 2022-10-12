@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 12:28:44 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/11 22:06:50 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/12 12:53:42 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	get_player_pos(t_map_lst *map, t_gbl *gbl)
 	int	j;
 
 	i = -1;
-/*	gbl->p_pos = malloc(sizeof(int) * 2);
+	/*gbl->p_pos = malloc(sizeof(int) * 2);
 	if (!gbl->p_pos)
 	return (NULL);*/
 	while (map != NULL)
@@ -26,12 +26,13 @@ void	get_player_pos(t_map_lst *map, t_gbl *gbl)
 		j = -1;
 		while (map->map_line[++j])
 		{
+//			printf("char map = %c\n", map->map_line[j]);
 			if (map->map_line[j] == 'N')
 			{
 				i++;
 				gbl->p_pos[0] = (double)j;
 				gbl->p_pos[1] = (double)i;
-			//	printf("pos = %d\n",i);
+				printf("pos = (%d, %d)\n",j, i);
 				return ;
 			}
 		}

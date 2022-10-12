@@ -6,7 +6,7 @@
 /*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/11 22:06:58 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/12 13:17:05 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int			show_background(t_gbl *gbl);
 void		display_wall(t_gbl *gbl);
 // get_dist.c
 double		get_vector(char **map, double *pos);
-double		get_left_dist(double AB, double *pos, char **map, double rad);
+double		get_left_dist(double AB, double *pos, char **map, double rad, double incr);
 int			check_coord(int x, int y, double DE, char **map);
 // get_player_pos.c
 void		get_player_pos(t_map_lst *map, t_gbl *gbl);
