@@ -36,33 +36,6 @@ int	key_press(int key, t_gbl *gbl)
 		gbl->keys.left = 1;
 	else if (key == 100 || key == 65363)
 		gbl->keys.right = 1;
-	/*
-	if (key == 119 || key == 65362)
-	{
-		gbl->p_pos[0] += sin(gbl->direction * 3.141592 / 180);				// manque la "vitesse"
-		gbl->p_pos[1] += cos(gbl->direction * 3.141592 / 180);				// manque la "vitesse"
-		ft_printf("haut\n");
-	}
-	if (key == 115 || key == 65364)
-	{
-		gbl->p_pos[0] -= sin(gbl->direction * 3.141592 / 180);				// manque la "vitesse"
-		gbl->p_pos[1] -= cos(gbl->direction * 3.141592 / 180);				// manque la "vitesse"
-		ft_printf("bas\n");
-	}
-	if (key == 97 || key == 65361)
-	{
-		if (gbl->direction == 0)
-			gbl->direction = 360;
-		gbl->direction -= 5;						// de 5 degre en 5 degre ?
-		ft_printf("gauche\ndirection %d degres\n", gbl->direction);
-	}
-	if (key == 100 || key == 65363)
-	{
-		gbl->direction += 5;						// de 5 degre en 5 degre ?
-		if (gbl->direction == 360)
-			gbl->direction = 0;
-		ft_printf("droite\ndirection %d degres\n", gbl->direction);
-	}*/
 	else if (key == 65307)
 		mlx_loop_end(gbl->mlx);
 	show_background(gbl);

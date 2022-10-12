@@ -36,6 +36,7 @@ int	show_background(t_gbl *gbl)
 		}
 	}
 	// affichage
+//	printf("in show_background : x = %f	y = %f\n", gbl->p_pos[0], gbl->p_pos[1]);
 	display_wall(gbl);
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
 	return (1);

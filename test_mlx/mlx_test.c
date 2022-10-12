@@ -68,6 +68,7 @@ int	main(void)
 		{
 			pixel = str + (((int)(y / ratio) * size_line + (int)(x / ratio) * (bits_per_pixel / 8)));
 			color = *(int *)pixel;
+			ft_printf("color = %d\n", color);
 			pixel2 = str2 + ((y * size_line2 + x * (bits_per_pixel2 / 8)));
 			*(int *)pixel2 = color;
 		}

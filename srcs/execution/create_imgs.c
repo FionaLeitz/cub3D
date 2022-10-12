@@ -15,7 +15,6 @@
 void	window(t_gbl *gbl)
 {
 	mlx_hook(gbl->window, KeyPress, KeyPressMask, key_press, gbl);
-//	mlx_loop_hook(gbl->window, show_background, gbl);
 	mlx_hook(gbl->window, KeyRelease, KeyReleaseMask, key_release, gbl);
 	mlx_hook(gbl->window, 17, 0, deal_cross, gbl->mlx);
 	mlx_loop(gbl->mlx);

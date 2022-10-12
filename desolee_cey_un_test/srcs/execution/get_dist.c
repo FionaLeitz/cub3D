@@ -36,7 +36,9 @@ double	get_vector(char **map, double *pos)
 int	check_coord(int x, int y, double DE, char **map)
 {
 	(void)DE;
-	if (map[y] && map[y][x] && map[y][x] == '1')
+//	printf("in check_coord : y = %d	x = %d\n", y, x);
+//	printf("map[y][x] = %c\n", map[y][y]);
+	if (/*y >= 0 && */map[y] && map[y][x] && map[y][x] == '1')
 		return (1);
 	return (0);
 }
