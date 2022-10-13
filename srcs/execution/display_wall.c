@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:40:00 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/12 15:45:14 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/13 13:48:27 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,25 @@ void	display_wall(t_gbl *gbl)
 		printf("bah fuck\n");
 	else
 		printf("oui bon i = %f\n", i);
+/*
+	affichage des murs : concevoir les 1 comme des cubes avec 4 faces
+
+	-->>	111111111
+			10000000
+			10000000
+		donnerait  en gros :
+			□ □ □ □ □ □
+			□
+			□
+		avec la partie  _  --> texture SOUTH
+			 la partie   | --> texture EAST
+			 la partie |   --> texture WEST
+			 la partie  ﹉ --> texture NORTH
+		
+		du coup il faut que chaque 1 ait une taille définie à laquelle on applique la proportionnalité 
+		déterminée par le calcul par la distance (le fameux i juste au dessus) + le gbl->vector (la dist au mur en face)
+		pour l'instant c'est ok pour quand on regarde le nord mais pour le reste il faut reflechir a koman calculer 
+		position tt ca la 
+*/
+
 }
