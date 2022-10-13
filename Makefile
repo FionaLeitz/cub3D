@@ -17,13 +17,13 @@ _ORANGE=$'\033[38;2;255;165;0m
 
 NAME  = cub3d
 
-SRCS_FILES =	main.c										\
+SRCS_FILES =	main.c									\
 				parse/file.c							\
 				parse/texture_colors.c					\
 				parse/parse_map.c						\
-				parse/end.c							\
+				parse/end.c								\
 				parse/utils.c							\
-				execution/create_imgs.c				\
+				execution/create_imgs.c					\
 				execution/event.c						\
 				execution/show.c						\
 				execution/display_wall.c				\

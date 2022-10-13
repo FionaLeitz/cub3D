@@ -19,9 +19,9 @@ void	display_wall(t_gbl *gbl)
 	double	incr;
 
 //	get_player_pos(gbl->file.first, gbl);					// ne modifie pas la position ?
-	printf("check pos = pos[0] %f pos[1] %f\n", gbl->p_pos[0], gbl->p_pos[1]);
+//	printf("check pos = pos[0] %f pos[1] %f\n", gbl->p_pos[0], gbl->p_pos[1]);
 	gbl->vector = get_vector(gbl->file.map, gbl->p_pos);
-	printf("vector is : %f\n", gbl->vector);
+//	printf("vector is : %f\n", gbl->vector);
 	rad = RAD_FOV;
 	incr = 0;
 /******************************************************************************/
@@ -29,7 +29,7 @@ void	display_wall(t_gbl *gbl)
 /******************************************************************************/
 //	printf("before get_left_dist : x = %f	y = %f\n", gbl->p_pos[0], gbl->p_pos[1]);
 	i = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
-	printf("left dist = %f\nx = %f	y = %f\n", i, gbl->p_pos[0], gbl->p_pos[1]);
+//	printf("left dist = %f\nx = %f	y = %f\n", i, gbl->p_pos[0], gbl->p_pos[1]);
 	while (rad > 0 && (i == 0))
 	{
 	//	printf("lol i = %f et rad = %f\n", i, rad);
@@ -37,8 +37,8 @@ void	display_wall(t_gbl *gbl)
 		incr++;
 		i = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
 	}
-	if (i == 0)
-		printf("bah fuck\n");
-	else
-		printf("oui bon i = %f\n", i);
+//	if (i == 0)
+//		printf("bah fuck\n");
+//	else
+//		printf("oui bon i = %f\n", i);
 }
