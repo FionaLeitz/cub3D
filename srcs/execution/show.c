@@ -16,7 +16,6 @@ void	wall_front(t_gbl *gbl)
 {
 	int	x_img_first;
 	int	y_img_first;
-	int	x;
 	int	x_img_last;
 	int	y_img_last;
 	int	x_count = -1;
@@ -25,22 +24,21 @@ void	wall_front(t_gbl *gbl)
 	char	*pixel2;
 	int	color;
 
-	x_img_first = ((WIDTH_MAX / 2) - (gbl->file.texture.north.width / 2) / gbl->vector) - 1;
-	y_img_first = ((HEIGHT_MAX / 2) - (gbl->file.texture.north.height / 2) / gbl->vector) - 1;
+	x_img_first = ((WIDTH_MAX / 2) - (gbl->file.texture.north.width / 2) / (gbl->vector)) - 1;
 	x_img_last = (int)((WIDTH_MAX / 2) + (gbl->file.texture.north.width / 2) / gbl->vector);
-	y_img_last = (int)((HEIGHT_MAX / 2) + (gbl->file.texture.north.height / 2) / gbl->vector);
-	while (++y_img_first < y_img_last)
+	while (++x_img_first < x_img_last)
 	{
-		x = x_img_first;
-		x_count = -1;
-		y_count++;
-		while (++x < x_img_last)
+		y_img_first = ((HEIGHT_MAX / 2) - (gbl->file.texture.north.height / 2) / gbl->vector) - 1;
+		y_img_last = (int)((HEIGHT_MAX / 2) + (gbl->file.texture.north.height / 2) / gbl->vector);
+		y_count = -1;
+		x_count++;
+		while (++y_img_first < y_img_last)
 		{
-			pixel = gbl->file.texture.north.str + ((int)(y_count * gbl->vector) * gbl->file.texture.north.size_line + (int)(++x_count * gbl->vector) * (gbl->file.texture.north.bpp / 8));
+			pixel = gbl->file.texture.north.str + ((int)(++y_count * gbl->vector) * gbl->file.texture.north.size_line + (int)(x_count * gbl->vector) * (gbl->file.texture.north.bpp / 8));
 			color = *(int *)pixel;
-			pixel2 = gbl->new_img.str + (y_img_first * gbl->new_img.size_line + x * (gbl->new_img.bpp / 8));
+			pixel2 = gbl->new_img.str + (y_img_first * gbl->new_img.size_line + x_img_first * (gbl->new_img.bpp / 8));
 			*(int *)pixel2 = color;
-		}
+		}	
 	}
 }
 
@@ -53,11 +51,11 @@ int	show_background(t_gbl *gbl)
 	char	*pixel;
 
 	deal_key(gbl);
-	y = -1;
-	while (++y < HEIGHT_MAX)
+	x = -1;
+	while (++x < WIDTH_MAX)
 	{
-		x = -1;
-		while (++x < WIDTH_MAX)
+		y = -1;
+		while (++y < HEIGHT_MAX)
 		{
 			pixel = gbl->new_img.str + (y * gbl->new_img.size_line + x
 					* (gbl->new_img.bpp / 8));
