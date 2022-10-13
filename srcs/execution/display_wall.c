@@ -37,10 +37,10 @@ void	display_wall(t_gbl *gbl)
 		incr++;
 		i = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
 	}
-	if (i == 0)
+/*	if (i == 0)
 		printf("bah fuck\n");
 	else
-		printf("oui bon i = %f\n", i);
+		printf("oui bon i = %f\n", i);*/
 /*
 	affichage des murs : concevoir les 1 comme des cubes avec 4 faces
 

@@ -33,7 +33,7 @@ SRCS_FILES =	main.c									\
 SRCS = ${addprefix srcs/, ${SRCS_FILES}}
 CC	= clang
 
-CFLAGS	= -Wall -Wextra -Werror -I.
+CFLAGS	= -Wall -Wextra -Werror -g -I.
 
 MLXFLAGS	= -lmlx -lXext -lX11 -Lmlx
 
