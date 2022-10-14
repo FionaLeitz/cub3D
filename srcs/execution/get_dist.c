@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 21:13:14 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/14 17:40:15 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 17:52:21 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,10 @@ int	check_coord(int x, int y, double DE, char **map)
 //	printf("in check_coord : x = %d	y = %d\n", x, y);
 //	printf("map[y][x] = %c\n", map[y][x]);
 	if (map[y] && map[y][x] && map[y][x] == '1')
+	{
+		// c ici fo afficher lol et ratio distance par DE
 		return (1);
+	}
 	return (0);
 }
 
@@ -101,7 +104,7 @@ double	get_left_dist(double AB, double *pos, char **map, double rad, double incr
 	if (check_coord(coord_x, coord_y, DE, map) == 1)
 	{
 //		affichage en fonction de DE
-		// printf("coord closest wall = (%d, %d)\n", coord_x, coord_y);
+		printf("coord closest wall = (%d, %d)\n", coord_x, coord_y);
 		return (DE);
 	}
 	else

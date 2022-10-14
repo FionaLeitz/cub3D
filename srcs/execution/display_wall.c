@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:40:00 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/14 16:59:42 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 18:02:57 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	display_wall(t_gbl *gbl)
 /**************		LE MUR LE PLUS PROCHE SUR LA GAUCHE		*******************/
 /******************************************************************************/
 //	printf("before get_left_dist : x = %f	y = %f\n", gbl->p_pos[0], gbl->p_pos[1]);
-	gbl->left_fov_dist = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
-	i = gbl->left_fov_dist;
+	i = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
+	gbl->left_fov_dist = i;
 	printf("i ? %f\n", i);
 	
 //	printf("left dist = %f\nx = %f	y = %f\n", i, gbl->p_pos[0], gbl->p_pos[1]);
