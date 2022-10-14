@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_dist.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 21:13:14 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/12 15:39:01 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 14:02:51 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,24 @@
 	dist between position and first wall on the north side
 */
 
-double	get_vector(char **map, double *pos)
+double	get_real_vector_north(double *pos, double old_vector)
+{
+	int		tmp;
+	double	diff;
+	double	good_vector;
+
+	tmp = (int)pos[1];
+	diff = pos[1] - (double)tmp;
+	printf("diff ?? %f\n", diff);
+	if (diff != 0)
+		good_vector = old_vector - (1 / diff);
+	else 
+		good_vector = old_vector;
+	printf("good vector ?? %f\n", good_vector);
+	return (good_vector);
+}
+
+double	get_int_vector_north(char **map, double *pos)
 {
 	int		x;
 	int		y;

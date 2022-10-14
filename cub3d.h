@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/12 14:04:42 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 14:01:12 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ typedef struct s_gbl
 	t_image	new_img;
 	t_file	file;
 	double	p_pos[2];
-	double	vector;
+	double	vector;	//distance from player to closest front wall
+	double	left_fov_dist;
 	int		direction;
 	t_key	keys;
 }			t_gbl;
@@ -119,7 +120,8 @@ int			show_background(t_gbl *gbl);
 // display_wall.c
 void		display_wall(t_gbl *gbl);
 // get_dist.c
-double		get_vector(char **map, double *pos);
+double		get_int_vector_north(char **map, double *pos);
+double		get_real_vector_north(double *pos, double old_vector);
 double		get_left_dist(double AB, double *pos, char **map, double rad, double incr);
 int			check_coord(int x, int y, double DE, char **map);
 // get_player_pos.c
