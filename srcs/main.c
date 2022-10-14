@@ -53,7 +53,7 @@ int	main(int argc, char **argv)
 		return (error_return("Error number of arguments\n", 0));
 	init(&gbl.file, &gbl);
 	// parsing
-	if (check_file(argv[1], &gbl.file) == 0)
+	if (check_file(argv[1], &gbl.file, &gbl.y_max) == 0)
 	{
 		end_parse(&gbl.file);
 		return (0);

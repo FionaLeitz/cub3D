@@ -19,7 +19,10 @@ void	display_wall(t_gbl *gbl)
 	double	get_vector;
 	double	incr;
 
-	get_vector = get_int_vector_north(gbl->file.map, gbl->p_pos);
+//	get_player_pos(gbl->file.first, gbl);					// ne modifie pas la position ?
+//	printf("check pos = pos[0] %f pos[1] %f\n", gbl->p_pos[0], gbl->p_pos[1]);
+//	get_vector = get_int_vector_north(gbl->file.map, gbl->p_pos);
+	get_vector = get_int_vector_north(gbl->file.first, gbl->p_pos, gbl->y_max);
 	gbl->vector = get_real_vector_north(gbl->p_pos, get_vector);
 	rad = RAD_FOV;
 	incr = 1;

@@ -36,7 +36,7 @@ void	wall_front(t_gbl *gbl)
 		while (++y_img_first < y_img_last)
 		{
 			++y_count;
-			if (y_img_first >= 0)
+			if (y_img_first > 0)
 			{
 				pixel = gbl->file.texture.north.str + ((int)(y_count * gbl->vector) * gbl->file.texture.north.size_line + (int)(x_count * gbl->vector) * (gbl->file.texture.north.bpp / 8));
 				color = *(int *)pixel;

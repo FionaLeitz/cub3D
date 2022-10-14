@@ -41,23 +41,38 @@ double	get_real_vector_north(double *pos, double old_vector)
 	return (good_vector);
 }
 
-double	get_int_vector_north(char **map, double *pos)
+double	get_int_vector_north(t_map_lst *map_lst, double *pos, int y_max)
 {
 	int		x;
 	int		y;
 	double	j;
+	t_map_lst	*tmp = map_lst;
 
 	x = (int)pos[0];
 	y = (int)pos[1];
 	j = 0;
-	if (y < 0)
+	if (y < 0 || x < 0 || y > y_max)
 		return (-1);
+	y = -1;
+	while (++y < (int)pos[1])
+		tmp = tmp->next;
+	if (tmp->string_size < x)
+		return (-1);
+	while (y >= 0)
+	{
+		if (tmp->map_line[x] == '1')
+			return (j);
+		j++;
+		y--;
+		tmp = tmp->prev;
+	}
+	return (0);
 	/*
 		passer en liste chainee + en gros quand on depasse le y max ou le x max 
 		c'est des valeurs enregistrées dans la structure du maillon de la liste 
 		du coup bah c plus simple a checker ici
 	*/
-	while (map && map[y] && map[y][x])
+/*	while (map && map[y] && map[y][x])
 	{
 	//	printf("coord(%d, %d) --> %c\n", x, y, map[y][x]);
 		if (map[y][x] == '1')
@@ -65,7 +80,7 @@ double	get_int_vector_north(char **map, double *pos)
 		j++;
 		y--;
 	}
-	return (0);
+	return (0);*/
 }
 
 int	check_coord(int x, int y, double DE, char **map)

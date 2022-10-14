@@ -44,6 +44,7 @@ typedef struct s_map_lst
 {
 	char				*map_line;
 	int					x;
+	int					string_size;
 	struct s_map_lst	*next;
 	struct s_map_lst	*prev;
 }						t_map_lst;
@@ -93,10 +94,11 @@ typedef struct s_gbl
 	double	left_fov_dist;
 	int		direction;
 	t_key	keys;
+	int		y_max;
 }			t_gbl;
 
 // file.c
-int			check_file(char *file, t_file *file_infos);
+int			check_file(char *file, t_file *file_infos, int *y_max);
 // utils.c
 int			error_return(char *str, int i);
 t_map_lst	*new_line(char *line, int y);
@@ -121,7 +123,7 @@ int			show_background(t_gbl *gbl);
 // display_wall.c
 void		display_wall(t_gbl *gbl);
 // get_dist.c
-double		get_int_vector_north(char **map, double *pos);
+double		get_int_vector_north(t_map_lst *map_lst, double *pos, int y_max);
 double		get_real_vector_north(double *pos, double old_vector);
 double		get_left_dist(double AB, double *pos, char **map, double rad, double incr);
 int			check_coord(int x, int y, double DE, char **map);
