@@ -23,7 +23,7 @@ void	wall_front(t_gbl *gbl)
 	char	*pixel;				// emplacement du pixel qu'on veut dans la textur
 	char	*pixel2;			// emplacement du prochain pixel a poser dans la nouvelle image
 	int	color;					// save de la couleur du pixel de texture
-	double ratio = gbl->vector / 2;
+	double ratio = gbl->vector;
 
 	x_img_first = ((WIDTH_MAX / 2) - (gbl->file.texture.north.width / 2) / (ratio)) - 1;
 	x_img_last = (int)((WIDTH_MAX / 2) + (gbl->file.texture.north.width / 2) / ratio);
@@ -36,7 +36,7 @@ void	wall_front(t_gbl *gbl)
 		while (++y_img_first < y_img_last)
 		{
 			++y_count;
-			if (y_img_first >= 0)
+			if (y_img_first > 0)
 			{
 				pixel = gbl->file.texture.north.str + ((int)(y_count * gbl->vector) * gbl->file.texture.north.size_line + (int)(x_count * gbl->vector) * (gbl->file.texture.north.bpp / 8));
 				color = *(int *)pixel;
