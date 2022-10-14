@@ -26,6 +26,7 @@
 # define RAD_PERP 1.5708
 # define DECR_RAD 0.174533
 # define HALF_FULL_RAD 3.14159
+# define SPEED 1 / 2
 
 typedef struct s_image
 {
