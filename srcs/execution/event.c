@@ -44,13 +44,13 @@ int	deal_key(t_gbl *gbl)
 {
 	if (gbl->keys.front == 1)
 	{
-		gbl->p_pos[0] += sin(gbl->direction * 3.141592 / 180);				// manque la "vitesse"
-		gbl->p_pos[1] -= cos(gbl->direction * 3.141592 / 180);				// manque la "vitesse"
+		gbl->p_pos[0] += sin(gbl->direction * 3.141592 / 180) * SPEED;				// manque la "vitesse"
+		gbl->p_pos[1] -= cos(gbl->direction * 3.141592 / 180) * SPEED;				// manque la "vitesse"
 	}
 	if (gbl->keys.back == 1)
 	{
-		gbl->p_pos[0] -= sin(gbl->direction * 3.141592 / 180);				// manque la "vitesse"
-		gbl->p_pos[1] += cos(gbl->direction * 3.141592 / 180);				// manque la "vitesse"
+		gbl->p_pos[0] -= sin(gbl->direction * 3.141592 / 180) * SPEED;				// manque la "vitesse"
+		gbl->p_pos[1] += cos(gbl->direction * 3.141592 / 180) * SPEED;				// manque la "vitesse"
 	}
 	if (gbl->keys.left == 1)
 	{
