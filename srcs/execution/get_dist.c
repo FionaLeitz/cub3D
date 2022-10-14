@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 21:13:14 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/14 14:02:51 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 15:14:49 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@ double	get_real_vector_north(double *pos, double old_vector)
 	double	diff;
 	double	good_vector;
 
-	tmp = (int)pos[1];
+/*
+	pour les 0,6 et plus il faut pas add + 1 mais garder juste pos[1] en int
+	donc pour determiner la ce qu'on a apres la virgule 
+	--> bitshift = decalade binaire sur les double (voir si c possible etc)
+*/
+	tmp = (int)pos[1] + 1;
 	diff = pos[1] - (double)tmp;
 	printf("diff ?? %f\n", diff);
-	if (diff != 0)
-		good_vector = old_vector - (1 / diff);
+	if (diff != -1)
+		good_vector = old_vector - diff;
 	else 
 		good_vector = old_vector;
 	printf("good vector ?? %f\n", good_vector);
@@ -43,6 +48,13 @@ double	get_int_vector_north(char **map, double *pos)
 	x = (int)pos[0];
 	y = (int)pos[1];
 	j = 0;
+	if (y < 0)
+		return (0);
+	/*
+		passer en liste chainee + en gros quand on depasse le y max ou le x max 
+		c'est des valeurs enregistrées dans la structure du maillon de la liste 
+		du coup bah c plus simple a checker ici
+	*/
 	while (map && map[y] && map[y][x])
 	{
 	//	printf("coord(%d, %d) --> %c\n", x, y, map[y][x]);

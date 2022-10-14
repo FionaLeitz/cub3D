@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fleitz <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 13:19:30 by fleitz            #+#    #+#              #
-#    Updated: 2022/10/12 15:29:19 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/10/14 14:16:23 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCS_FILES =	main.c									\
 SRCS = ${addprefix srcs/, ${SRCS_FILES}}
 CC	= clang
 
-CFLAGS	= -Wall -Wextra -Werror -g -I.
+CFLAGS	= -Wall -Wextra -Werror -g3 -I.
 
 MLXFLAGS	= -lmlx -lXext -lX11 -Lmlx
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:11 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/12 14:06:51 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 14:33:05 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,18 @@ void	wall_front(t_gbl *gbl)
 		x_count++;
 		while (++y_img_first < y_img_last)
 		{
-			pixel = gbl->file.texture.north.str + ((int)(++y_count * gbl->vector) * gbl->file.texture.north.size_line + (int)(x_count * gbl->vector) * (gbl->file.texture.north.bpp / 8));
-			color = *(int *)pixel;
-			pixel2 = gbl->new_img.str + (y_img_first * gbl->new_img.size_line + x_img_first * (gbl->new_img.bpp / 8));
-			*(int *)pixel2 = color;
+			++y_count;
+			if (y_img_first >= 0)
+			{
+				pixel = gbl->file.texture.north.str + ((int)(y_count * gbl->vector) * gbl->file.texture.north.size_line + (int)(x_count * gbl->vector) * (gbl->file.texture.north.bpp / 8));
+				color = *(int *)pixel;
+				// if (color != 812580)
+				// 	printf("before segfault color is %d\n", color);
+				//printf("x = %d, y = %d\n", x_img_first, y_img_first);
+				pixel2 = gbl->new_img.str + (y_img_first * gbl->new_img.size_line + x_img_first * (gbl->new_img.bpp / 8));
+				//printf("adresse pixel2[0] %c\n", pixel2[0]);
+				*(int *)pixel2 = color;
+			}
 		}	
 	}
 }
