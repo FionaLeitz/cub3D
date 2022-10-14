@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:11 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/14 14:33:05 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 16:13:12 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	wall_front(t_gbl *gbl)
 	char	*pixel;				// emplacement du pixel qu'on veut dans la textur
 	char	*pixel2;			// emplacement du prochain pixel a poser dans la nouvelle image
 	int	color;					// save de la couleur du pixel de texture
-	double ratio = gbl->vector / 2;
+	double ratio = gbl->vector;
 
 	x_img_first = ((WIDTH_MAX / 2) - (gbl->file.texture.north.width / 2) / (ratio)) - 1;
 	x_img_last = (int)((WIDTH_MAX / 2) + (gbl->file.texture.north.width / 2) / ratio);

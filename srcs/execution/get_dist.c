@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 21:13:14 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/14 15:14:49 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 17:40:15 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 double	get_real_vector_north(double *pos, double old_vector)
 {
-	int		tmp;
+	double	tmp;
 	double	diff;
 	double	good_vector;
 
@@ -30,13 +30,13 @@ double	get_real_vector_north(double *pos, double old_vector)
 	fonctions magnifiques, qui s'appellent ceil (renvoie le nombre entier superieur)
 	et floor (renvoie le nombre entier inferieur)
 */
-	tmp = (int)pos[1] + 1;
-	diff = pos[1] - (double)tmp;
+	tmp = ceil(pos[1]);
+	diff = pos[1] - tmp;
 	printf("diff ?? %f\n", diff);
-	if (diff != -1)
+	if (diff > -1)
 		good_vector = old_vector - diff;
 	else 
-		good_vector = old_vector;
+		good_vector = -1;
 	printf("good vector ?? %f\n", good_vector);
 	return (good_vector);
 }
@@ -51,7 +51,7 @@ double	get_int_vector_north(char **map, double *pos)
 	y = (int)pos[1];
 	j = 0;
 	if (y < 0)
-		return (0);
+		return (-1);
 	/*
 		passer en liste chainee + en gros quand on depasse le y max ou le x max 
 		c'est des valeurs enregistrées dans la structure du maillon de la liste 
@@ -88,17 +88,22 @@ double	get_left_dist(double AB, double *pos, char **map, double rad, double incr
 
 	BC = AB / sin(HALF_FULL_RAD - (rad + RAD_PERP));
 //	printf("AB (vector) = %f , BC = %f\n", AB, BC);
-	AD = AB - (incr + 1);
+	AD = AB - (incr);
 //	printf("AB (vector) = %f , BC = %f, AD = %f\n", AB, BC, AD);
 	if (AD > 0)
 		DE = (AD / AB) * BC;
 	else
 		return (0);
 //	printf("donc DE = %f, pos[0] ok = %f\n", DE, pos[0]);
-	coord_x = (int)(pos[0] - DE + 1);
-	coord_y = (int)(pos[1] - (RAD_FOV / rad));
+	coord_x = (int)ceil(pos[0] - DE);
+	coord_y = (int)ceil(pos[1] - (RAD_FOV / rad));
+// printf("BEFORE coord closest wall = (%d, %d)\n", coord_x, coord_y);
 	if (check_coord(coord_x, coord_y, DE, map) == 1)
+	{
+//		affichage en fonction de DE
+		// printf("coord closest wall = (%d, %d)\n", coord_x, coord_y);
 		return (DE);
+	}
 	else
 		return (get_left_dist(AB, pos, map, rad, incr + 1));
 }
