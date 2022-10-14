@@ -27,6 +27,8 @@ double	get_real_vector_north(double *pos, double old_vector)
 	pour les 0,6 et plus il faut pas add + 1 mais garder juste pos[1] en int
 	donc pour determiner la ce qu'on a apres la virgule 
 	--> bitshift = decalade binaire sur les double (voir si c possible etc)
+	fonctions magnifiques, qui s'appellent ceil (renvoie le nombre entier superieur)
+	et floor (renvoie le nombre entier inferieur)
 */
 	tmp = (int)pos[1] + 1;
 	diff = pos[1] - (double)tmp;
