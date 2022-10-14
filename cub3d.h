@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/14 15:06:22 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 16:09:35 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define RAD_PERP 1.5708
 # define DECR_RAD 0.174533
 # define HALF_FULL_RAD 3.14159
-# define SPEED 1 / 3
+# define SPEED 1 / 2
 
 typedef struct s_image
 {

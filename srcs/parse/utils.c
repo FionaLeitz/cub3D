@@ -32,6 +32,7 @@ t_map_lst	*new_line(char *line, int x)
 	}
 	new->map_line = line;
 	new->x = x;
+	new->string_size = ft_strlen(line);
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

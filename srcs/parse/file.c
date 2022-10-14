@@ -78,9 +78,9 @@ static int	pass_useless(int fd, t_file *file)
 }
 
 // get map in list struct t_map_lst
-static int	get_map_lst(int fd, t_file *file)
+static int	get_map_lst(int fd, t_file *file, int *y_max)
 {
-	int			count;
+//	int			count;
 	char		*str;
 	t_map_lst	*tmp;
 
@@ -88,10 +88,10 @@ static int	get_map_lst(int fd, t_file *file)
 		return (0);
 	tmp = file->first;
 	str = get_next_line(fd);
-	count = 0;
+	y_max[0] = 0;
 	while (str != NULL)
 	{
-		tmp->next = new_line(str, ++count);
+		tmp->next = new_line(str, ++y_max[0]);
 		if (tmp->next == NULL)
 			return (0);
 		tmp->next->prev = tmp;
@@ -99,13 +99,13 @@ static int	get_map_lst(int fd, t_file *file)
 		str = get_next_line(fd);
 	}
 	close(fd);
-	if (get_map_tab(file, count) == 0)
+	if (get_map_tab(file, y_max[0]) == 0)
 		return (0);
 	return (1);
 }
 
 // get the textures informations
-static int	get_file_infos(int fd, t_file *file)
+static int	get_file_infos(int fd, t_file *file, int *y_max)
 {
 	int		count;
 
@@ -121,7 +121,7 @@ static int	get_file_infos(int fd, t_file *file)
 			count++;
 	}
 	file->params[count] = NULL;
-	if (get_map_lst(fd, file) == 0)
+	if (get_map_lst(fd, file, y_max) == 0)
 		return (0);
 	if (check_params(file->params, &file->texture) == 0)
 		return (0);
@@ -129,7 +129,7 @@ static int	get_file_infos(int fd, t_file *file)
 }
 
 // verify file's viability
-int	check_file(char *filename, t_file *file)
+int	check_file(char *filename, t_file *file, int *y_max)
 {
 	int	size;
 	int	fd;
@@ -140,7 +140,7 @@ int	check_file(char *filename, t_file *file)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (error_return("Error opening file\n", 0));
-	if (get_file_infos(fd, file) == 0)
+	if (get_file_infos(fd, file, y_max) == 0)
 		return (0);
 	if (map_characters(file) == 0)
 		return (0);

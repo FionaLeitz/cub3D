@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:40:00 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/14 14:01:36 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/14 16:59:42 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,32 @@ void	display_wall(t_gbl *gbl)
 
 //	get_player_pos(gbl->file.first, gbl);					// ne modifie pas la position ?
 //	printf("check pos = pos[0] %f pos[1] %f\n", gbl->p_pos[0], gbl->p_pos[1]);
-//	get_vector = get_int_vector_north(gbl->file.map, gbl->p_pos, gbl->y_max);
+//	get_vector = get_int_vector_north(gbl->file.map, gbl->p_pos);
 	get_vector = get_int_vector_north(gbl->file.first, gbl->p_pos, gbl->y_max);
 	gbl->vector = get_real_vector_north(gbl->p_pos, get_vector);
-//	printf("vector is : %f\n", gbl->vector);
 	rad = RAD_FOV;
-	incr = 0;
+	incr = 1;
 /******************************************************************************/
 /**************		LE MUR LE PLUS PROCHE SUR LA GAUCHE		*******************/
 /******************************************************************************/
 //	printf("before get_left_dist : x = %f	y = %f\n", gbl->p_pos[0], gbl->p_pos[1]);
 	gbl->left_fov_dist = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
 	i = gbl->left_fov_dist;
+	printf("i ? %f\n", i);
+	
 //	printf("left dist = %f\nx = %f	y = %f\n", i, gbl->p_pos[0], gbl->p_pos[1]);
-	while (rad > 0)
+/*
+	while (rad > 0 && i != 0)
 	{
 	//	printf("lol i = %f et rad = %f\n", i, rad);
 		rad -= DECR_RAD;
 		incr++;
 		i = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
+		printf("i ? %f\n", i);
 		//if (i != 0)
 			// on a un mur a distance i 
 	}
+*/
 /*	if (i == 0)
 		printf("bah fuck\n");
 	else
