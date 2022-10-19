@@ -32,7 +32,7 @@ void	display_wall(t_gbl *gbl)
 //	printf("before get_left_dist : x = %f	y = %f\n", gbl->p_pos[0], gbl->p_pos[1]);
 	i = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
 	gbl->left_fov_dist = i;
-	printf("i ? %f\n", i);
+//	printf("i ? %f\n", i);
 	
 //	printf("left dist = %f\nx = %f	y = %f\n", i, gbl->p_pos[0], gbl->p_pos[1]);
 /*

@@ -20,14 +20,22 @@
 # include "mlx/mlx_int.h"
 # include <fcntl.h>
 # include <math.h>
-# define HEIGHT_MAX 800
-# define WIDTH_MAX 1600
+# define HEIGHT_MAX 600
+# define WIDTH_MAX 800
 # define RAD_FOV 1.0472
 # define RAD_PERP 1.5708
 # define DECR_RAD 0.174533
 # define RAD_ROT 0.0872665
 # define HALF_FULL_RAD 3.14159
 # define SPEED 1 / 2
+
+
+typedef struct s_wall
+{
+	int		x_window;
+	double	x_wall;
+	double	ratio;
+}		t_wall;
 
 typedef struct s_image
 {
