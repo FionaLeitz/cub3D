@@ -42,15 +42,23 @@ int	key_press(int key, t_gbl *gbl)
 
 int	deal_key(t_gbl *gbl)
 {
+//	double	save;
+
 	if (gbl->keys.front == 1)
 	{
-		gbl->p_pos[0] += sin(gbl->direction * 3.141592 / 180) * SPEED;				// manque la "vitesse"
-		gbl->p_pos[1] -= cos(gbl->direction * 3.141592 / 180) * SPEED;				// manque la "vitesse"
+		// save = sin(gbl->direction * 3.14159265359 / 180) * SPEED;
+		// if (save != 0)
+		// 	gbl->p_pos[0] += save;
+		// save = cos(gbl->direction * 3.14159265359 / 180) * SPEED;
+		// if (save != 0)
+		//	gbl->p_pos[1] -= save;
+		gbl->p_pos[0] += sin(gbl->direction * 3.14159265359 / 180) * SPEED;				// manque la "vitesse"
+		gbl->p_pos[1] -= cos(gbl->direction * 3.14159265359 / 180) * SPEED;				// manque la "vitesse"
 	}
 	if (gbl->keys.back == 1)
 	{
-		gbl->p_pos[0] -= sin(gbl->direction * 3.141592 / 180) * SPEED;				// manque la "vitesse"
-		gbl->p_pos[1] += cos(gbl->direction * 3.141592 / 180) * SPEED;				// manque la "vitesse"
+		gbl->p_pos[0] -= sin(gbl->direction * 3.14159265359 / 180) * SPEED;				// manque la "vitesse"
+		gbl->p_pos[1] += cos(gbl->direction * 3.14159265359 / 180) * SPEED;				// manque la "vitesse"
 	}
 	if (gbl->keys.left == 1)
 	{

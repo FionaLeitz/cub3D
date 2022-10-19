@@ -31,13 +31,20 @@ double	get_real_vector_north(double *pos, double old_vector)
 	et floor (renvoie le nombre entier inferieur)
 */
 	tmp = ceil(pos[1]);
+	printf("tmp = %f	pos[1] = %f\n", tmp, pos[1]);
 	diff = pos[1] - tmp;
-	printf("diff ?? %f\n", diff);
+//	printf("diff = %f\n", diff);
 	if (diff > -1)
+	{
+//		printf("old vector = %f\n", old_vector);
 		good_vector = old_vector - diff;
-	else 
+	}
+	else
+	{
+		printf("blablabla\n");
 		good_vector = -1;
-	printf("good vector ?? %f\n", good_vector);
+	}
+//	printf("good vector = %f\n", good_vector);
 	return (good_vector);
 }
 
