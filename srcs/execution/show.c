@@ -11,50 +11,59 @@
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-/*
+
 void	wall_col(t_wall	wall, t_gbl *gbl)
 {
 	int	y_window;
 	int	y_texture;
 	double	wall_size;
-	double	ratio;
 
 	char	*pixel;
 	char	*pixel2;
 	int		color;
 
-	ratio = gbl->vector * 0.1;
-	wall_size = gbl->file.texture.north.width / ratio;
+//	ratio = gbl->vector * 0.1;
+	wall_size = gbl->file.texture.north.width / wall.ratio;
 //	printf("wall_size after = %f\n", wall_size);
 	y_window = (HEIGHT_MAX / 2 - wall_size / 2) - 1;
 	y_texture = -1;
-	while (++y_window < ((HEIGHT_MAX / 2) + (wall_size / 2)))
+	while (++y_window <= ((HEIGHT_MAX / 2) + (wall_size / 2)))
 	{
 		y_texture++;
-		if (y_window > 0)
+		if (y_window >= 0 && y_window <= HEIGHT_MAX)
 		{
-			pixel = gbl->file.texture.north.str + ((int)(y_texture * ratio) * gbl->file.texture.north.size_line + (int)(wall.x_wall * ratio) * (gbl->file.texture.north.bpp / 8));
+			pixel = gbl->file.texture.north.str + ((int)(y_texture * wall.ratio) * gbl->file.texture.north.size_line + (int)(wall.x_wall * wall.ratio) * (gbl->file.texture.north.bpp / 8));
 			color = *(int *)pixel;
 			pixel2 = gbl->new_img.str + (y_window * gbl->new_img.size_line + wall.x_window * (gbl->new_img.bpp / 8));
 			*(int *)pixel2 = color;
 		}
 	}
 }
-*/
+
 void	wall_front(t_gbl *gbl)
-{/*
+{
 	t_wall wall;
 
 //	printf("wall_size before = %f\n", 64 / (gbl->vector * 0.1));
-	wall.x_window = 400;
+	wall.x_window = -1;
 	wall.x_wall = -1;
-	while (++wall.x_wall < (gbl->file.texture.north.width / (gbl->vector * 0.1)))
+	double	vector = 1;
+	wall.ratio = vector * 0.1;				// pour gerer differentes tailles de textures, changer le 0.1
+	while (++wall.x_wall <= (gbl->file.texture.north.width / (wall.ratio)))
+	{
+		wall.x_window++;
+		vector += 0.01;
+		wall.ratio = vector * 0.1;			// pour gerer differentes tailles de textures, changer le 0.1
+		wall_col(wall, gbl);
+	}
+	wall.x_wall = -1;
+	while (++wall.x_wall <= (gbl->file.texture.north.width / (wall.ratio)))
 	{
 		wall.x_window++;
 		wall_col(wall, gbl);
 	}
-	return ;*/
-
+	return ;
+/*
 	int	x_img_first;			// a gauche du mur
 	int	y_img_first;			// en haut du mur
 	int	x_img_last;				// a droite du mur
@@ -64,7 +73,7 @@ void	wall_front(t_gbl *gbl)
 	char	*pixel;				// emplacement du pixel qu'on veut dans la textur
 	char	*pixel2;			// emplacement du prochain pixel a poser dans la nouvelle image
 	int	color;					// save de la couleur du pixel de texture
-	double ratio = (gbl->vector/* * 0.1*/);
+	double ratio = (gbl->vector * 0.1);
 
 	//double	wall_size = gbl->file.texture.north.width / ratio;
 	// printf("wall size = %f\n", wall_size);
@@ -96,7 +105,7 @@ void	wall_front(t_gbl *gbl)
 				*(int *)pixel2 = color;
 			}
 		}	
-	}
+	}*/
 }
 
 // fill new image with background

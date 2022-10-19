@@ -89,6 +89,8 @@ typedef struct s_key
 	int	back;
 	int	right;
 	int	left;
+	int	rot_left;
+	int	rot_right;
 }		t_key;
 
 typedef struct s_gbl
