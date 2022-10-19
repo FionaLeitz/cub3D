@@ -6,14 +6,14 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 01:03:06 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/17 01:54:45 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/19 13:49:12 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /*
-	CALCULER MATRICE DE ROTATION (genre comment avoir les mesures de distances si 
+	(comment avoir les mesures de distances si 
 	gbl->vector tombe pas en angle droit sur front wall ?)
 
 	on peut trouver le nouveau vecteur en utilisant la mesure de l'ancien 
@@ -27,3 +27,10 @@
 	entre new_vector et le mur  soit le 80 degré soit 180 degre - 80 degre = 100 degré
 	
 */
+
+void	rotate_right(t_gbl *gbl)
+{
+	double	new_vector;
+
+	new_vector = sin(RAD_PERP) * (gbl->vector / sin (HALF_FULL_RAD - (RAD_PERP + RAD_ROT)));
+}
