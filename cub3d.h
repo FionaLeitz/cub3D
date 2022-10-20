@@ -100,7 +100,7 @@ typedef struct s_gbl
 	t_image	new_img;
 	t_file	file;
 	double	p_pos[2];
-	double	vector;	//distance from player to closest front wall
+	double	vector;				//distance from player to closest front wall
 	double	left_fov_dist;
 	int		direction;
 	t_key	keys;
@@ -139,4 +139,13 @@ double		get_left_dist(double AB, double *pos, char **map, double rad, double inc
 int			check_coord(int x, int y, double DE, char **map);
 // get_player_pos.c
 void		get_player_pos(t_map_lst *map, t_gbl *gbl);
+
+
+
+
+/*			BONUS			*/
+//mini_map.c
+void	mini_map(char **map, double p_pos[2], t_image img);
+
+
 #endif

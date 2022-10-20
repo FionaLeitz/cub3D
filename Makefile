@@ -15,9 +15,9 @@ _GREEN=$'\033[1;32m
 _YELLOW=$'\033[1;33m
 _ORANGE=$'\033[38;2;255;165;0m
 
-NAME  = cub3d
+NAME		= cub3d
 
-SRCS_FILES =	main.c									\
+SRCS_FILES	=	main.c									\
 				parse/file.c							\
 				parse/texture_colors.c					\
 				parse/parse_map.c						\
@@ -29,23 +29,25 @@ SRCS_FILES =	main.c									\
 				execution/display_wall.c				\
 				execution/get_dist.c					\
 				execution/get_player_pos.c				\
+				bonus/mini_map.c						\
 
-SRCS = ${addprefix srcs/, ${SRCS_FILES}}
-CC	= clang
+SRCS		= ${addprefix srcs/, ${SRCS_FILES}}
 
-CFLAGS	= -Wall -Wextra -Werror -g3 -I.
+CC			= clang
+
+CFLAGS		= -Wall -Wextra -Werror -g3 -I.
 
 MLXFLAGS	= -lmlx -lXext -lX11 -Lmlx
 
-MLX		= mlx/libmlx.a mlx/libmlx_Linux.a
+MLX			= mlx/libmlx.a mlx/libmlx_Linux.a
 
-LIBFT	= -Llibft -lft
+LIBFT		= -Llibft -lft
 
 OBJS_FILES	= ${SRCS_FILES:%.c=%.o}
 
-OBJS = ${addprefix objs/, ${OBJS_FILES}}
+OBJS		= ${addprefix objs/, ${OBJS_FILES}}
 
-DEP = ${OBJS:%.o=%.d}
+DEP			= ${OBJS:%.o=%.d}
 
 all: 		lib minilibx ${NAME}
 
@@ -75,7 +77,7 @@ fclean:		clean
 
 re:			fclean all
 
-objs/%.o : srcs/%.c cub3d.h
+objs/%.o :	srcs/%.c cub3d.h
 			@mkdir -p objs
 			@mkdir -p objs/parse objs/execution
 			@${CC} ${CFLAGS} -MMD -o $@ -c $<
