@@ -6,7 +6,7 @@
 #    By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 13:19:30 by fleitz            #+#    #+#              #
-#    Updated: 2022/10/14 14:16:23 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/10/24 10:44:58 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS_FILES =	main.c									\
 				execution/display_wall.c				\
 				execution/get_dist.c					\
 				execution/get_player_pos.c				\
+				execution/vectors.c						\
 
 SRCS = ${addprefix srcs/, ${SRCS_FILES}}
 CC	= clang

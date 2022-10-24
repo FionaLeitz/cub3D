@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:40:00 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/14 18:02:57 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 10:46:33 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	display_wall(t_gbl *gbl)
 	double	i;
 	double	get_vector;
 	double	incr;
+	t_wall	wall;
 
 //	get_player_pos(gbl->file.first, gbl);					// ne modifie pas la position ?
 //	printf("check pos = pos[0] %f pos[1] %f\n", gbl->p_pos[0], gbl->p_pos[1]);
@@ -30,19 +31,30 @@ void	display_wall(t_gbl *gbl)
 /**************		LE MUR LE PLUS PROCHE SUR LA GAUCHE		*******************/
 /******************************************************************************/
 //	printf("before get_left_dist : x = %f	y = %f\n", gbl->p_pos[0], gbl->p_pos[1]);
-	i = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
+	i = get_left_dist(gbl);
 	gbl->left_fov_dist = i;
-//	printf("i ? %f\n", i);
+	printf("i ? %f\n", i);
+	wall.x_window = 0;
+	wall.x_wall = 1;
+	wall.ratio = i * 0.1;
+	printf("coucou\n");
+	wall_col(wall, gbl);
+
 	
 //	printf("left dist = %f\nx = %f	y = %f\n", i, gbl->p_pos[0], gbl->p_pos[1]);
 /*
 	while (rad > 0 && i != 0)
 	{
-	//	printf("lol i = %f et rad = %f\n", i, rad);
+		printf("lol i = %f et rad = %f\n", i, rad);
 		rad -= DECR_RAD;
 		incr++;
+
 		i = get_left_dist(gbl->vector, gbl->p_pos, gbl->file.map, rad, incr);
+		wall.ratio = i * 0.1;
+		wall.x_window++;
 		printf("i ? %f\n", i);
+		wall_col(wall, gbl);
+
 		//if (i != 0)
 			// on a un mur a distance i 
 	}

@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/19 12:34:23 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 10:45:47 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include <math.h>
 # define HEIGHT_MAX 600
 # define WIDTH_MAX 800
-# define RAD_FOV 1.0472
+# define RAD_FOV 0.785398
 # define RAD_PERP 1.5708
-# define DECR_RAD 0.174533
+# define DECR_RAD 0.0872665
 # define RAD_ROT 0.0872665
 # define HALF_FULL_RAD 3.14159
 # define SPEED 1 / 2
@@ -129,13 +129,16 @@ int			key_release(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
 // show.c
 int			show_background(t_gbl *gbl);
+void	wall_col(t_wall	wall, t_gbl *gbl);
 // display_wall.c
 void		display_wall(t_gbl *gbl);
 // get_dist.c
 double		get_int_vector_north(t_map_lst *map_lst, double *pos, int y_max);
 double		get_real_vector_north(double *pos, double old_vector);
-double		get_left_dist(double AB, double *pos, char **map, double rad, double incr);
+//double		get_left_dist(double AB, double *pos, char **map, double rad, double incr);
 int			check_coord(int x, int y, double DE, char **map);
 // get_player_pos.c
 void		get_player_pos(t_map_lst *map, t_gbl *gbl);
+// vectors.c
+double	get_left_dist(t_gbl *gbl);
 #endif

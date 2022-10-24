@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 21:13:14 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/19 12:28:50 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 10:45:13 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ double	get_int_vector_north(t_map_lst *map_lst, double *pos, int y_max)
 
 int	check_coord(int x, int y, double DE, char **map)
 {
+/*
+	en gros chaque bloc de texture ---> 64x64
+	donc avoir position precise dans le mur entre 0 et 64
+*/
 	(void)DE;
 //	printf("in check_coord : x = %d	y = %d\n", x, y);
 //	printf("map[y][x] = %c\n", map[y][x]);
@@ -102,7 +106,7 @@ int	check_coord(int x, int y, double DE, char **map)
 	}
 	return (0);
 }
-
+/*
 double	get_left_dist(double AB, double *pos, char **map, double rad, double incr)
 {
 	double	BC;
@@ -114,15 +118,15 @@ double	get_left_dist(double AB, double *pos, char **map, double rad, double incr
 	BC = AB / sin(HALF_FULL_RAD - (rad + RAD_PERP));
 //	printf("AB (vector) = %f , BC = %f\n", AB, BC);
 	AD = AB - (incr);
-//	printf("AB (vector) = %f , BC = %f, AD = %f\n", AB, BC, AD);
+	printf("AB (vector) = %f , BC = %f, AD = %f\n", AB, BC, AD);
 	if (AD > 0)
 		DE = (AD / AB) * BC;
 	else
 		return (0);
-//	printf("donc DE = %f, pos[0] ok = %f\n", DE, pos[0]);
+	printf("donc DE = %f, pos[0] = %f, pos[1] = %f\n", DE, pos[0], pos[1]);
 	coord_x = (int)ceil(pos[0] - DE);
 	coord_y = (int)ceil(pos[1] - (RAD_FOV / rad));
-// printf("BEFORE coord closest wall = (%d, %d)\n", coord_x, coord_y);
+	printf("BEFORE coord closest wall = (%d, %d)\n", coord_x, coord_y);
 	if (check_coord(coord_x, coord_y, DE, map) == 1)
 	{
 //		affichage en fonction de DE
@@ -131,4 +135,4 @@ double	get_left_dist(double AB, double *pos, char **map, double rad, double incr
 	}
 	else
 		return (get_left_dist(AB, pos, map, rad, incr + 1));
-}
+}*/

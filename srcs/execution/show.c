@@ -6,25 +6,25 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:11 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/14 16:13:12 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 10:48:56 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-/*
+
 void	wall_col(t_wall	wall, t_gbl *gbl)
 {
 	int	y_window;
 	int	y_texture;
 	double	wall_size;
-	double	ratio;
+//	double	ratio;
 
 	char	*pixel;
 	char	*pixel2;
 	int		color;
 
-	ratio = gbl->vector * 0.1;
-	wall_size = gbl->file.texture.north.width / ratio;
+//	ratio = gbl->vector * 0.1;
+	wall_size = gbl->file.texture.north.width / wall.ratio;
 //	printf("wall_size after = %f\n", wall_size);
 	y_window = (HEIGHT_MAX / 2 - wall_size / 2) - 1;
 	y_texture = -1;
@@ -33,27 +33,27 @@ void	wall_col(t_wall	wall, t_gbl *gbl)
 		y_texture++;
 		if (y_window > 0)
 		{
-			pixel = gbl->file.texture.north.str + ((int)(y_texture * ratio) * gbl->file.texture.north.size_line + (int)(wall.x_wall * ratio) * (gbl->file.texture.north.bpp / 8));
+			pixel = gbl->file.texture.north.str + ((int)(y_texture * wall.ratio) * gbl->file.texture.north.size_line + (int)(wall.x_wall * wall.ratio) * (gbl->file.texture.north.bpp / 8));
 			color = *(int *)pixel;
 			pixel2 = gbl->new_img.str + (y_window * gbl->new_img.size_line + wall.x_window * (gbl->new_img.bpp / 8));
 			*(int *)pixel2 = color;
 		}
 	}
 }
-*/
+
 void	wall_front(t_gbl *gbl)
-{/*
+{
 	t_wall wall;
 
 //	printf("wall_size before = %f\n", 64 / (gbl->vector * 0.1));
-	wall.x_window = 400;
-	wall.x_wall = -1;
+	wall.x_window = 0;
+	wall.x_wall = 30;
 	while (++wall.x_wall < (gbl->file.texture.north.width / (gbl->vector * 0.1)))
 	{
 		wall.x_window++;
 		wall_col(wall, gbl);
 	}
-	return ;*/
+	return ;
 
 	int	x_img_first;			// a gauche du mur
 	int	y_img_first;			// en haut du mur
