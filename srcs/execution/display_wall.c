@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:40:00 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/24 10:46:33 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 10:56:44 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	display_wall(t_gbl *gbl)
 	wall.x_wall = 1;
 	wall.ratio = i * 0.1;
 	printf("coucou\n");
-	wall_col(wall, gbl);
+	wall_col(wall, gbl, &gbl->file.texture.north);
 
 	
 //	printf("left dist = %f\nx = %f	y = %f\n", i, gbl->p_pos[0], gbl->p_pos[1]);

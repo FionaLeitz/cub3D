@@ -43,6 +43,8 @@ static void	init(t_file *file, t_gbl *gbl)
 	gbl->keys.back = 0;
 	gbl->keys.right = 0;
 	gbl->keys.left = 0;
+	gbl->keys.rot_right = 0;
+	gbl->keys.rot_left = 0;
 }
 
 int	main(int argc, char **argv)

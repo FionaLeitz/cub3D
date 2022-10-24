@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/24 10:45:47 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 10:55:24 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ typedef struct s_key
 	int	back;
 	int	right;
 	int	left;
+	int	rot_left;
+	int	rot_right;
 }		t_key;
 
 typedef struct s_gbl
@@ -99,7 +101,7 @@ typedef struct s_gbl
 	t_image	new_img;
 	t_file	file;
 	double	p_pos[2];
-	double	vector;	//distance from player to closest front wall
+	double	vector;				//distance from player to closest front wall
 	double	left_fov_dist;
 	int		direction;
 	t_key	keys;
@@ -129,7 +131,7 @@ int			key_release(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
 // show.c
 int			show_background(t_gbl *gbl);
-void	wall_col(t_wall	wall, t_gbl *gbl);
+void	wall_col(t_wall	wall, t_gbl *gbl, t_image *img);
 // display_wall.c
 void		display_wall(t_gbl *gbl);
 // get_dist.c
