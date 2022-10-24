@@ -1,11 +1,11 @@
 
 NO ./spaceship/wall_1.xpm
-SO ./texture/texture_south.xpm
+SO ./spaceship/wall_2.xpm
 
 
-EA ./texture/texture_east.xpm
+EA ./spaceship/wall_3.xpm
 
-WE ./texture/texture_west.xpm
+WE ./spaceship/wall_4.xpm
 
 F 255.127.0
 
@@ -19,5 +19,5 @@ C 62,41,92
 111111111111111111
 100000000000000001
 100000000000000001
-100000000N00000001
+10N000000000000001
 111111111111111111

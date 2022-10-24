@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:11 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/24 10:54:46 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 13:41:00 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	wall_col(t_wall	wall, t_gbl *gbl, t_image *img)
 
 //	ratio = gbl->vector * 0.1;
 	wall_size = img->width / wall.ratio;
+	printf("**************WALL SIZE ***********\n\twall size = %f\n", wall_size);
 	y_window = (HEIGHT_MAX / 2 - wall_size / 2) - 1;
 	y_texture = -1;
 	while (++y_window <= ((HEIGHT_MAX / 2) + (wall_size / 2)))
@@ -39,25 +40,26 @@ void	wall_col(t_wall	wall, t_gbl *gbl, t_image *img)
 		}
 	}
 }
-/*
+
 void	wall_front(t_gbl *gbl)
 {
 	t_wall	wall;
 
 	wall.x_window = -1;
-	double	vector = 1;
+	double	vector = 3;
 	wall.ratio = vector * 0.1;				// pour gerer differentes tailles de textures, changer le 0.1
 	wall.x_wall = -1;
 	while (++wall.x_wall <= (gbl->file.texture.west.width / (wall.ratio)) && ++wall.x_window < WIDTH_MAX)
 	{
-		vector += 0.02;
+		vector += 0.015;
 		wall.ratio = vector * 0.1;			// pour gerer differentes tailles de textures, changer le 0.1
+		printf("*************************\nvector = %f\n wall.ratio = %f\n", vector, wall.ratio);
 		wall_col(wall, gbl, &gbl->file.texture.west);
-	}
+	}/*
 	wall.x_wall = -1;
 	while (++wall.x_wall <= (gbl->file.texture.west.width / (wall.ratio)) && ++wall.x_window < WIDTH_MAX)
 	{
-		vector += 0.02;
+		vector += 0.015;
 		wall.ratio = vector * 0.1;			// pour gerer differentes tailles de textures, changer le 0.1
 		wall_col(wall, gbl, &gbl->file.texture.west);
 	}
@@ -76,12 +78,12 @@ void	wall_front(t_gbl *gbl)
 	wall.x_wall = -1;
 	while (++wall.x_wall <= (gbl->file.texture.east.width / (wall.ratio)) && ++wall.x_window < WIDTH_MAX)
 	{
-		vector -= 0.02;
+		vector -= 0.015;
 		wall.ratio = vector * 0.1;
 		wall_col(wall, gbl, &gbl->file.texture.east);
-	}
+	}*/
 	return ;
-
+/*
 	int	x_img_first;			// a gauche du mur
 	int	y_img_first;			// en haut du mur
 	int	x_img_last;				// a droite du mur
@@ -112,9 +114,9 @@ void	wall_front(t_gbl *gbl)
 				*(int *)pixel2 = color;
 			}
 		}
-	}
+	}*/
 }
-*/
+
 // fill new image with background
 // mlx loop
 int	show_background(t_gbl *gbl)
@@ -139,7 +141,7 @@ int	show_background(t_gbl *gbl)
 		}
 	}
 	display_wall(gbl);
-//	wall_front(gbl);
+	//wall_front(gbl);
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
 	return (1);
 }
