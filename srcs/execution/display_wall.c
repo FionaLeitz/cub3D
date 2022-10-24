@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:40:00 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/24 16:27:06 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 18:59:58 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	display_wall(t_gbl *gbl)
 	{
 		wall_col(wall, gbl, &gbl->file.texture.west);
 		rad -= DECR_RAD;
-		while (rad > 0 && ++wall.x_window < WIDTH_MAX && incr < 5)
+		while (rad > 0 && ++wall.x_window < WIDTH_MAX)
 		{
 			incr++;
 			i = get_left_dist(gbl, rad, 1);
