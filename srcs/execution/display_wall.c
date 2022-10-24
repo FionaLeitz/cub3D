@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 20:40:00 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/24 13:50:31 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 16:27:06 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	display_wall(t_gbl *gbl)
 /**************		LE MUR LE PLUS PROCHE SUR LA GAUCHE		*******************/
 /******************************************************************************/
 //	printf("before get_left_dist : x = %f	y = %f\n", gbl->p_pos[0], gbl->p_pos[1]);
-	i = get_left_dist(gbl, rad);
+	i = get_left_dist(gbl, rad, 1);
 	gbl->left_fov_dist = i;
 	printf("i ? %f\n", i);
 	wall.x_window = -1;
@@ -43,10 +43,10 @@ void	display_wall(t_gbl *gbl)
 	{
 		wall_col(wall, gbl, &gbl->file.texture.west);
 		rad -= DECR_RAD;
-		while (rad > 0 && ++wall.x_window < WIDTH_MAX)
+		while (rad > 0 && ++wall.x_window < WIDTH_MAX && incr < 5)
 		{
 			incr++;
-			i = get_left_dist(gbl, rad);
+			i = get_left_dist(gbl, rad, 1);
 			wall.ratio = i * 0.1;			// pour gerer differentes tailles de textures, changer le 0.1
 			printf("*************************\nvector = %f\n wall.ratio = %f\n", i, wall.ratio);
 			wall_col(wall, gbl, &gbl->file.texture.north);

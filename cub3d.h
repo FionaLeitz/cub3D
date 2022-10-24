@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/24 11:29:27 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/24 16:37:18 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 # define HEIGHT_MAX 600
 # define WIDTH_MAX 800
-# define RAD_FOV 0.575959
+# define RAD_FOV 0.785398
 # define RAD_PERP 1.5708
 # define DECR_RAD 0.00174533
 # define RAD_ROT 0.0872665
@@ -142,5 +142,6 @@ int			check_coord(int x, int y, double DE, char **map);
 // get_player_pos.c
 void		get_player_pos(t_map_lst *map, t_gbl *gbl);
 // vectors.c
-double	get_left_dist(t_gbl *gbl, double rad_to_use);
+double	get_left_dist(t_gbl *gbl, double rad_to_use, double incr);
+int	check_coord_left_ray(double check_ray, double left_dist, t_gbl *gbl, double incr);
 #endif
