@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/24 16:37:18 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/25 17:25:42 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,9 @@ int			check_coord(int x, int y, double DE, char **map);
 // get_player_pos.c
 void		get_player_pos(t_map_lst *map, t_gbl *gbl);
 // vectors.c
-double	get_left_dist(t_gbl *gbl, double rad_to_use, double incr);
-int	check_coord_left_ray(double check_ray, double left_dist, t_gbl *gbl, double incr);
+void	check_little_ray(t_gbl *gbl, double add_y, double left_dist);
+double	get_little_ray(double add_y, double x);
+int	check_coord_wall(t_gbl *gbl, double i, double add_y, double dist_x);
+double	get_left_dist(t_gbl *gbl, double rad_to_use, double add_y, double add_x);
+//int	check_coord_left_ray(double check_ray, double left_dist, t_gbl *gbl, double incr);
 #endif

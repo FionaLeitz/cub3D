@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:11 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/24 13:41:00 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/25 14:10:22 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	wall_col(t_wall	wall, t_gbl *gbl, t_image *img)
 
 //	ratio = gbl->vector * 0.1;
 	wall_size = img->width / wall.ratio;
-	printf("**************WALL SIZE ***********\n\twall size = %f\n", wall_size);
+	//printf("**************WALL SIZE ***********\n\twall size = %f\n", wall_size);
 	y_window = (HEIGHT_MAX / 2 - wall_size / 2) - 1;
 	y_texture = -1;
 	while (++y_window <= ((HEIGHT_MAX / 2) + (wall_size / 2)))
