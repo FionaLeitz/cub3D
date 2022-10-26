@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/25 17:25:42 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:21:48 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,9 @@ typedef struct s_gbl
 	double	p_pos[2];
 	double	vector;				//distance from player to closest front wall
 	double	left_fov_dist;
+	double	v_pos[2];
 	int		direction;
+	int		start;
 	t_key	keys;
 	int		y_max;
 }			t_gbl;
@@ -132,6 +134,16 @@ int			deal_cross(void *mlx);
 // show.c
 int			show_background(t_gbl *gbl);
 void	wall_col(t_wall	wall, t_gbl *gbl, t_image *img);
+// algo.c
+void	display_wall(t_gbl *gbl, char **map);
+void	start_pos_to_check(t_gbl *gbl, char **map, double incr);
+int		check_v_pos(t_gbl *gbl);
+// check_left.c
+void	check_left(t_gbl *gbl, char **map);
+//check_right.c
+void	check_right(t_gbl *gbl, char **map);
+
+/*
 // display_wall.c
 void		display_wall(t_gbl *gbl);
 // get_dist.c
@@ -141,10 +153,13 @@ double		get_real_vector_north(double *pos, double old_vector);
 int			check_coord(int x, int y, double DE, char **map);
 // get_player_pos.c
 void		get_player_pos(t_map_lst *map, t_gbl *gbl);
+
 // vectors.c
 void	check_little_ray(t_gbl *gbl, double add_y, double left_dist);
 double	get_little_ray(double add_y, double x);
 int	check_coord_wall(t_gbl *gbl, double i, double add_y, double dist_x);
 double	get_left_dist(t_gbl *gbl, double rad_to_use, double add_y, double add_x);
 //int	check_coord_left_ray(double check_ray, double left_dist, t_gbl *gbl, double incr);
+*/
+
 #endif

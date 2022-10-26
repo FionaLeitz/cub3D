@@ -6,12 +6,15 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 15:31:33 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/26 16:16:16 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/26 17:38:52 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// on check ici si les coordonnées de v_pos tapent un mur, et dans ce cas on return 1
+// si non, on return 0 et on incrémente la distance par rapport au point de depart
+// en ligne droite 
 int		check_v_pos(t_gbl *gbl)
 {
 	t_map_lst	*map;
@@ -32,6 +35,9 @@ int		check_v_pos(t_gbl *gbl)
 	return (0);
 }
 
+// v_pos --> etabli les coordonnées de position du mur de face 
+// au départ du programme --> distance du vecteur / point d'origine etc
+// on incrémente petit a petit de 1 case
 void	start_pos_to_check(t_gbl *gbl, char **map, double incr)
 {
 	if (map[round(p_pos[1])][round(p_pos[0])] == 'N')
@@ -56,12 +62,21 @@ void	start_pos_to_check(t_gbl *gbl, char **map, double incr)
 	}
 }
 
-double	display_wall(t_gbl *gbl, char **map)
+// fonction lancée a chaque déplacement
+// au début --> un check si on est au départ ou non
+void	display_wall(t_gbl *gbl, char **map)
 {
 	double	i;
 
 	i = -1;
-	while (++i && check_v_pos(gbl, map) == 0)
-		start_pos_to_check(gbl, map, i);
+	if (start == 0)
+	{
+		while (++i && check_v_pos(gbl, map) == 0)
+			start_pos_to_check(gbl, map, i);
+		start = 1;
+		gbl->vector = i;
+		check_left(gbl, map);
+		check_right(gbl, map);
+	}
 	
 }
