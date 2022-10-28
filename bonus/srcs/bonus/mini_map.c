@@ -6,11 +6,12 @@ typedef struct s_mini
 	int	y;
 }		t_mini;
 
-void	put_pos(t_image *mini_map)
+void	put_pos(t_image *mini_map, t_gbl *gbl)
 {
 	char	*pixel;
 	int		x;
 	int		y;
+	(void)gbl;
 
 	y = 52;
 	while (++y < 57)
@@ -40,7 +41,7 @@ void	ft_square(t_mini *coord, t_image *mini_map)
 		x = -1;
 		while (++x < 10)
 		{
-			if (coord->x >= 0 && coord->y >= 0 && coord->x <= 110 && coord->y <= 110)
+			if (coord->x >= 0 && coord->y >= 0 && coord->x < 110 && coord->y < 110)
 			{
 				pixel = mini_map->str + (coord->y * mini_map->size_line
 						+ coord->x * (mini_map->bpp / 8));
@@ -75,12 +76,11 @@ int	mini_map(char **map, double p_pos[2], t_gbl *gbl)
 		{
 			x_map = (int)(ceil(p_pos[0] - 5 + (coord.x / 10)));
 			y_map = (int)(ceil(p_pos[1] - 5 + (coord.y / 10)));
-//			if (x_map >= 0 && y_map >= 0)
-//				printf("y_max = %d	x_max = %d", gbl->y_max, (int)ft_strlen(map[y_map]));
-//			printf("y_map = %d\n", y_map);
 			if (x_map >= 0 && y_map >= 0 && y_map <= gbl->y_max && x_map <= (int)ft_strlen(map[y_map]) && map[y_map][x_map] == '1')
+			{
+				printf("coord.x = %d	coord.y = %d\n", coord.x, coord.y);
 				ft_square(&coord, &mini_map);
-				// printf("map[%d][%d] = %c\n", y_map, x_map, map[y_map][x_map]);
+			}
 			else
 				coord.x += 10;
 			if (coord.x >= 110)
@@ -88,7 +88,7 @@ int	mini_map(char **map, double p_pos[2], t_gbl *gbl)
 		}
 		coord.x = ((int)round(p_pos[0] * 10) % 10) - 10;
 	}
-	put_pos(&mini_map);
+	put_pos(&mini_map, gbl);
 	mlx_put_image_to_window(gbl->mlx, gbl->window, mini_map.ptr, 680, 480);
 	return (0);
 }
