@@ -20,8 +20,8 @@
 # include "mlx/mlx_int.h"
 # include <fcntl.h>
 # include <math.h>
-# define HEIGHT_MAX 600
 # define WIDTH_MAX 800
+# define HEIGHT_MAX 600
 # define RAD_FOV 0.785398
 # define RAD_PERP 1.5708
 # define DECR_RAD 0.00174533
