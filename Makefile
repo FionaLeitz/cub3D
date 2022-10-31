@@ -6,7 +6,7 @@
 #    By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 13:19:30 by fleitz            #+#    #+#              #
-#    Updated: 2022/10/24 10:51:32 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/10/31 11:15:57 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,12 @@ SRCS_FILES	=	main.c									\
 				execution/create_imgs.c					\
 				execution/event.c						\
 				execution/show.c						\
-				execution/display_wall.c				\
+				execution/algo.c						\
 				execution/get_dist.c					\
 				execution/get_player_pos.c				\
-				execution/vectors.c						\
+				execution/check_left.c					\
+				execution/check_right.c					\
+				execution/check_pos.c					\
 
 SRCS		= ${addprefix srcs/, ${SRCS_FILES}}
 

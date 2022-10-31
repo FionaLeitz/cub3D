@@ -6,7 +6,7 @@
 /*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:43 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/05 10:36:52 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/10/31 10:53:33 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	init(t_file *file, t_gbl *gbl)
 	gbl->keys.left = 0;
 	gbl->keys.rot_right = 0;
 	gbl->keys.rot_left = 0;
+	gbl->start = 0;
 }
 
 int	main(int argc, char **argv)

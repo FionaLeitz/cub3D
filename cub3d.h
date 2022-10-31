@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/26 17:21:48 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/10/31 14:58:56 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,16 +133,19 @@ int			key_release(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
 // show.c
 int			show_background(t_gbl *gbl);
-void	wall_col(t_wall	wall, t_gbl *gbl, t_image *img);
+void		wall_col(t_wall	wall, t_gbl *gbl, t_image *img);
 // algo.c
-void	display_wall(t_gbl *gbl, char **map);
-void	start_pos_to_check(t_gbl *gbl, char **map, double incr);
-int		check_v_pos(t_gbl *gbl);
+void		display_wall(t_gbl *gbl, char **map);
+void		start_pos_to_check(t_gbl *gbl, char **map, double incr);
+int			check_v_pos(t_gbl *gbl);
 // check_left.c
-void	check_left(t_gbl *gbl, char **map);
+double		check_left(t_gbl *gbl, char **map);
+double		get_fov_left_dist(t_gbl *gbl, double x, double y);
 //check_right.c
-void	check_right(t_gbl *gbl, char **map);
-
+double		check_right(t_gbl *gbl, char **map);
+double		get_fov_right_dist(t_gbl *gbl, double x, double y);
+// check_pos.c
+int			check_pos(double x, double y, char **map);
 /*
 // display_wall.c
 void		display_wall(t_gbl *gbl);
