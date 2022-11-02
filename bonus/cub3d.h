@@ -27,7 +27,7 @@
 # define DECR_RAD 0.00174533
 # define RAD_ROT 0.0872665
 # define HALF_FULL_RAD 3.14159
-# define SPEED 1 / 2
+# define SPEED 1 / 10
 
 
 typedef struct s_wall
@@ -99,6 +99,7 @@ typedef struct s_gbl
 	void	*mlx;
 	void	*window;
 	t_image	new_img;
+	t_image mini_map;
 	t_file	file;
 	double	p_pos[2];
 	double	vector;				//distance from player to closest front wall

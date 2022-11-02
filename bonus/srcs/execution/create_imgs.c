@@ -45,8 +45,9 @@ static int	open_texture(t_image *img, void *mlx)
 
 void	set_up_start(t_gbl *gbl, t_file *file)
 {
-	gbl->p_pos[0] = file->start_x;
-	gbl->p_pos[1] = file->start_y;
+	gbl->p_pos[0] = file->start_x + 0.5;
+	gbl->p_pos[1] = file->start_y + 0.5;
+	printf("start : %f %f\n", gbl->p_pos[0], gbl->p_pos[1]);
 	if (file->N == 1)
 		gbl->direction = 0;
 	else if (file->E == 1)
@@ -76,6 +77,9 @@ int	open_all(t_texture *texture, t_gbl *gbl, t_file *file)
 	gbl->window = mlx_new_window(gbl->mlx, WIDTH_MAX, HEIGHT_MAX, "Cub3d'isaster");
 	if (gbl->window == NULL)
 		return (error_return("Error opening window\n", 0));
+	gbl->mini_map.ptr = mlx_new_image(gbl->mlx, 110, 110);
+	if (gbl->mini_map.ptr == NULL || create_string(&gbl->mini_map) == 0)
+		return (error_return("Error creating mini_map\n", 0));
 	if (show_background(gbl) == 0)
 		return (0);
 	window(gbl);
