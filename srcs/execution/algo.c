@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 15:31:33 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/10/31 14:59:58 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/02 13:58:54 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int		check_v_pos(t_gbl *gbl)
 
 	y = 0;
 	map = gbl->file.first;
-	if (gbl->v_pos[0] >= 0  && gbl->v_pos[1] >= 0)
+	if (gbl->p_dir[0] >= 0  && gbl->p_dir[1] >= 0)
 	{
 		while (map)
 		{
-			if ((int)round(gbl->v_pos[0]) <= map->string_size
-					&& map->map_line[(int)round(gbl->v_pos[0])]
-					&& map->map_line[(int)round(gbl->v_pos[0])] == '1' )
+			if ((int)round(gbl->p_dir[0]) <= map->string_size
+					&& map->map_line[(int)round(gbl->p_dir[0])]
+					&& map->map_line[(int)round(gbl->p_dir[0])] == '1' )
 				return (1);
 			map = map->next;
 		}
@@ -43,23 +43,23 @@ void	start_pos_to_check(t_gbl *gbl, char **map, double incr)
 {
 	if (map[(int)round(gbl->p_pos[1])][(int)round(gbl->p_pos[0])] == 'N')
 	{
-		gbl->v_pos[0] = gbl->p_pos[0];
-		gbl->v_pos[1] = gbl->p_pos[1] - incr;
+		gbl->p_dir[0] = gbl->p_pos[0];
+		gbl->p_dir[1] = gbl->p_pos[1] - incr;
 	}
 	else if (map[(int)round(gbl->p_pos[1])][(int)round(gbl->p_pos[0])] == 'E')
 	{
-		gbl->v_pos[0] = gbl->p_pos[0] + incr;
-		gbl->v_pos[1] = gbl->p_pos[1];
+		gbl->p_dir[0] = gbl->p_pos[0] + incr;
+		gbl->p_dir[1] = gbl->p_pos[1];
 	}
 	else if (map[(int)round(gbl->p_pos[1])][(int)round(gbl->p_pos[0])] == 'S')
 	{
-		gbl->v_pos[0] = gbl->p_pos[0];
-		gbl->v_pos[1] = gbl->p_pos[1] + incr;
+		gbl->p_dir[0] = gbl->p_pos[0];
+		gbl->p_dir[1] = gbl->p_pos[1] + incr;
 	}
 	else if (map[(int)round(gbl->p_pos[1])][(int)round(gbl->p_pos[0])] == 'W')
 	{
-		gbl->v_pos[0] = gbl->p_pos[0] - incr;
-		gbl->v_pos[1] = gbl->p_pos[1];
+		gbl->p_dir[0] = gbl->p_pos[0] - incr;
+		gbl->p_dir[1] = gbl->p_pos[1];
 	}
 }
 
@@ -71,34 +71,21 @@ void	display_wall(t_gbl *gbl, char **map)
 	double	check;
 	t_wall	wall;
 
-	i = -1;
+	i = 0;
 	check = 0;
 	if (gbl->start == 0)
 	{
-		while (++i && check_v_pos(gbl) == 0)
+		while (check_v_pos(gbl) == 0)
+		{
+			i += 0.5;
 			start_pos_to_check(gbl, map, i);
+		}
 		gbl->start = 1;
-		gbl->vector = i;
-		wall.x_window = -1;
-		wall.x_wall = -1;
-		wall.ratio = 0;
-		while (check <= 5.399999)
-		{
-			++wall.x_window;
-			wall.ratio = check_left(gbl, map) * 0.1;
-			wall_col(wall, gbl, &gbl->file.texture.west);
-			check += 0.05;
-		}
-		wall.x_window = WIDTH_MAX;
-		wall.x_wall = -1;
-		wall.ratio = 0;
-		check = 0;
-		while (check < 30)
-		{
-			--wall.x_window;
-			wall.ratio = check_right(gbl, map) * 0.1;
-			wall_col(wall, gbl, &gbl->file.texture.north);
-			check += 0.05;
-		}
+		gbl->dir = i;
+		gbl->plane = i; //plane == dir car FOV = 90 deg
 	}
+/*
+	else
+		// implementation de la rotation
+*/	
 }

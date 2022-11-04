@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/31 14:58:56 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/04 12:50:49 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,21 +94,39 @@ typedef struct s_key
 	int	rot_right;
 }		t_key;
 
+typedef struct s_vectors
+{
+	double	ray_x;
+	double	ray_y;
+	double	plane_x;
+	double	plane_y;
+	double	pos_x;
+	double	pos_y;
+	double	dd_x;
+	double	dd_y;
+	double	view_line;
+	double	side_x;
+	double	side_y;
+}			t_vectors;
+
 typedef struct s_gbl
 {
-	void	*mlx;
-	void	*window;
-	t_image	new_img;
-	t_file	file;
-	double	p_pos[2];
-	double	vector;				//distance from player to closest front wall
-	double	left_fov_dist;
-	double	v_pos[2];
-	int		direction;
-	int		start;
-	t_key	keys;
-	int		y_max;
-}			t_gbl;
+	void		*mlx;
+	void		*window;
+	t_image		new_img;
+	t_file		file;
+	double		p_pos[2];
+	double		dir;				//distance from player to closest front wall
+	double		p_dir[2];
+	double		plane;
+	double		p_plane_r[2];
+	double		p_plane_l[2];
+	int			direction;
+	int			start;
+	t_key		keys;
+	int			y_max;
+	t_vectors	vec;
+}				t_gbl;
 
 // file.c
 int			check_file(char *file, t_file *file_infos, int *y_max);
