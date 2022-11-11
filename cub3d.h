@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/04 12:50:49 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/11 08:40:44 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_wall
 	int		x_window;
 	double	x_wall;
 	double	ratio;
+	char	geo;
 }		t_wall;
 
 typedef struct s_image
@@ -107,6 +108,11 @@ typedef struct s_vectors
 	double	view_line;
 	double	side_x;
 	double	side_y;
+	double	step_x;
+	double	step_y;
+	double	res_dda;				// la fameuse dist grrr
+	int	side;
+	char	geo;					//N E W S
 }			t_vectors;
 
 typedef struct s_gbl
@@ -164,23 +170,13 @@ double		check_right(t_gbl *gbl, char **map);
 double		get_fov_right_dist(t_gbl *gbl, double x, double y);
 // check_pos.c
 int			check_pos(double x, double y, char **map);
-/*
+// get_display.c
+void	get_display_w_vectors(t_gbl *gbl, char **map);
+void	get_ray(t_gbl *gbl, t_vectors *vec, double x);
+void	check_n_step(t_gbl *gbl, t_vectors *vec);
+void	get_walls(t_gbl *gbl, t_vectors *vec, char **map);
+void	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
 // display_wall.c
-void		display_wall(t_gbl *gbl);
-// get_dist.c
-double		get_int_vector_north(t_map_lst *map_lst, double *pos, int y_max);
-double		get_real_vector_north(double *pos, double old_vector);
-//double		get_left_dist(double AB, double *pos, char **map, double rad, double incr);
-int			check_coord(int x, int y, double DE, char **map);
-// get_player_pos.c
-void		get_player_pos(t_map_lst *map, t_gbl *gbl);
-
-// vectors.c
-void	check_little_ray(t_gbl *gbl, double add_y, double left_dist);
-double	get_little_ray(double add_y, double x);
-int	check_coord_wall(t_gbl *gbl, double i, double add_y, double dist_x);
-double	get_left_dist(t_gbl *gbl, double rad_to_use, double add_y, double add_x);
-//int	check_coord_left_ray(double check_ray, double left_dist, t_gbl *gbl, double incr);
-*/
-
+// voir si vraiment necessaire
+//void	display_wall_launcher(t_wall wall);
 #endif
