@@ -28,17 +28,17 @@ int	key_press(int key, t_gbl *gbl)
 {
 	if (key == 65307)
 		mlx_loop_end(gbl->mlx);
-	else if (key == 119)
+	else if (key == 'w')
 		gbl->keys.front = 1;
-	else if (key == 115)
+	else if (key == 's')
 		gbl->keys.back = 1;
-	else if (key == 97)
+	else if (key == 'a')
 		gbl->keys.left = 1;
-	else if (key == 65361)
-		gbl->keys.rot_left = 1;
-	else if (key == 100)
+	else if (key == 'd')
 		gbl->keys.right = 1;
-	else if (key == 65363)
+	else if (key == 65361 || key == 'q')
+		gbl->keys.rot_left = 1;
+	else if (key == 65363 || key == 'e')
 		gbl->keys.rot_right = 1;
 	return (0);
 }
@@ -68,17 +68,17 @@ int	deal_key(t_gbl *gbl)
 
 int	key_release(int key, t_gbl *gbl)
 {
-	if (key == 119)
+	if (key == 'w')
 		gbl->keys.front = 0;
-	else if (key == 115)
+	else if (key == 's')
 		gbl->keys.back = 0;
-	else if (key == 97)
+	else if (key == 'a')
 		gbl->keys.left = 0;
-	else if (key == 100)
+	else if (key == 'd')
 		gbl->keys.right = 0;
-	else if (key == 65361)
+	else if (key == 65361 || key == 'q')
 		gbl->keys.rot_left = 0;
-	else if (key == 65363)
+	else if (key == 65363 || key == 'e')
 		gbl->keys.rot_right = 0;
 	return (0);
 }
