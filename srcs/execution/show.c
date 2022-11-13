@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:11 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/31 10:53:14 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/13 14:00:24 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int	show_background(t_gbl *gbl)
 				*(int *)pixel = gbl->file.texture.color_c;
 		}
 	}
-	display_wall(gbl, gbl->file.map);
+	get_display_w_vectors(gbl, gbl->file.map);
 	//wall_front(gbl);
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
 	return (1);

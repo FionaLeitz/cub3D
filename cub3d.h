@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/11 08:40:44 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/13 14:07:38 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,8 @@ void	get_display_w_vectors(t_gbl *gbl, char **map);
 void	get_ray(t_gbl *gbl, t_vectors *vec, double x);
 void	check_n_step(t_gbl *gbl, t_vectors *vec);
 void	get_walls(t_gbl *gbl, t_vectors *vec, char **map);
-void	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
-// display_wall.c
+t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
+// display_launcher.c
 // voir si vraiment necessaire
-//void	display_wall_launcher(t_wall wall);
+void	display_wall_launcher(t_wall wall, t_gbl *gbl, t_vectors *vec);
 #endif
