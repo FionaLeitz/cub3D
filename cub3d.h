@@ -29,6 +29,8 @@
 # define HALF_FULL_RAD 3.14159
 # define SPEED 1 / 2
 
+# define FMAP gbl->file.map
+
 typedef double t_vec2 __attribute__((ext_vector_type(2)));
 
 typedef struct s_wall
@@ -115,9 +117,9 @@ typedef struct s_gbl
 	void		*window;
 	t_image		new_img;
 	t_file		file;
-	double		p_pos[2];
+	t_vec2		p_pos;
 	double		dir;				//distance from player to closest front wall
-	double		p_dir[2];
+	t_vec2		p_dir;
 	double		plane;
 	double		p_plane_r[2];
 	double		p_plane_l[2];
@@ -128,6 +130,8 @@ typedef struct s_gbl
 	t_vectors	vec;
 }				t_gbl;
 
+//loop.c
+int		loop(t_gbl *gbl);
 // file.c
 int			check_file(char *file, t_file *file_infos, int *y_max);
 // utils.c
@@ -165,7 +169,7 @@ double		get_fov_right_dist(t_gbl *gbl, double x, double y);
 // check_pos.c
 int			check_pos(double x, double y, char **map);
 // get_display.c
-void	get_display_w_vectors(t_gbl *gbl, char **map);
+void	get_display_w_vectors(t_gbl *gbl);
 void	get_ray(t_gbl *gbl, t_vectors *vec, double x);
 void	check_n_step(t_gbl *gbl, t_vectors *vec);
 void	get_walls(t_gbl *gbl, t_vectors *vec, char **map);

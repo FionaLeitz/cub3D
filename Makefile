@@ -28,12 +28,13 @@ SRCS_FILES	=	main.c									\
 				execution/show.c						\
 				execution/display_launcher.c				\
 				execution/get_display.c					\
+				execution/loop.c
 
 SRCS		= ${addprefix srcs/, ${SRCS_FILES}}
 
 CC			= clang
 
-CFLAGS		= -Wall -Wextra -Werror -g3 -I.
+CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address -I.
 
 MLXFLAGS	= -lmlx -lXext -lX11 -Lmlx
 
@@ -52,7 +53,7 @@ all: 		lib minilibx ${NAME}
 ${NAME}: 	${OBJS}
 			@echo "${_GREEN}----------------\nCUB3D\n----------------${_END}"
 			@echo "${_ORANGE}Objects CUB3D created${_END}"
-			@${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${MLX} ${MLXFLAGS} -lm #-o ${NAME} ${OBJS}
+			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} ${MLX} ${MLXFLAGS} -lm #-o ${NAME} ${OBJS}
 			@echo "${_GREEN}CUB3D compiled succesfully !${_END}"
 
 minilibx:
@@ -78,7 +79,7 @@ re:			fclean all
 objs/%.o :	srcs/%.c cub3d.h
 			@mkdir -p objs
 			@mkdir -p objs/parse objs/execution
-			@${CC} ${CFLAGS} -MMD -o $@ -c $<
+			${CC} ${CFLAGS} -MMD -o $@ -c $<
 
 			
 .PHONY :	all clean fclean re lib

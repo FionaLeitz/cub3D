@@ -109,14 +109,14 @@ t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec)
 // vec->geo == 'E' -> EAST
 // vec->geo == 'S' -> SOUTH
 // vec->geo == 'W' -> WEST
-void	get_display_w_vectors(t_gbl *gbl, char **map)
+void	get_display_w_vectors(t_gbl *gbl)
 {
 	double		x;
 	t_wall		wall;
 	t_vectors	*vec;
 
 	vec = &gbl->vec;
-	printf("dans display w vec\n");
+	// printf("dans display w vec\n");
 	x = 0;
 	gbl->p_plane_r[0] = gbl->p_dir[0] * cos(RAD_PERP / 2) - gbl->p_dir[1] * sin(RAD_PERP / 2);
 	// puis integration du ratio de l'angle utilisé par l'angle vers lequel on veut arriver
@@ -125,12 +125,17 @@ void	get_display_w_vectors(t_gbl *gbl, char **map)
 	// attention rot inversée , le y va dans le sens inverse
 // en gros le truc suivant : x = point de depart de Vec1  +  point d'arrivee de Vec2
 // et w = width (de la window ??? de la map ???)
-	while (x < WIDTH_MAX)
-	{
-		get_ray(gbl, vec, x);
-		check_n_step(gbl, vec);
-		get_walls(gbl, vec, map);
-		wall = get_geo_n_win_points(gbl, vec);
-		display_wall_launcher(wall, gbl, vec);
-	}
+
+	(void)wall;
+	(void)vec;
+	(void)x;
+	//while (x < WIDTH_MAX)
+	//{
+	//	get_ray(gbl, vec, x);
+	//	check_n_step(gbl, vec);
+	//	get_walls(gbl, vec, FMAP);
+	//	wall = get_geo_n_win_points(gbl, vec);
+	//	display_wall_launcher(wall, gbl, vec);
+	//	x++;
+	//}
 }

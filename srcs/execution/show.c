@@ -66,7 +66,6 @@ int	show_background(t_gbl *gbl)
 	int		y;
 	int		*pixel;
 
-	deal_key(gbl);
 	x = -1;
 	while (++x < WIDTH_MAX)
 	{
@@ -80,8 +79,6 @@ int	show_background(t_gbl *gbl)
 				*pixel = gbl->file.texture.color_c;
 		}
 	}
-	// get_display_w_vectors(gbl, gbl->file.map);
-	//wall_front(gbl);
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
 	return (1);
 }
