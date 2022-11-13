@@ -74,12 +74,11 @@ int	show_background(t_gbl *gbl)
 		{
 			pixel = gbl->new_img.str + (y * gbl->new_img.size_line / 4 + x);
 			if (y >= HEIGHT_MAX / 2)
-				*pixel = gbl->file.texture.color_f;
+				*pixel = 0x0; // gbl->file.texture.color_f;
 			else
-				*pixel = gbl->file.texture.color_c;
+				*pixel = 0x0; // gbl->file.texture.color_c;
 		}
 	}
-	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
 	return (1);
 }
 

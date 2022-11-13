@@ -38,8 +38,8 @@ static int	check_walls(char **map, t_file *file)
 	int		x;
 
 	y = -1;
-	c = map[file->start_y][file->start_x];
-	map[file->start_y][file->start_x] = '0';
+	c = map[(int)file->start_pos.y][(int)file->start_pos.x];
+	map[(int)file->start_pos.y][(int)file->start_pos.x] = '0';
 	while (map[++y])
 	{
 		x = -1;
@@ -52,7 +52,7 @@ static int	check_walls(char **map, t_file *file)
 			}
 		}
 	}
-	map[file->start_y][file->start_x] = c;
+	map[(int)file->start_pos.y][(int)file->start_pos.x] = c;
 	// int	count = -1;
 	// while (map[++count])
 	// 	ft_printf("%s\n", map[count]);
@@ -70,8 +70,8 @@ static int	start_position(char c, int line, int col, t_file *file)
 		file->E += 1;
 	else if (c == 'W')
 		file->W += 1;
-	file->start_y = line;
-	file->start_x = col;
+	file->start_pos.y = line;
+	file->start_pos.x = col;
 	return (file->N + file->S + file->E + file->W);
 }
 

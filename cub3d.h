@@ -27,7 +27,8 @@
 # define DECR_RAD 0.00174533
 # define RAD_ROT 0.0872665
 # define HALF_FULL_RAD 3.14159
-# define SPEED 1 / 2
+# define ROTATE_SPEED 0.5 * M_PI / 180
+# define SPEED 1 / 10
 
 # define FMAP gbl->file.map
 
@@ -78,8 +79,7 @@ typedef struct s_file
 {
 	char		*params[7];
 	char		**map;
-	int			start_y;
-	int			start_x;
+	t_vec2		start_pos;
 	int			N;
 	int			S;
 	int			E;
@@ -113,6 +113,7 @@ typedef struct s_vectors
 
 typedef struct s_gbl
 {
+	t_vec2		rotate_precompute;
 	void		*mlx;
 	void		*window;
 	t_image		new_img;
@@ -130,8 +131,10 @@ typedef struct s_gbl
 	t_vectors	vec;
 }				t_gbl;
 
-//loop.c
+// loop.c
 int		loop(t_gbl *gbl);
+// player.c
+void init_player(t_gbl *gbl);
 // file.c
 int			check_file(char *file, t_file *file_infos, int *y_max);
 // utils.c
@@ -147,7 +150,7 @@ void		end_mlx(t_texture *texture, t_gbl *gbl, t_file *file);
 void		free_struct(t_map_lst *first);
 void		end_parse(t_file *file);
 // create_imgs
-int			open_all(t_texture *texture, t_gbl *gbl, t_file *file);
+int			open_all(t_gbl *gbl);
 // event.c
 int			key_press(int key, t_gbl *gbl);
 int			deal_key(t_gbl *gbl);

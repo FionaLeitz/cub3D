@@ -29,8 +29,8 @@ static void	init(t_file *file, t_gbl *gbl)
 	init_img(&file->texture.south);
 	init_img(&file->texture.east);
 	init_img(&file->texture.west);
-	file->start_x = -1;
-	file->start_y = -1;
+	file->start_pos = (t_vec2){-1, -1};
+	gbl->rotate_precompute = (t_vec2){cos(ROTATE_SPEED), sin(ROTATE_SPEED)};
 }
 
 int	main(int argc, char **argv)
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	// affichage
-	if (open_all(&gbl.file.texture, &gbl, &gbl.file) == 0)
+	if (open_all(&gbl) == 0)
 	{
 		end_mlx(&gbl.file.texture, &gbl, &gbl.file);
 		return (0);

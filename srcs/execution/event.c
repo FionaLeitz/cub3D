@@ -26,7 +26,6 @@
 // get key value and quit with escape
 int	key_press(int key, t_gbl *gbl)
 {
-	printf("%d\n", key);
 	if (key == 65307)
 		mlx_loop_end(gbl->mlx);
 	else if (key == 119)
@@ -50,40 +49,20 @@ int	deal_key(t_gbl *gbl)
 		gbl->p_pos += gbl->p_dir * SPEED;
 	else if (gbl->keys.back == 1)
 		gbl->p_pos -= gbl->p_dir * SPEED;
-
-//	if (gbl->keys.front == 1)
-//	{
-//		gbl->p_pos[0] += sin(gbl->direction * HALF_FULL_RAD / 180) * SPEED;
-//		gbl->p_pos[1] -= cos(gbl->direction * HALF_FULL_RAD / 180) * SPEED;
-//	}
-//	if (gbl->keys.back == 1)
-//	{
-//		gbl->p_pos[0] -= sin(gbl->direction * HALF_FULL_RAD / 180) * SPEED;
-//		gbl->p_pos[1] += cos(gbl->direction * HALF_FULL_RAD / 180) * SPEED;
-//	}
-//	if (gbl->keys.left == 1)
-//	{
-//		gbl->p_pos[0] -= cos(gbl->direction * HALF_FULL_RAD / 180) * SPEED;
-//		gbl->p_pos[1] -= sin(gbl->direction * HALF_FULL_RAD / 180) * SPEED;
-//	}
-//	if (gbl->keys.right == 1)
-//	{
-//		gbl->p_pos[0] += cos(gbl->direction * HALF_FULL_RAD / 180) * SPEED;
-//		gbl->p_pos[1] += sin(gbl->direction * HALF_FULL_RAD / 180) * SPEED;
-//	}
-//	if (gbl->keys.rot_left == 1)
-//	{
-//		if (gbl->direction == 0)
-//			gbl->direction = 360;
-//		gbl->direction -= 5;						// de 5 degre en 5 degre ?
-//	}
-//	if (gbl->keys.rot_right == 1)
-//	{
-//		gbl->direction += 5;						// de 5 degre en 5 degre ?
-//		if (gbl->direction == 360)
-//			gbl->direction = 0;
-//	}
-//	// printf("x = %f	y = %f	rotate = %d\n", gbl->p_pos[0], gbl->p_pos[1], gbl->direction);
+	if (gbl->keys.left == 1)
+		gbl->p_pos += gbl->p_dir.yx * (t_vec2){-1, 1} * SPEED;
+	else if (gbl->keys.right == 1)
+		gbl->p_pos += gbl->p_dir.yx * (t_vec2){1, -1} * SPEED;
+	if (gbl->keys.rot_left == 1) {
+		t_vec2 old_dir = gbl->p_dir;
+		gbl->p_dir.x = gbl->p_dir.x * gbl->rotate_precompute.x - gbl->p_dir.y * gbl->rotate_precompute.y;
+		gbl->p_dir.y = old_dir.x * gbl->rotate_precompute.y + gbl->p_dir.y * gbl->rotate_precompute.x;
+	}
+	if (gbl->keys.rot_right == 1) {
+		t_vec2 old_dir = gbl->p_dir;
+		gbl->p_dir.x = gbl->p_dir.x * gbl->rotate_precompute.x - gbl->p_dir.y * -gbl->rotate_precompute.y;
+		gbl->p_dir.y = old_dir.x * -gbl->rotate_precompute.y + gbl->p_dir.y * gbl->rotate_precompute.x;
+	}
 	return (0);
 }
 

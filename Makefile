@@ -26,9 +26,10 @@ SRCS_FILES	=	main.c									\
 				execution/create_imgs.c					\
 				execution/event.c						\
 				execution/show.c						\
-				execution/display_launcher.c				\
+				execution/display_launcher.c			\
 				execution/get_display.c					\
-				execution/loop.c
+				execution/loop.c                        \
+				player.c
 
 SRCS		= ${addprefix srcs/, ${SRCS_FILES}}
 
