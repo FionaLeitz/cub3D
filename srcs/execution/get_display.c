@@ -15,42 +15,42 @@
 void	get_ray(t_gbl *gbl, t_vectors *vec, double x)
 {
 	vec->view_line = 2 * x / WIDTH_MAX - 1;
-	vec->ray_x = gbl->p_dir[0] + gbl->p_plane_r[0] * vec->view_line;
-	vec->ray_y = gbl->p_dir[1] + gbl->p_plane_r[1] * vec->view_line;
+	vec->ray.x = gbl->p_dir[0] + gbl->p_plane_r[0] * vec->view_line;
+	vec->ray.y = gbl->p_dir[1] + gbl->p_plane_r[1] * vec->view_line;
 	//ddX = sqrt(1 + (raydirY * raydirY) / (raydirX * raydirX));
-	if (vec->ray_x == 0)
-		vec->dd_x = 1e30;
+	if (vec->ray.x == 0)
+		vec->dd.x = 1e30;
 	else
-		vec->dd_x = fabs(1 / vec->ray_x);
-	if (vec->ray_y == 0)
-		vec->dd_y = 1e30;
+		vec->dd.x = fabs(1 / vec->ray.x);
+	if (vec->ray.y == 0)
+		vec->dd.y = 1e30;
 	else
-		vec->dd_y = fabs(1 / vec->ray_y);
-	vec->pos_x = gbl->p_pos[0];	
-	vec->pos_y = gbl->p_pos[1];	
+		vec->dd.y = fabs(1 / vec->ray.y);
+	vec->pos.x = gbl->p_pos[0];
+	vec->pos.y = gbl->p_pos[1];
 }
 
 void	check_n_step(t_gbl *gbl, t_vectors *vec)
 {
-	if (vec->ray_x < 0)
+	if (vec->ray.x < 0)
 	{
-		vec->step_x = -1;
-		vec->side_x = (gbl->p_pos[0] - vec->pos_x) * vec->dd_x;
+		vec->step.x = -1;
+		vec->side.x = (gbl->p_pos[0] - vec->pos.x) * vec->dd.x;
 	}
 	else
 	{
-		vec->step_x = 1;
-		vec->side_x = (vec->pos_x + 1.0 - gbl->p_pos[0] * vec->dd_x);
+		vec->step.x = 1;
+		vec->side.x = (vec->pos.x + 1.0 - gbl->p_pos[0] * vec->dd.x);
 	}
-	if (vec->ray_y < 0)
+	if (vec->ray.y < 0)
 	{
-		vec->step_y = -1;
-		vec->side_y = (gbl->p_pos[1] - vec->pos_y) * vec->dd_y;
+		vec->step.y = -1;
+		vec->side.y = (gbl->p_pos[1] - vec->pos.y) * vec->dd.y;
 	}
 	else
 	{
-		vec->step_y = 1;
-		vec->side_y = (vec->pos_y + 1.0 - gbl->p_pos[1]) * vec->dd_y;
+		vec->step.y = 1;
+		vec->side.y = (vec->pos.y + 1.0 - gbl->p_pos[1]) * vec->dd.y;
 	}
 }
 
@@ -64,22 +64,22 @@ void	get_walls(t_gbl *gbl, t_vectors *vec, char **map)
 	checker = 0;
 	while (checker == 0)
 	{
-		if (vec->side_x < vec->side_y)
+		if (vec->side.x < vec->side.y)
 		{
-			vec->side_x += vec->dd_x;
-			vec->pos_x += vec->step_x;
-			vec->side = 0;
-			vec->res_dda = vec->side_x - vec->dd_x;
+			vec->side.x += vec->dd.x;
+			vec->pos.x += vec->step.x;
+			vec->dist_side = 0;
+			vec->res_dda = vec->side.x - vec->dd.x;
 		}
 		else
 		{
-			vec->side_y += vec->dd_y;
-			vec->pos_y += vec->step_y;
-			vec->side = 1;
-			vec->res_dda = vec->side_y - vec->dd_y;
+			vec->side.y += vec->dd.y;
+			vec->pos.y += vec->step.y;
+			vec->dist_side = 1;
+			vec->res_dda = vec->side.y - vec->dd.y;
 		}
-		map_x = round(vec->pos_x);
-		map_y = round(vec->pos_y);
+		map_x = round(vec->pos.x);
+		map_y = round(vec->pos.y);
 		if (map[map_y][map_x] == '1')
 			checker = 1;
 	}
@@ -89,15 +89,15 @@ t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec)
 {
 	t_wall	wall;
 
-	if (vec->side == 0)
-		wall.x_wall = gbl->p_pos[1] + vec->res_dda * vec->ray_y;
+	if (vec->dist_side == 0)
+		wall.x_wall = gbl->p_pos[1] + vec->res_dda * vec->ray.y;
 	else
-		wall.x_wall = gbl->p_pos[0] + vec->res_dda * vec->ray_x;
-	if (vec->side == 0 && vec->ray_x > 0)
+		wall.x_wall = gbl->p_pos[0] + vec->res_dda * vec->ray.x;
+	if (vec->dist_side == 0 && vec->ray.x > 0)
 		vec->geo = 'E';
-	else if (vec->side == 0 && vec->ray_x <= 0)
+	else if (vec->dist_side == 0 && vec->ray.x <= 0)
 		vec->geo = 'W';
-	else if (vec->side == 1 && vec->ray_y > 0)
+	else if (vec->dist_side == 1 && vec->ray.y > 0)
 		vec->geo = 'S';
 	else
 		vec->geo = 'N';

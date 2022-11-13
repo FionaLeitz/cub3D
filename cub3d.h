@@ -29,6 +29,7 @@
 # define HALF_FULL_RAD 3.14159
 # define SPEED 1 / 2
 
+typedef double t_vec2 __attribute__((ext_vector_type(2)));
 
 typedef struct s_wall
 {
@@ -48,7 +49,7 @@ typedef struct s_image
 	int		size_line;			// number of bytes in one line
 	int		endian;				// ??
 	char	*str;				// result of mlx_get_data_addr
-}			t_image;	
+}			t_image;
 
 typedef struct s_map_lst
 {
@@ -97,21 +98,14 @@ typedef struct s_key
 
 typedef struct s_vectors
 {
-	double	ray_x;
-	double	ray_y;
-	double	plane_x;
-	double	plane_y;
-	double	pos_x;
-	double	pos_y;
-	double	dd_x;
-	double	dd_y;
+	t_vec2	ray;
+	t_vec2	pos;
+	t_vec2	dd;
 	double	view_line;
-	double	side_x;
-	double	side_y;
-	double	step_x;
-	double	step_y;
+	t_vec2	side;
+	t_vec2	step;
 	double	res_dda;				// la fameuse dist grrr
-	int	side;
+	int		dist_side;
 	char	geo;					//N E W S
 }			t_vectors;
 
