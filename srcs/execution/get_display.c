@@ -15,8 +15,7 @@
 void	get_ray(t_gbl *gbl, t_vectors *vec, double x)
 {
 	vec->view_line = 2 * x / WIDTH_MAX - 1;
-	vec->ray.x = gbl->p_dir[0] + gbl->p_plane_r[0] * vec->view_line;
-	vec->ray.y = gbl->p_dir[1] + gbl->p_plane_r[1] * vec->view_line;
+	vec->ray = gbl->p_dir + gbl->p_plane * vec->view_line;
 	//ddX = sqrt(1 + (raydirY * raydirY) / (raydirX * raydirX));
 	if (vec->ray.x == 0)
 		vec->dd.x = 1e30;
@@ -118,9 +117,6 @@ void	get_display_w_vectors(t_gbl *gbl)
 	vec = &gbl->vec;
 	// printf("dans display w vec\n");
 	x = 0;
-	gbl->p_plane_r[0] = gbl->p_dir[0] * cos(RAD_PERP / 2) - gbl->p_dir[1] * sin(RAD_PERP / 2);
-	// puis integration du ratio de l'angle utilisé par l'angle vers lequel on veut arriver
-	gbl->p_plane_r[0] *= tan(RAD_PERP / 2); 
 //	printf("new_img width ??? %d\n", gbl->new_img.width);
 	// attention rot inversée , le y va dans le sens inverse
 // en gros le truc suivant : x = point de depart de Vec1  +  point d'arrivee de Vec2

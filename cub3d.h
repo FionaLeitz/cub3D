@@ -23,7 +23,7 @@
 # define HEIGHT_MAX 600
 # define WIDTH_MAX 800
 # define RAD_FOV 0.785398
-# define RAD_PERP 1.5708
+# define RAD_PERP 60 * M_PI / 180
 # define DECR_RAD 0.00174533
 # define RAD_ROT 0.0872665
 # define HALF_FULL_RAD 3.14159
@@ -122,7 +122,7 @@ typedef struct s_gbl
 	double		dir;				//distance from player to closest front wall
 	t_vec2		p_dir;
 	double		plane;
-	double		p_plane_r[2];
+	t_vec2		p_plane;
 	int			direction;
 	int			start;
 	t_key		keys;

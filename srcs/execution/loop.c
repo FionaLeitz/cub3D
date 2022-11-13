@@ -12,25 +12,27 @@
 
 #include "cub3d.h"
 
-void	color_pixel(t_image *img, int x, int y, int color) {
+void	color_pixel(t_image *img, t_vec2 v, int color) {
 	//printf("%d %d\n", img->width, img->height);
-	if (x >= img->width || x < 0 || y >= img->height || y < 0)
+	if (v.x >= img->width || v.x < 0 || v.y >= img->height || v.y < 0)
 		return ;
 
-	img->str[x + y * img->size_line / 4] = color;
+	img->str[(int)v.x + (int)v.y * img->size_line / 4] = color;
 }
 
-//mlx_loop_hook(gbl->mlx.mlx_ptr, &loop, gbl);
+// a simple debug function
 void display_player(t_gbl *gbl) {
 	int i = 0;
 	t_vec2 tmp_dir = gbl->p_pos;
-	// draw gbl->p_dir from gbl->p_pos
-	while (i < 100) {
-		color_pixel(&gbl->new_img, tmp_dir.x, tmp_dir.y, 0x000000FF);
+	t_vec2 tmp_plane = gbl->p_plane;
+		color_pixel(&gbl->new_img, tmp_dir, 0x000000FF);
+		color_pixel(&gbl->new_img, tmp_plane + gbl->p_pos + gbl->p_dir * 100, 0x0000FF00);
+		color_pixel(&gbl->new_img, -tmp_plane + gbl->p_pos + gbl->p_dir * 100, 0xFF00FF);
 		tmp_dir += gbl->p_dir;
+		tmp_plane += gbl->p_plane;
 		i++;
 	}
-	color_pixel(&gbl->new_img, gbl->p_pos.x, gbl->p_pos.y, 0x00FF0000);
+	color_pixel(&gbl->new_img, gbl->p_pos, 0x00FF0000);
 }
 
 int		loop(t_gbl *gbl)
