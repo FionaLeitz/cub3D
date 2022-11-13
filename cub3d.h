@@ -48,7 +48,7 @@ typedef struct s_image
 	int		bpp;				// bits per pixel
 	int		size_line;			// number of bytes in one line
 	int		endian;				// ??
-	char	*str;				// result of mlx_get_data_addr
+	int		*str;				// result of mlx_get_data_addr
 }			t_image;
 
 typedef struct s_map_lst

@@ -24,7 +24,7 @@ void	window(t_gbl *gbl)
 // to modify image or get correct color for pixel
 static int	create_string(t_image *img)
 {
-	img->str = mlx_get_data_addr(img->ptr, &img->bpp,
+	img->str = (int *)mlx_get_data_addr(img->ptr, &img->bpp,
 			&img->size_line, &img->endian);
 	if (img->str == NULL)
 		return (0);
