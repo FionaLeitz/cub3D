@@ -22,30 +22,15 @@ static void	init_img(t_image *img)
 static void	init(t_file *file, t_gbl *gbl)
 {
 	ft_bzero(file->params, sizeof(char *) * 7);
-	file->map = NULL;
-	file->first = NULL;
+	ft_bzero(gbl, sizeof(t_gbl));
+	init_img(&gbl->new_img);
+	ft_bzero(file, sizeof(t_file));
 	init_img(&file->texture.north);
 	init_img(&file->texture.south);
 	init_img(&file->texture.east);
 	init_img(&file->texture.west);
-	init_img(&gbl->new_img);
-	file->texture.f = NULL;
-	file->texture.c = NULL;
 	file->start_x = -1;
 	file->start_y = -1;
-	file->N = 0;
-	file->S = 0;
-	file->E = 0;
-	file->W = 0;
-	gbl->mlx = NULL;
-	gbl->window = NULL;
-	gbl->keys.front = 0;
-	gbl->keys.back = 0;
-	gbl->keys.right = 0;
-	gbl->keys.left = 0;
-	gbl->keys.rot_right = 0;
-	gbl->keys.rot_left = 0;
-	gbl->start = 0;
 }
 
 int	main(int argc, char **argv)
