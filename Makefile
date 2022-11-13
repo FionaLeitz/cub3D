@@ -56,21 +56,21 @@ ${NAME}: 	${OBJS}
 			@echo "${_GREEN}CUB3D compiled succesfully !${_END}"
 
 minilibx:
-			@make -C mlx
+			@make -C mlx --no-print-directory
 			@echo "${_GREEN}MLX compiled succesfully !${_END}"
 			
 lib:		
-			@make -C libft
+			@make -C libft --no-print-directory
 
 clean:		
 			@rm -rf ${OBJS}
-			@make -C libft clean
-			@make -C mlx clean
+			@make -C libft clean --no-print-directory
+			@make -C mlx clean --no-print-directory
 			@echo "${_YELLOW}Objects cub3d cleaned !${_END}"
 
 fclean:		clean
 			@rm -f ${NAME}
-			@make -C libft fclean
+			@make -C libft fclean --no-print-directory
 			@echo "${_YELLOW}${NAME} cleaned !${_END}"
 
 re:			fclean all
