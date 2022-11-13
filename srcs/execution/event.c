@@ -23,7 +23,16 @@
 // cos(270) = 0
 // cos(360) = 1
 
-// get key value and quit with escape
+t_vec2 rotate_vector(t_vec2 v, char direction, t_gbl *gbl) {
+	v = (t_vec2){
+		v.x * gbl->rotate_precompute.x -
+		direction * v.y * gbl->rotate_precompute.y,
+		direction * v.x * gbl->rotate_precompute.y +
+		v.y * gbl->rotate_precompute.x
+	};
+	return (v);
+}
+
 int	key_press(int key, t_gbl *gbl)
 {
 	if (key == 65307)
@@ -53,15 +62,10 @@ int	deal_key(t_gbl *gbl)
 		gbl->p_pos += gbl->p_dir.yx * (t_vec2){-1, 1} * SPEED;
 	else if (gbl->keys.right == 1)
 		gbl->p_pos += gbl->p_dir.yx * (t_vec2){1, -1} * SPEED;
-	if (gbl->keys.rot_left == 1) {
-		t_vec2 old_dir = gbl->p_dir;
-		gbl->p_dir.x = gbl->p_dir.x * gbl->rotate_precompute.x - gbl->p_dir.y * gbl->rotate_precompute.y;
-		gbl->p_dir.y = old_dir.x * gbl->rotate_precompute.y + gbl->p_dir.y * gbl->rotate_precompute.x;
-	}
+	if (gbl->keys.rot_left == 1)
+		gbl->p_dir = rotate_vector(gbl->p_dir, 1, gbl);
 	if (gbl->keys.rot_right == 1) {
-		t_vec2 old_dir = gbl->p_dir;
-		gbl->p_dir.x = gbl->p_dir.x * gbl->rotate_precompute.x - gbl->p_dir.y * -gbl->rotate_precompute.y;
-		gbl->p_dir.y = old_dir.x * -gbl->rotate_precompute.y + gbl->p_dir.y * gbl->rotate_precompute.x;
+		gbl->p_dir = rotate_vector(gbl->p_dir, -1, gbl);
 	}
 	return (0);
 }

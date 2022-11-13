@@ -14,14 +14,8 @@
 
 void	color_pixel(t_image *img, int x, int y, int color) {
 	//printf("%d %d\n", img->width, img->height);
-	if (x >= img->width)
-		x = img->width - 1;
-	else if (x < 0)
-		x = 0;
-	if (y >= img->height)
-		y = img->height - 1;
-	else if (y < 0)
-		y = 0;
+	if (x >= img->width || x < 0 || y >= img->height || y < 0)
+		return ;
 
 	img->str[x + y * img->size_line / 4] = color;
 }

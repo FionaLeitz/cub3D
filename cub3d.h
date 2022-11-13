@@ -123,7 +123,6 @@ typedef struct s_gbl
 	t_vec2		p_dir;
 	double		plane;
 	double		p_plane_r[2];
-	double		p_plane_l[2];
 	int			direction;
 	int			start;
 	t_key		keys;
