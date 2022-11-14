@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:56:29 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/11/13 14:33:35 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/14 13:35:00 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	check_n_step(t_vectors *vec)
 	}
 }
 
-void	get_walls(t_vectors *vec, char **map)
+int	get_walls(t_vectors *vec, char **map)
 {
 	int	checker;
 	int	map_x;
@@ -78,9 +78,19 @@ void	get_walls(t_vectors *vec, char **map)
 		}
 		map_x = (int)(vec->pos.x);
 		map_y = (int)(vec->pos.y);
-		if (map[map_y][map_x] == '1')
-			checker = 1;
+		if (check_point_in_map(map_x, map_y, map))
+		{
+			if (map[map_y][map_x] == '1')
+				checker = 1;
+			printf("resdda = %f\n", vec->res_dda);
+		}
+		else
+		{
+			printf("resdda = %f\n", vec->res_dda);
+			checker = 2;
+		}
 	}
+	return (checker);
 }
 
 t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec)
@@ -112,6 +122,7 @@ void	get_display_w_vectors(t_gbl *gbl)
 	double		x;
 	t_wall		wall __attribute__((unused));
 	t_vectors	*vec;
+	int			checker;
 
 	vec = &gbl->vec;
 	x = 0;
@@ -119,9 +130,11 @@ void	get_display_w_vectors(t_gbl *gbl)
 	{
 		get_ray(gbl, vec, x);
 		check_n_step(vec);
-		get_walls(vec, FMAP);
+		checker = get_walls(vec, FMAP);
 		wall = get_geo_n_win_points(gbl, vec);
 		wall.x_window = x;
+		if (checker != 1)
+			vec->res_dda += x;
 		display_wall_launcher(&wall, gbl, vec);
 		x++;
 	}

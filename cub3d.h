@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/13 14:07:38 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/14 13:18:12 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,12 +174,12 @@ int			check_pos(double x, double y, char **map);
 void	get_display_w_vectors(t_gbl *gbl);
 void	get_ray(t_gbl *gbl, t_vectors *vec, double x);
 void	check_n_step(t_vectors *vec);
-void	get_walls(t_vectors *vec, char **map);
+int		get_walls(t_vectors *vec, char **map);
 t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
 // display_launcher.c
-// voir si vraiment necessaire
 void	display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec);
-
+//checker_point_in_map.c
+int		check_point_in_map(int map_x, int map_y, char **map);
 // TODO: remove this
 void	color_pixel(t_image *img, t_vec2 v, int color);
 

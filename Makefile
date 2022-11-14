@@ -6,7 +6,7 @@
 #    By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 13:19:30 by fleitz            #+#    #+#              #
-#    Updated: 2022/11/13 13:58:33 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/11/14 13:17:19 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS_FILES	=	main.c									\
 				execution/display_launcher.c			\
 				execution/get_display.c					\
 				execution/loop.c                        \
+				execution/check_point_in_map.c		\
 				player.c
 
 SRCS		= ${addprefix srcs/, ${SRCS_FILES}}
