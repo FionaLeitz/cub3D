@@ -12,16 +12,22 @@
 
 #include "cub3d.h"
 
-void	display_wall_launcher(t_wall wall, t_gbl *gbl, t_vectors *vec)
+void	display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec)
 {
-	wall.x_window = -1;
-	wall.ratio = vec->res_dda;
-//	wall.ratio = vec->res_dda * 0.1;
-	if (wall.geo == 'N')
+	wall->ratio = vec->res_dda;
+
+	if (vec->dist_side == 0)
+		wall->x_wall = vec->pos.y + wall->ratio * vec->ray.y;
+	else
+		wall->x_wall = vec->pos.x + wall->ratio * vec->ray.x;
+	wall->x_wall -= floor(wall->x_wall);
+
+
+	if (wall->geo == 'N')
 		wall_col(wall, gbl, &gbl->file.texture.north);
-	else if (wall.geo == 'E')
+	else if (wall->geo == 'E')
 		wall_col(wall, gbl, &gbl->file.texture.east);
-	else if (wall.geo == 'S')
+	else if (wall->geo == 'S')
 		wall_col(wall, gbl, &gbl->file.texture.south);
 	else
 		wall_col(wall, gbl, &gbl->file.texture.west);

@@ -23,12 +23,12 @@
 # define HEIGHT_MAX 600
 # define WIDTH_MAX 800
 # define RAD_FOV 0.785398
-# define RAD_PERP 60 * M_PI / 180
+# define RAD_PERP 90 * M_PI / 180
 # define DECR_RAD 0.00174533
 # define RAD_ROT 0.0872665
 # define HALF_FULL_RAD 3.14159
-# define ROTATE_SPEED 0.5 * M_PI / 180
-# define SPEED 1 / 10
+# define ROTATE_SPEED 1.5 * M_PI / 180
+# define SPEED 1 / 50
 
 # define FMAP gbl->file.map
 
@@ -157,7 +157,7 @@ int			key_release(int key, t_gbl *gbl);
 int			deal_cross(void *mlx);
 // show.c
 int			show_background(t_gbl *gbl);
-void		wall_col(t_wall	wall, t_gbl *gbl, t_image *img);
+void		wall_col(t_wall	*wall, t_gbl *gbl, t_image *img);
 // algo.c
 void		display_wall(t_gbl *gbl, char **map);
 void		start_pos_to_check(t_gbl *gbl, char **map, double incr);
@@ -173,10 +173,14 @@ int			check_pos(double x, double y, char **map);
 // get_display.c
 void	get_display_w_vectors(t_gbl *gbl);
 void	get_ray(t_gbl *gbl, t_vectors *vec, double x);
-void	check_n_step(t_gbl *gbl, t_vectors *vec);
-void	get_walls(t_gbl *gbl, t_vectors *vec, char **map);
+void	check_n_step(t_vectors *vec);
+void	get_walls(t_vectors *vec, char **map);
 t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
 // display_launcher.c
 // voir si vraiment necessaire
-void	display_wall_launcher(t_wall wall, t_gbl *gbl, t_vectors *vec);
+void	display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec);
+
+// TODO: remove this
+void	color_pixel(t_image *img, t_vec2 v, int color);
+
 #endif

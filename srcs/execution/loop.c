@@ -21,10 +21,12 @@ void	color_pixel(t_image *img, t_vec2 v, int color) {
 }
 
 // a simple debug function
+// TODO: remove this function
 void display_player(t_gbl *gbl) {
 	int i = 0;
 	t_vec2 tmp_dir = gbl->p_pos;
 	t_vec2 tmp_plane = gbl->p_plane;
+	while (i < 100) {
 		color_pixel(&gbl->new_img, tmp_dir, 0x000000FF);
 		color_pixel(&gbl->new_img, tmp_plane + gbl->p_pos + gbl->p_dir * 100, 0x0000FF00);
 		color_pixel(&gbl->new_img, -tmp_plane + gbl->p_pos + gbl->p_dir * 100, 0xFF00FF);
@@ -40,15 +42,13 @@ int		loop(t_gbl *gbl)
 	// check if key is pressed
 	deal_key(gbl);
 
-	//printf("%f %f\n", gbl->p_pos.x, gbl->p_pos.y);
-
 	// fill new image with background
 	show_background(gbl);
 
 	// raycasting
-	//get_display_w_vectors(gbl);
+	get_display_w_vectors(gbl);
 
-	display_player(gbl);
+	//display_player(gbl);
 	mlx_put_image_to_window(gbl->mlx, gbl->window, gbl->new_img.ptr, 0, 0);
 	return (0);
 }

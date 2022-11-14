@@ -13,15 +13,15 @@
 #include "cub3d.h"
 
 void init_player(t_gbl *gbl) {
-	gbl->p_pos = gbl->file.start_pos;
+	gbl->p_pos = gbl->file.start_pos + 0.5;
 	if (gbl->file.N == 1)
-		gbl->p_dir = (t_vec2){0, 1};
-	else if (gbl->file.E == 1)
-		gbl->p_dir = (t_vec2){1, 0};
+		gbl->p_dir = (t_vec2){0, -1};
 	else if (gbl->file.W == 1)
+		gbl->p_dir = (t_vec2){1, 0};
+	else if (gbl->file.E == 1)
 		gbl->p_dir = (t_vec2){-1, 0};
 	else if (gbl->file.S == 1)
-		gbl->p_dir = (t_vec2){0, -1};
+		gbl->p_dir = (t_vec2){0, 1};
 
 	// Init plane
 	gbl->p_plane[0] = gbl->p_dir[0] * cos(RAD_PERP / 2) - gbl->p_dir[1] * sin(RAD_PERP / 2);

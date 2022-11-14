@@ -30,6 +30,7 @@ t_vec2 rotate_vector(t_vec2 v, char direction, t_gbl *gbl) {
 		direction * v.x * gbl->rotate_precompute.y +
 		v.y * gbl->rotate_precompute.x
 	};
+	return (v);
 }
 
 int	key_press(int key, t_gbl *gbl)
@@ -58,16 +59,16 @@ int	deal_key(t_gbl *gbl)
 	else if (gbl->keys.back == 1)
 		gbl->p_pos -= gbl->p_dir * SPEED;
 	if (gbl->keys.left == 1)
-		gbl->p_pos += gbl->p_dir.yx * (t_vec2){-1, 1} * SPEED;
+		gbl->p_pos -= gbl->p_dir.yx * (t_vec2){-1, 1} * SPEED;
 	else if (gbl->keys.right == 1)
-		gbl->p_pos += gbl->p_dir.yx * (t_vec2){1, -1} * SPEED;
+		gbl->p_pos -= gbl->p_dir.yx * (t_vec2){1, -1} * SPEED;
 	if (gbl->keys.rot_left == 1) {
-		gbl->p_dir = rotate_vector(gbl->p_dir, 1, gbl);
-		gbl->p_plane = rotate_vector(gbl->p_plane, 1, gbl);
-	}
-	if (gbl->keys.rot_right == 1) {
 		gbl->p_dir = rotate_vector(gbl->p_dir, -1, gbl);
 		gbl->p_plane = rotate_vector(gbl->p_plane, -1, gbl);
+	}
+	if (gbl->keys.rot_right == 1) {
+		gbl->p_dir = rotate_vector(gbl->p_dir, 1, gbl);
+		gbl->p_plane = rotate_vector(gbl->p_plane, 1, gbl);
 	}
 	return (0);
 }
