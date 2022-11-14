@@ -3,33 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:01 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/19 11:08:37 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/14 15:26:56 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-// sin(0) = 0
-// sin(90) = 1
-// sin(180) = 0
-// sin(270) = -1
-// sin(360) = 0
-// cos(0) = 1
-// cos(90) = 0
-// cos(180) = -1
-// cos(270) = 0
-// cos(360) = 1
-
-t_vec2 rotate_vector(t_vec2 v, char direction, t_gbl *gbl) {
-	return (t_vec2){
-		v.x * gbl->rotate_precompute.x -
-		direction * v.y * gbl->rotate_precompute.y,
-		direction * v.x * gbl->rotate_precompute.y +
-		v.y * gbl->rotate_precompute.x
-	};
+t_vec2	rotate_vector(t_vec2 v, char d, t_gbl *gbl)
+{
+	return ((t_vec2){
+		v.x * gbl->rotate_precompute.x - d * v.y * gbl->rotate_precompute.y,
+		d * v.x * gbl->rotate_precompute.y + v.y * gbl->rotate_precompute.x});
 	return (v);
 }
 
@@ -62,11 +49,13 @@ int	deal_key(t_gbl *gbl)
 		gbl->p_pos -= gbl->p_dir.yx * (t_vec2){-1, 1} * SPEED;
 	else if (gbl->keys.right == 1)
 		gbl->p_pos -= gbl->p_dir.yx * (t_vec2){1, -1} * SPEED;
-	if (gbl->keys.rot_left == 1) {
+	if (gbl->keys.rot_left == 1)
+	{
 		gbl->p_dir = rotate_vector(gbl->p_dir, -1, gbl);
 		gbl->p_plane = rotate_vector(gbl->p_plane, -1, gbl);
 	}
-	if (gbl->keys.rot_right == 1) {
+	if (gbl->keys.rot_right == 1)
+	{
 		gbl->p_dir = rotate_vector(gbl->p_dir, 1, gbl);
 		gbl->p_plane = rotate_vector(gbl->p_plane, 1, gbl);
 	}

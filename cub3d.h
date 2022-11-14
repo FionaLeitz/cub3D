@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/14 14:09:23 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/14 14:16:41 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ typedef struct s_gbl
 	t_image		new_img;
 	t_file		file;
 	t_vec2		p_pos;
-	double		dir;				//distance from player to closest front wall
+//	double		dir;				//distance from player to closest front wall
 	t_vec2		p_dir;
-	double		plane;
+//	double		plane;
 	t_vec2		p_plane;
 	int			direction;
 	int			start;
