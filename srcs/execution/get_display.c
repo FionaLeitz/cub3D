@@ -6,7 +6,7 @@
 /*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:56:29 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/11/14 13:35:00 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/14 14:02:33 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	get_ray(t_gbl *gbl, t_vectors *vec, double x)
 {
 	vec->view_line = 2 * x / WIDTH_MAX - 1;
 	vec->ray = gbl->p_dir + gbl->p_plane * vec->view_line;
-
-	//ddX = sqrt(1 + (raydirY * raydirY) / (raydirX * raydirX));
 	if (vec->ray.x == 0)
 		vec->dd.x = 1e30;
 	else
@@ -82,13 +80,9 @@ int	get_walls(t_vectors *vec, char **map)
 		{
 			if (map[map_y][map_x] == '1')
 				checker = 1;
-			printf("resdda = %f\n", vec->res_dda);
 		}
 		else
-		{
-			printf("resdda = %f\n", vec->res_dda);
 			checker = 2;
-		}
 	}
 	return (checker);
 }

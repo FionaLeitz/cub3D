@@ -6,7 +6,7 @@
 #    By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 13:19:30 by fleitz            #+#    #+#              #
-#    Updated: 2022/11/14 13:38:56 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/11/14 14:08:47 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,14 +29,14 @@ SRCS_FILES	=	main.c									\
 				execution/display_launcher.c			\
 				execution/get_display.c					\
 				execution/loop.c                        \
-				execution/check_point_in_map.c		\
-				player.c
+				execution/check_point_in_map.c			\
+				execution/player.c
 
 SRCS		= ${addprefix srcs/, ${SRCS_FILES}}
 
 CC			= clang
 
-CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address -I.
+CFLAGS		= -Wall -Wextra -Werror -I. #-g3 -fsanitize=address -I.
 
 MLXFLAGS	= -lmlx -lXext -lX11 -Lmlx
 
