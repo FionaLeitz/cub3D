@@ -12,6 +12,22 @@
 
 #include "../../cub3d.h"
 
+// if empty lines at the end of the map, delete
+void	empty_line(int empty, t_map_lst *first)
+{
+	t_map_lst	*tmp;
+	int			count;
+
+	if (empty == -1)
+		return ;
+	tmp = first;
+	count = -1;
+	while (++count <= empty)
+		tmp = tmp->next;
+	tmp->prev->next = NULL;
+	free_struct(tmp);
+}
+
 // norme ! Print error message and 
 int	error_return(char *str, int i)
 {

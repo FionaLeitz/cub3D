@@ -12,22 +12,6 @@
 
 #include "../../cub3d.h"
 
-// if empty lines at the end of the map, delete
-static void	empty_line(int empty, t_map_lst *first)
-{
-	t_map_lst	*tmp;
-	int			count;
-
-	if (empty == -1)
-		return ;
-	tmp = first;
-	count = -1;
-	while (++count <= empty)
-		tmp = tmp->next;
-	tmp->prev->next = NULL;
-	free_struct(tmp);
-}
-
 // get map in char **
 static int	get_map_tab(t_file *file, int count)
 {
@@ -80,7 +64,6 @@ static int	pass_useless(int fd, t_file *file)
 // get map in list struct t_map_lst
 static int	get_map_lst(int fd, t_file *file, int *y_max)
 {
-//	int			count;
 	char		*str;
 	t_map_lst	*tmp;
 

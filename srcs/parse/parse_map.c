@@ -53,9 +53,6 @@ static int	check_walls(char **map, t_file *file)
 		}
 	}
 	map[file->start_y][file->start_x] = c;
-	// int	count = -1;
-	// while (map[++count])
-	// 	ft_printf("%s\n", map[count]);
 	return (1);
 }
 
