@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:43 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/31 10:53:33 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/14 16:27:41 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (error_return("Error number of arguments\n", 0));
 	init(&gbl.file, &gbl);
-	// parsing
 	if (check_file(argv[1], &gbl.file, &gbl.y_max) == 0)
 	{
 		end_parse(&gbl.file);
 		return (0);
 	}
-	// affichage
 	if (open_all(&gbl) == 0)
 	{
 		end_mlx(&gbl.file.texture, &gbl, &gbl.file);

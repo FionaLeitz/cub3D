@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:38:32 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/05 10:38:35 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/11/14 16:28:08 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ static int	check_walls(char **map, t_file *file)
 		}
 	}
 	map[(int)file->start_pos.y][(int)file->start_pos.x] = c;
-	// int	count = -1;
-	// while (map[++count])
-	// 	ft_printf("%s\n", map[count]);
 	return (1);
 }
 

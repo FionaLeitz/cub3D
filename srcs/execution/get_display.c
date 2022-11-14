@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:56:29 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/11/14 15:34:34 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/14 15:44:25 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,14 +107,10 @@ t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec)
 	return (wall);
 }
 
-// vec->geo == 'N' -> north
-// vec->geo == 'E' -> EAST
-// vec->geo == 'S' -> SOUTH
-// vec->geo == 'W' -> WEST
 void	get_display_w_vectors(t_gbl *gbl)
 {
 	double		x;
-	t_wall		wall __attribute__((unused));
+	t_wall		wall;
 	t_vectors	*vec;
 	int			checker;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fleitz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:36:33 by fleitz            #+#    #+#             */
-/*   Updated: 2022/10/05 10:36:37 by fleitz           ###   ########.fr       */
+/*   Updated: 2022/11/14 16:28:31 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ static int	pass_useless(int fd, t_file *file)
 // get map in list struct t_map_lst
 static int	get_map_lst(int fd, t_file *file, int *y_max)
 {
-//	int			count;
 	char		*str;
 	t_map_lst	*tmp;
 
