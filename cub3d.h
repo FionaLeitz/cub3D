@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/15 14:14:04 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:48:02 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@
 # include <math.h>
 # define HEIGHT_MAX 600
 # define WIDTH_MAX 800
-# define RAD_PERP 90 * M_PI / 180
-# define ROTATE_SPEED 1.5 * M_PI / 180
-# define SPEED 1 / 50
+# define RAD_PERP 1.57079632679
+# define ROTATE_SPEED 0.03490658503
+# define SPEED 0.02857142857
+//# define FMAP gbl->file.map
 
-# define FMAP gbl->file.map
-
-typedef double t_vec2 __attribute__((ext_vector_type(2)));
+typedef double	t_vec2 __attribute__((ext_vector_type(2)));
 
 typedef struct s_wall
 {
@@ -76,10 +75,10 @@ typedef struct s_file
 	char		*params[7];
 	char		**map;
 	t_vec2		start_pos;
-	int			N;
-	int			S;
-	int			E;
-	int			W;
+	int			n;
+	int			s;
+	int			e;
+	int			w;
 	t_map_lst	*first;
 	t_texture	texture;
 }				t_file;
@@ -126,7 +125,7 @@ typedef struct s_gbl
 // loop.c
 int			loop(t_gbl *gbl);
 // player.c
-void		 init_player(t_gbl *gbl);
+void		init_player(t_gbl *gbl);
 // file.c
 int			check_file(char *file, t_file *file_infos, int *y_max);
 // utils.c

@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:56:29 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/11/14 15:44:25 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:40:56 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ int	get_walls(t_vectors *vec, char **map)
 			if (map[map_y][map_x] == '1')
 				checker = 1;
 		}
-		else
-			checker = 2;
 	}
 	return (checker);
 }

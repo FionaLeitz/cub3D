@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_collision.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcouppe <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 10:35:42 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/11/15 11:40:26 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:42:59 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ int	wall_collision_checker(t_gbl *gbl)
 	checker = 0;
 	map_x = (int)vec_tmp.x;
 	map_y = (int)vec_tmp.y;
-	if (check_point_in_map(map_x, map_y, FMAP))
+	if (check_point_in_map(map_x, map_y, gbl->file.map))
 	{
-		if (FMAP[map_y][map_x] == '1')
+		if (gbl->file.map[map_y][map_x] == '1')
 			checker++;
 	}
 	vec_tmp.y += gbl->p_dir.y * SPEED;
 	map_y = (int)vec_tmp.y;
-	if (check_point_in_map(map_x, map_y, FMAP))
+	if (check_point_in_map(map_x, map_y, gbl->file.map))
 	{
-		if (FMAP[map_y][map_x] == '1')
+		if (gbl->file.map[map_y][map_x] == '1')
 			checker++;
 	}
 	return (checker);
