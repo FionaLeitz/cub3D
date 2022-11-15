@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/15 14:48:02 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:43:56 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,5 +163,8 @@ void		display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec);
 int			check_point_in_map(int map_x, int map_y, char **map);
 // wall_collision.c
 int			wall_collision_checker(t_gbl *gbl);
+// movements.c
+void	move_front_back(t_gbl *gbl);
+void	move_left_right(t_gbl *gbl);
 
 #endif

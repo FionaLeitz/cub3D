@@ -6,7 +6,7 @@
 #    By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/29 13:19:30 by fleitz            #+#    #+#              #
-#    Updated: 2022/11/15 10:45:32 by mcouppe          ###   ########.fr        #
+#    Updated: 2022/11/15 15:34:02 by mcouppe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRCS_FILES	=	main.c									\
 				execution/loop.c                        \
 				execution/check_point_in_map.c			\
 				execution/player.c						\
+				execution/movements.c					\
 				execution/wall_collision.c
 
 SRCS		= ${addprefix srcs/, ${SRCS_FILES}}
