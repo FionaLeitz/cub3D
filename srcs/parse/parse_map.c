@@ -47,7 +47,7 @@ static int	check_walls(char **map, t_file *file)
 		{
 			if ((map[y][x] == '0' || map[y][x] == c) && rec(map, y, x) == -1)
 			{
-				ft_printf("Error\nWalls\n");
+				ft_printf("Error\nNot enough walls\n");
 				return (0);
 			}
 		}
@@ -92,7 +92,7 @@ int	map_characters(t_file *file)
 				&& file->map[line][col] != '0')
 			{
 				if (start_position(file->map[line][col], line, col, file) != 1)
-					return (error_return("Error\nMap\n", 0));
+					return (error_return("Error\nCharacters in map\n", 0));
 			}
 		}
 	}

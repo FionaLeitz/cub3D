@@ -120,6 +120,6 @@ int	check_params(char **params, t_texture *texture)
 	if (!(texture->north.texture && texture->south.texture
 			&& texture->west.texture && texture->east.texture
 			&& texture->f && texture->c))
-		return (error_return("Error\nParams\n", 0));
+		return (error_return("Error\nWrong params\n", 0));
 	return (1);
 }

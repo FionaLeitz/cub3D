@@ -27,7 +27,7 @@ static int	get_map_tab(t_file *file, int count)
 	while (tmp)
 	{
 		if (empty != -1 && tmp->map_line[0] != '\n')
-			return (error_return("Error\nEmpty line\n", 0));
+			return (error_return("Error\nEmpty line in map\n", 0));
 		file->map[++count] = tmp->map_line;
 		if (empty == -1 && tmp->map_line[0] == '\n')
 		{
@@ -97,7 +97,7 @@ static int	get_file_infos(int fd, t_file *file, int *y_max)
 	{
 		file->params[count] = get_next_line(fd);
 		if (file->params[count] == NULL)
-			return (error_return("Error\nNot enough lines\n", 0));
+			return (error_return("Error\nNot enough lines for params\n", 0));
 		if (file->params[count][0] == '\n')
 			free(file->params[count]);
 		else
@@ -128,7 +128,7 @@ int	check_file(char *filename, t_file *file, int *y_max)
 	}
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		return (error_return("Error\nOpening file\n", 0));
+		return (error_return("Error\nUnable to open file\n", 0));
 	if (get_file_infos(fd, file, y_max) == 0)
 		return (0);
 	if (map_characters(file) == 0)
