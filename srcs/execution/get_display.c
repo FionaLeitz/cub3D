@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:56:29 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/11/15 14:40:56 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:55:41 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ void	get_display_w_vectors(t_gbl *gbl)
 	{
 		get_ray(gbl, vec, x);
 		check_n_step(vec);
-		checker = get_walls(vec, FMAP);
+		checker = get_walls(vec, gbl->file.map);
 		wall = get_geo_n_win_points(gbl, vec);
 		wall.x_window = x;
 		if (checker != 1)
