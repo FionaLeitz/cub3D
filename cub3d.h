@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/15 15:43:56 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 15:46:34 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define RAD_PERP 1.57079632679
 # define ROTATE_SPEED 0.03490658503
 # define SPEED 0.02857142857
-//# define FMAP gbl->file.map
 
 typedef double	t_vec2 __attribute__((ext_vector_type(2)));
 
@@ -164,7 +163,7 @@ int			check_point_in_map(int map_x, int map_y, char **map);
 int			get_walls(t_vectors *vec, char **map);
 int			wall_collision_checker(t_gbl *gbl);
 // movements.c
-void	move_front_back(t_gbl *gbl);
-void	move_left_right(t_gbl *gbl);
+void		move_front_back(t_gbl *gbl);
+void		move_left_right(t_gbl *gbl);
 
 #endif

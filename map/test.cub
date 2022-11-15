@@ -1,11 +1,11 @@
 
-NO texture/texture_north.xpm
-SO ./texture/texture_south.xpm
+NO texture/ugly/texture_north.xpm
+SO ./texture/ugly/texture_south.xpm
 
 
-EA ./texture/texture_east.xpm
+EA ./texture/ugly/texture_east.xpm
 
-WE ./texture/texture_west.xpm
+WE ./texture/ugly/texture_west.xpm
 
 F 255.127.0
 
