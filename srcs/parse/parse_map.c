@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:38:32 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/14 16:28:08 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:55:02 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ static int	check_walls(char **map, t_file *file)
 static int	start_position(char c, int line, int col, t_file *file)
 {
 	if (c == 'N')
-		file->N += 1;
+		file->n += 1;
 	else if (c == 'S')
-		file->S += 1;
+		file->s += 1;
 	else if (c == 'E')
-		file->E += 1;
+		file->e += 1;
 	else if (c == 'W')
-		file->W += 1;
+		file->w += 1;
 	file->start_pos.y = line;
 	file->start_pos.x = col;
-	return (file->N + file->S + file->E + file->W);
+	return (file->n + file->s + file->e + file->w);
 }
 
 // check if characters are valids in map
