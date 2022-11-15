@@ -34,7 +34,7 @@ static int	open_texture(t_image *img, void *mlx)
 {
 	img->ptr = mlx_xpm_file_to_image(mlx, img->texture,
 			&img->width, &img->height);
-	if (img->texture == NULL)
+	if (img->ptr == NULL)
 		return (0);
 	if (create_string(img) == 0)
 		return (0);

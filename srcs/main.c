@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	t_gbl	gbl;
 
 	if (argc != 2)
-		return (error_return("Error number of arguments\n", 0));
+		return (error_return("Error\nNumber of arguments\n", 0));
 	init(&gbl.file, &gbl);
 	if (check_file(argv[1], &gbl.file, &gbl.y_max) == 0)
 	{

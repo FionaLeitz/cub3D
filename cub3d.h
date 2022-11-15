@@ -39,14 +39,14 @@ typedef struct s_wall
 
 typedef struct s_image
 {
-	char	*texture;			// path string
-	void	*ptr;				// pointer for mlx
+	char	*texture;
+	void	*ptr;
 	int		width;
 	int		height;
-	int		bpp;				// bits per pixel
-	int		size_line;			// number of bytes in one line
-	int		endian;				// ??
-	int		*str;				// result of mlx_get_data_addr
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		*str;
 }			t_image;
 
 typedef struct s_map_lst
@@ -129,6 +129,7 @@ void		init_player(t_gbl *gbl);
 // file.c
 int			check_file(char *file, t_file *file_infos, int *y_max);
 // utils.c
+void		empty_line(int empty, t_map_lst *first);
 int			error_return(char *str, int i);
 t_map_lst	*new_line(char *line, int y);
 int			ft_space(char c);

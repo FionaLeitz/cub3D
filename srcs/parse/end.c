@@ -11,19 +11,6 @@
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-/*
-static void	free_table(char **tab)
-{
-	int	i;
-
-	if (tab == NULL)
-		return ;
-	i = -1;
-	while (tab[++i])
-		free(tab[i]);
-	free(tab);
-}
-*/
 
 // destroy mlx images
 static void	end_img(t_image *img, void *mlx)

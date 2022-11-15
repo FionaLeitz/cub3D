@@ -15,9 +15,9 @@
 int	wall_collision_checker(t_gbl *gbl)
 {
 	t_vec2	vec_tmp;
-	int	map_x;
-	int	map_y;
-	int	checker;
+	int		map_x;
+	int		map_y;
+	int		checker;
 
 	vec_tmp = gbl->p_pos;
 	vec_tmp.x += gbl->p_dir.x * SPEED;

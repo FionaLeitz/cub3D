@@ -12,6 +12,11 @@
 
 #include "../../cub3d.h"
 
+int	multiply(int a, int b)
+{
+	return (a * b);
+}
+
 void	wall_col(t_wall	*wall, t_gbl *gbl, t_image *img)
 {
 	int		y_window;
@@ -27,9 +32,9 @@ void	wall_col(t_wall	*wall, t_gbl *gbl, t_image *img)
 		y_tex++;
 		if (y_window >= 0 && y_window < HEIGHT_MAX)
 		{
-			color = img->str[((int)(y_tex * ((double)img->height / (double)w_s))
-						* img->size_line / 4)
-						+ (int)(wall->x_wall * (img->width))];
+			color = img->str[multiply((int)(y_tex * ((double)img->height
+							/ (double)w_s)), img->size_line / 4)
+				+ (int)(wall->x_wall * (img->width))];
 			gbl->new_img.str[(y_window * gbl->new_img.size_line / 4
 					+ wall->x_window)] = color;
 		}
