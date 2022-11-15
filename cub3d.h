@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/15 12:15:50 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 14:14:04 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # define HEIGHT_MAX 600
 # define WIDTH_MAX 800
 # define RAD_PERP 90 * M_PI / 180
-# define HALF_FULL_RAD 3.14159
 # define ROTATE_SPEED 1.5 * M_PI / 180
 # define SPEED 1 / 50
 
@@ -103,9 +102,9 @@ typedef struct s_vectors
 	double	view_line;
 	t_vec2	side;
 	t_vec2	step;
-	double	res_dda;				// la fameuse dist grrr
+	double	res_dda;
 	int		dist_side;
-	char	geo;					//N E W S
+	char	geo;
 }			t_vectors;
 
 typedef struct s_gbl
@@ -119,16 +118,15 @@ typedef struct s_gbl
 	t_vec2		p_dir;
 	t_vec2		p_plane;
 	int			direction;
-	int			start;
 	t_key		keys;
 	int			y_max;
 	t_vectors	vec;
 }				t_gbl;
 
 // loop.c
-int		loop(t_gbl *gbl);
+int			loop(t_gbl *gbl);
 // player.c
-void init_player(t_gbl *gbl);
+void		 init_player(t_gbl *gbl);
 // file.c
 int			check_file(char *file, t_file *file_infos, int *y_max);
 // utils.c
@@ -153,31 +151,17 @@ int			deal_cross(void *mlx);
 // show.c
 int			show_background(t_gbl *gbl);
 void		wall_col(t_wall	*wall, t_gbl *gbl, t_image *img);
-// algo.c
-void		display_wall(t_gbl *gbl, char **map);
-void		start_pos_to_check(t_gbl *gbl, char **map, double incr);
-int			check_v_pos(t_gbl *gbl);
-// check_left.c
-double		check_left(t_gbl *gbl, char **map);
-double		get_fov_left_dist(t_gbl *gbl, double x, double y);
-//check_right.c
-double		check_right(t_gbl *gbl, char **map);
-double		get_fov_right_dist(t_gbl *gbl, double x, double y);
-// check_pos.c
-int			check_pos(double x, double y, char **map);
 // get_display.c
-void	get_display_w_vectors(t_gbl *gbl);
-void	get_ray(t_gbl *gbl, t_vectors *vec, double x);
-void	check_n_step(t_vectors *vec);
-int		get_walls(t_vectors *vec, char **map);
-t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
+void		get_display_w_vectors(t_gbl *gbl);
+void		get_ray(t_gbl *gbl, t_vectors *vec, double x);
+void		check_n_step(t_vectors *vec);
+int			get_walls(t_vectors *vec, char **map);
+t_wall		get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
 // display_launcher.c
-void	display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec);
+void		display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec);
 //checker_point_in_map.c
-int		check_point_in_map(int map_x, int map_y, char **map);
+int			check_point_in_map(int map_x, int map_y, char **map);
 // wall_collision.c
-int	wall_collision_checker(t_gbl *gbl);
-// TODO: remove this
-void	color_pixel(t_image *img, t_vec2 v, int color);
+int			wall_collision_checker(t_gbl *gbl);
 
 #endif
