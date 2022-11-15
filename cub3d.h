@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/14 14:16:41 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 12:15:50 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,7 @@ typedef struct s_gbl
 	t_image		new_img;
 	t_file		file;
 	t_vec2		p_pos;
-//	double		dir;				//distance from player to closest front wall
 	t_vec2		p_dir;
-//	double		plane;
 	t_vec2		p_plane;
 	int			direction;
 	int			start;
@@ -177,6 +175,8 @@ t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
 void	display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec);
 //checker_point_in_map.c
 int		check_point_in_map(int map_x, int map_y, char **map);
+// wall_collision.c
+int	wall_collision_checker(t_gbl *gbl);
 // TODO: remove this
 void	color_pixel(t_image *img, t_vec2 v, int color);
 

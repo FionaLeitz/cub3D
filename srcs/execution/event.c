@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:46:01 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/14 15:26:56 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 12:14:33 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,41 @@ int	key_press(int key, t_gbl *gbl)
 int	deal_key(t_gbl *gbl)
 {
 	if (gbl->keys.front == 1)
+	{
 		gbl->p_pos += gbl->p_dir * SPEED;
+		if (wall_collision_checker(gbl))
+		{
+			gbl->p_pos -= gbl->p_dir * SPEED;
+			gbl->p_pos -= gbl->p_dir * SPEED;
+		}
+	}
 	else if (gbl->keys.back == 1)
+	{
 		gbl->p_pos -= gbl->p_dir * SPEED;
+		if (wall_collision_checker(gbl))
+		{
+			gbl->p_pos += gbl->p_dir * SPEED;
+			gbl->p_pos += gbl->p_dir * SPEED;
+		}
+	}
 	if (gbl->keys.left == 1)
+	{
 		gbl->p_pos -= gbl->p_dir.yx * (t_vec2){-1, 1} * SPEED;
+		if (wall_collision_checker(gbl))
+		{
+			gbl->p_pos += gbl->p_dir.yx * (t_vec2){-1, 1} * SPEED;
+			gbl->p_pos += gbl->p_dir.yx * (t_vec2){-1, 1} * SPEED;
+		}
+	}	
 	else if (gbl->keys.right == 1)
+	{
 		gbl->p_pos -= gbl->p_dir.yx * (t_vec2){1, -1} * SPEED;
+		if (wall_collision_checker(gbl))
+		{
+			gbl->p_pos += gbl->p_dir.yx * (t_vec2){1, -1} * SPEED;
+			gbl->p_pos += gbl->p_dir.yx * (t_vec2){1, -1} * SPEED;
+		}
+	}
 	if (gbl->keys.rot_left == 1)
 	{
 		gbl->p_dir = rotate_vector(gbl->p_dir, -1, gbl);
