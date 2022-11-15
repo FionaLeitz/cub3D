@@ -43,7 +43,7 @@ t_map_lst	*new_line(char *line, int x)
 	new = malloc(sizeof(t_map_lst));
 	if (new == NULL)
 	{
-		ft_printf("Error\nMalloc\n");
+		ft_printf("Error\nMalloc failed\n");
 		return (NULL);
 	}
 	new->map_line = line;
