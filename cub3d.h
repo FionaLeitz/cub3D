@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/15 15:46:34 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 22:58:53 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <math.h>
 # define HEIGHT_MAX 600
 # define WIDTH_MAX 800
-# define RAD_PERP 1.57079632679
+# define PERP 1.57079632679
 # define ROTATE_SPEED 0.03490658503
 # define SPEED 0.02857142857
 

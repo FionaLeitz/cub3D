@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 13:56:29 by mcouppe           #+#    #+#             */
-/*   Updated: 2022/11/15 14:55:41 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/15 22:49:49 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,30 @@ t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec)
 {
 	t_wall	wall;
 
-	if (vec->dist_side == 0)
-		wall.x_wall = gbl->p_pos.y + vec->res_dda * vec->ray.y;
-	else
-		wall.x_wall = gbl->p_pos.x + vec->res_dda * vec->ray.x;
 	if (vec->dist_side == 0 && vec->ray.x > 0)
+	{
+		wall.x_wall = gbl->p_pos.y + vec->res_dda * vec->ray.y;
+		wall.x_wall -= floor(wall.x_wall);
 		vec->geo = 'E';
+	}
 	else if (vec->dist_side == 0 && vec->ray.x <= 0)
+	{
+		wall.x_wall = gbl->p_pos.y + vec->res_dda * vec->ray.y;
+		wall.x_wall = 1 - (wall.x_wall - floor(wall.x_wall));
 		vec->geo = 'W';
+	}
 	else if (vec->dist_side == 1 && vec->ray.y > 0)
+	{
+		wall.x_wall = gbl->p_pos.x + vec->res_dda * vec->ray.x;
+		wall.x_wall = 1 - (wall.x_wall - floor(wall.x_wall));
 		vec->geo = 'S';
+	}
 	else
+	{
+		wall.x_wall = gbl->p_pos.x + vec->res_dda * vec->ray.x;
+		wall.x_wall -= floor(wall.x_wall);
 		vec->geo = 'N';
+	}
 	wall.geo = vec->geo;
 	return (wall);
 }
@@ -87,8 +99,8 @@ void	get_display_w_vectors(t_gbl *gbl)
 		checker = get_walls(vec, gbl->file.map);
 		wall = get_geo_n_win_points(gbl, vec);
 		wall.x_window = x;
-		if (checker != 1)
-			vec->res_dda += x;
+	//	if (checker != 1)
+	//		vec->res_dda += x;
 		display_wall_launcher(&wall, gbl, vec);
 		x++;
 	}
