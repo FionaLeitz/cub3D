@@ -155,13 +155,13 @@ void		wall_col(t_wall	*wall, t_gbl *gbl, t_image *img);
 void		get_display_w_vectors(t_gbl *gbl);
 void		get_ray(t_gbl *gbl, t_vectors *vec, double x);
 void		check_n_step(t_vectors *vec);
-int			get_walls(t_vectors *vec, char **map);
 t_wall		get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
 // display_launcher.c
 void		display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec);
 //checker_point_in_map.c
 int			check_point_in_map(int map_x, int map_y, char **map);
 // wall_collision.c
+int			get_walls(t_vectors *vec, char **map);
 int			wall_collision_checker(t_gbl *gbl);
 
 #endif

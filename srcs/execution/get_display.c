@@ -51,40 +51,6 @@ void	check_n_step(t_vectors *vec)
 	}
 }
 
-int	get_walls(t_vectors *vec, char **map)
-{
-	int	checker;
-	int	map_x;
-	int	map_y;
-
-	checker = 0;
-	while (checker == 0)
-	{
-		if (vec->side.x < vec->side.y)
-		{
-			vec->side.x += vec->dd.x;
-			vec->pos.x += vec->step.x;
-			vec->dist_side = 0;
-			vec->res_dda = vec->side.x - vec->dd.x;
-		}
-		else
-		{
-			vec->side.y += vec->dd.y;
-			vec->pos.y += vec->step.y;
-			vec->dist_side = 1;
-			vec->res_dda = vec->side.y - vec->dd.y;
-		}
-		map_x = (int)(vec->pos.x);
-		map_y = (int)(vec->pos.y);
-		if (check_point_in_map(map_x, map_y, map))
-		{
-			if (map[map_y][map_x] == '1')
-				checker = 1;
-		}
-	}
-	return (checker);
-}
-
 t_wall	get_geo_n_win_points(t_gbl *gbl, t_vectors *vec)
 {
 	t_wall	wall;
