@@ -6,7 +6,7 @@
 /*   By: mcouppe <mcouppe@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:37:56 by fleitz            #+#    #+#             */
-/*   Updated: 2022/11/15 22:58:53 by mcouppe          ###   ########.fr       */
+/*   Updated: 2022/11/16 11:02:05 by mcouppe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,7 @@ void		check_n_step(t_vectors *vec);
 t_wall		get_geo_n_win_points(t_gbl *gbl, t_vectors *vec);
 // display_launcher.c
 void		display_wall_launcher(t_wall *wall, t_gbl *gbl, t_vectors *vec);
+int			setting_east_west_walls(t_wall *wall, t_gbl *gbl, t_vectors *vec);
 //checker_point_in_map.c
 int			check_point_in_map(int map_x, int map_y, char **map);
 // wall_collision.c
